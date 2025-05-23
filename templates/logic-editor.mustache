@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template qtype_logic/custom-template
+    @template qtype_logic/logic-editor
 }}
 
 <h1>{{question_name}}</h1>
@@ -29,25 +29,19 @@
     </logic-editor>
 </div>
 
-<button id="send-result-button">Send Result</button>
-
-<div class="data-container" question-id-param={{question_id}} >
-    <h1>DEBUG</h1>
-    <p>QUESTION_ID: {{question_id}}</p>
-    <p>INIT STATE: {{{init_state}}}</p>
+<div id="answer">
+    <input
+        type="text"
+        name="{{answer_name}}"
+        id="answer"
+        value="{{answer_value}}">
 </div>
 
-<script type="application/javascript">
-    /*
-    const btn = document.querySelector("#send-result-button");
-    btn.addEventListener("click", () => {
-        const event = new Event("send-result", { bubbles: true });
-        btn.dispatchEvent(event);
-    });
-    */
-
-    const btn = document.querySelector("#send-result-button");
-    btn.addEventListener("click", (event) => {
-        event.preventDefault();
-    });
-</script>
+<div class="data-container" question-id-param="{{question_id}}" question-attempt-id-param="{{question_attempt_id}}" >
+    <h1>DEBUG</h1>
+    <p>QUESTION_ID: {{question_id}}</p>
+    <p>QUESTION_ATTEMPT_ID: {{question_attempt_id}}</p>
+    <p>INIT STATE: {{{init_state}}}</p>
+    <p>INPUT NAME: {{answer_name}}</p>
+    <p>ANSWER: {{answer_value}}</p>
+</div>

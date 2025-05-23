@@ -11,8 +11,7 @@ defined('MOODLE_INTERNAL') || die();
 
 
 /**
- * Generates the output for true-false questions.
- *
+ * Renders the logic-editor questions.
  */
 class qtype_logic_renderer extends qtype_renderer {
     public function formulation_and_controls(question_attempt $qa, question_display_options $options) {
@@ -20,21 +19,30 @@ class qtype_logic_renderer extends qtype_renderer {
 
         $question = $qa->get_question();
         $init_state = $question->initialstate;
-        $question_id = $question->id;
         $question_name = $question->name;
         $question_text = $question->questiontext;
 
+        // TODO remove these
+        $question_id = $question->id;
+        $question_attempt_id = $qa->get_database_id();
+
+        $response = $qa->get_last_qt_data();
+        $input_name = $qa->get_qt_field_name('answer');
+        $value = isset($response['answer']) ? $response['answer'] : '';
+
         $PAGE->requires->js_call_amd('qtype_logic/logic-editor', 'init');
-        $PAGE->requires->js_call_amd('qtype_logic/result-upload', 'init');
+        $PAGE->requires->js_call_amd('qtype_logic/save-result', 'init');
+
 
         $template_data = [
             'question_name' => $question_name,
             'question_text' => $question_text,
             'init_state' => $init_state,
-            'question_id' => $question_id,
+            'answer_name' => $input_name,
+            'answer_value' => $value
         ];
 
-        return $OUTPUT->render_from_template('qtype_logic/custom-template', $template_data);
+        return $OUTPUT->render_from_template('qtype_logic/logic-editor', $template_data);
     }
 
     public function specific_feedback(question_attempt $qa) {

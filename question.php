@@ -26,8 +26,8 @@ class qtype_logic_question extends question_graded_automatically {
     public $trueanswerid;
     public $falseanswerid;
 
-
     public function get_expected_data() {
+        error_log("Getting expected data...");
         return array('answer' => PARAM_RAW);
     }
 
@@ -36,6 +36,9 @@ class qtype_logic_question extends question_graded_automatically {
     }
 
     public function summarise_response(array $response) {
+        error_log("Summarising responses...");
+        error_log(print_r($response, true));
+
         if (!array_key_exists('answer', $response)) {
             return null;
         } else if ($response['answer']) {
@@ -56,6 +59,9 @@ class qtype_logic_question extends question_graded_automatically {
     }
 
     public function classify_response(array $response) {
+        error_log("Classifying response...");
+        error_log(print_r($response, true));
+
         if (!array_key_exists('answer', $response)) {
             return array($this->id => question_classified_response::no_response());
         }
@@ -70,6 +76,11 @@ class qtype_logic_question extends question_graded_automatically {
     }
 
     public function is_complete_response(array $response) {
+        error_log("Is complete response ?");
+        error_log(print_r($response['answer']), true);
+        print_object($response);
+        print_object($response['answer']);
+
         return array_key_exists('answer', $response);
     }
 
@@ -77,15 +88,22 @@ class qtype_logic_question extends question_graded_automatically {
         if ($this->is_gradable_response($response)) {
             return '';
         }
-        return get_string('pleaseselectananswer', 'qtype_truefalse');
+        return get_string('pleaseselectananswer', 'qtype_logic');
     }
 
     public function is_same_response(array $prevresponse, array $newresponse) {
+        error_log("Is same response ?");
+        error_log(print_r($prevresponse, true));
+        error_log(print_r($newresponse, true));
+
         return question_utils::arrays_same_at_key_missing_is_blank(
                 $prevresponse, $newresponse, 'answer');
     }
 
     public function grade_response(array $response) {
+        error_log("Grading response...");
+        error_log(print_r($response, true));
+
         if ($this->rightanswer == true && $response['answer'] == true) {
             $fraction = 1;
         } else if ($this->rightanswer == false && $response['answer'] == false) {
