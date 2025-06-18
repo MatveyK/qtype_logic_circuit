@@ -1,4 +1,8 @@
-.que.truefalse .answer div.r0,
-.que.truefalse .answer div.r1 {
-    padding: 0.3em;
+.que .content {
+    margin: 0 0 0 0;
+    width: 100%;
+}
+
+.que.logic {
+    width: 100%;
 }

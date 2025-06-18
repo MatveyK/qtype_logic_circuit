@@ -26,12 +26,12 @@ define(['jquery'], function($) {
             // Listen to when the question is changed (via form submission or ajax reload)
             $(document).on('submit', 'form#responseform', function(e) {
                 const logicEditor = $('logic-editor#logic-editor')[0];
+
                 const userAnswer = logicEditor.save();
                 const userAnswerString = JSON.stringify(userAnswer);
+
                 // Update the input value here
                 $('input#answer').attr('value', userAnswerString);
-                console.log($('input#answer')[0])
-                console.log('first');
             });
 
             /*
@@ -41,6 +41,17 @@ define(['jquery'], function($) {
               console.log('clicked');
             });
             */
+
+            const resetButton = $('button#circuit-reset-button');
+
+            resetButton.on('click', (event) => {
+                const initState = resetButton.data('init-state');
+                const logicEditor = $('logic-editor#logic-editor')[0];
+                console.log('initState', initState);
+                console.log('logicEditor', logicEditor);
+
+                logicEditor.loadCircuitOrLibrary(initState);
+            });
         }
     };
 });

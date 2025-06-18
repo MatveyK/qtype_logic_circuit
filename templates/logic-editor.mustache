@@ -21,21 +21,36 @@
 <h1>{{question_name}}</h1>
 <p>{{{question_text}}}</p>
 
-<div style="width: 1000px; height: 1000px; margin: 30px; padding: 5px; border: 1px solid lightgray; border-radius: 5px;">
-    <logic-editor mode="connect" id="logic-editor">
+<div style="width: 100%; height: 40rem; max-height: 40rem;">
+    <logic-editor mode="full" id="logic-editor">
         <script type="application/json5">
-            {{{init_state}}}
+            {{#answer_value}}
+                {{{answer_value}}}
+            {{/answer_value}}
+
+            {{^answer_value}}
+                {{{init_state}}}
+            {{/answer_value}}
         </script>
     </logic-editor>
 </div>
 
-<div id="answer">
-    <input
-        type="text"
-        name="{{answer_name}}"
-        id="answer"
-        value="{{answer_value}}">
-</div>
+<button
+    id="circuit-reset-button"
+    type="button"
+    class="btn btn-warning"
+    aria-label="Reset circuit"
+    style="margin: 1rem"
+    data-init-state="{{init_state}}">
+    Reset the circuit
+</button>
+
+<input
+    type="text"
+    name="{{answer_name}}"
+    id="answer"
+    value="{{answer_value}}"
+    style="display: none;">
 
 <div class="data-container" question-id-param="{{question_id}}" question-attempt-id-param="{{question_attempt_id}}" >
     <h1>DEBUG</h1>
