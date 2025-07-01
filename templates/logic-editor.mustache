@@ -22,7 +22,7 @@
 <p>{{{question_text}}}</p>
 
 <div style="width: 100%; height: 40rem; max-height: 40rem;">
-    <logic-editor mode="full" id="logic-editor">
+    <logic-editor singleton="" mode="full" id="logic-editor">
         <script type="application/json5">
             {{#answer_value}}
                 {{{answer_value}}}
@@ -34,6 +34,15 @@
         </script>
     </logic-editor>
 </div>
+
+<button
+    id="circuit-run-test-button"
+    type="button"
+    class="btn btn-primary"
+    aria-label="Run tests"
+    style="margin: 1rem">
+    Run tests
+</button>
 
 <button
     id="circuit-reset-button"
@@ -50,6 +59,12 @@
     name="{{answer_name}}"
     id="answer"
     value="{{answer_value}}"
+    style="display: none;">
+<input
+    type="text"
+    id="test-results"
+    value="{{test_results_value}}"
+    data-test-results="{{test_results_value}}"
     style="display: none;">
 
 <div class="data-container" question-id-param="{{question_id}}" question-attempt-id-param="{{question_attempt_id}}" >

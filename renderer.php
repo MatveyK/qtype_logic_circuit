@@ -25,6 +25,7 @@ class qtype_logic_renderer extends qtype_renderer {
         $response = $qa->get_last_qt_data();
         $input_name = $qa->get_qt_field_name('answer');
         $current_answer = isset($response['answer']) ? $response['answer'] : '';
+        $current_test_results = isset($response['test-results']) ? $response['test-results'] : '';
 
         $PAGE->requires->js_call_amd('qtype_logic/logic-editor', 'init');
         $PAGE->requires->js_call_amd('qtype_logic/save-result', 'init');
@@ -35,7 +36,8 @@ class qtype_logic_renderer extends qtype_renderer {
             'question_text' => $question_text,
             'init_state' => $init_state,
             'answer_name' => $input_name,
-            'answer_value' => $current_answer
+            'answer_value' => $current_answer,
+            'test_results_value' => $current_test_results
         ];
 
         return $OUTPUT->render_from_template('qtype_logic/logic-editor', $template_data);

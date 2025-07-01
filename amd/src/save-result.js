@@ -23,32 +23,46 @@
 define(['jquery'], function($) {
     return {
         init: function() {
-            // Listen to when the question is changed (via form submission or ajax reload)
-            $(document).on('submit', 'form#responseform', function(e) {
-                const logicEditor = $('logic-editor#logic-editor')[0];
+            //const form = $('form#responseform');
+            const nextNavButton = $('input[type="submit"]#mod_quiz-next-nav.btn');
 
-                const userAnswer = logicEditor.save();
-                const userAnswerString = JSON.stringify(userAnswer);
+            const testResultsInput = $('input#test-results');
+            const testResults = testResultsInput.data('test-results');
+            if(testResults === undefined || testResults.length === 0) {
+                nextNavButton.prop('disabled', true);
+            }
 
-                // Update the input value here
-                $('input#answer').attr('value', userAnswerString);
+            const runTestButton = $('button#circuit-run-test-button');
+
+            runTestButton.on('click', async (_event) => {
+                try {
+                    const logicEditor = $('logic-editor#logic-editor')[0];
+
+                    const userAnswer = logicEditor.save();
+                    const testCases = userAnswer.tests[0];
+                    console.log(logicEditor);
+                    console.log(userAnswer);
+                    console.log(testCases);
+                    const testResults = await Logic.singleton.runTestSuite(testCases, { noUI: true });
+                    console.log(testResults)
+
+                    const userAnswerString = JSON.stringify(userAnswer);
+
+                    // Update the input value here
+                    $('input#answer').attr('value', userAnswerString);
+                    $('input#test-results').attr('value', testResults);
+                } catch(error) {
+                    console.error(error);
+                }
+
+                nextNavButton.prop('disabled', false);
             });
-
-            /*
-            $(document).on('click', 'input[type="submit"]#mod_quiz-next-nav.btn', function(e) {
-              $('input#answer').attr('value', 'cacaValue');
-              console.log($('input#answer'));
-              console.log('clicked');
-            });
-            */
 
             const resetButton = $('button#circuit-reset-button');
 
-            resetButton.on('click', (event) => {
+            resetButton.on('click', (_event) => {
                 const initState = resetButton.data('init-state');
                 const logicEditor = $('logic-editor#logic-editor')[0];
-                console.log('initState', initState);
-                console.log('logicEditor', logicEditor);
 
                 logicEditor.loadCircuitOrLibrary(initState);
             });

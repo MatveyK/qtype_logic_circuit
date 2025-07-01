@@ -2,28 +2,10 @@
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
-  var __defProps = Object.defineProperties;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
   var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __getOwnPropSymbols = Object.getOwnPropertySymbols;
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
-  var __propIsEnum = Object.prototype.propertyIsEnumerable;
-  var __pow = Math.pow;
-  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-  var __spreadValues = (a2, b2) => {
-    for (var prop in b2 ||= {})
-      if (__hasOwnProp.call(b2, prop))
-        __defNormalProp(a2, prop, b2[prop]);
-    if (__getOwnPropSymbols)
-      for (var prop of __getOwnPropSymbols(b2)) {
-        if (__propIsEnum.call(b2, prop))
-          __defNormalProp(a2, prop, b2[prop]);
-      }
-    return a2;
-  };
-  var __spreadProps = (a2, b2) => __defProps(a2, __getOwnPropDescs(b2));
   var __name = (target2, value) => __defProp(target2, "name", { value, configurable: true });
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
@@ -44,26 +26,6 @@
     isNodeMode || !mod || !mod.__esModule ? __defProp(target2, "default", { value: mod, enumerable: true }) : target2,
     mod
   ));
-  var __async = (__this, __arguments, generator) => {
-    return new Promise((resolve, reject) => {
-      var fulfilled = (value) => {
-        try {
-          step(generator.next(value));
-        } catch (e) {
-          reject(e);
-        }
-      };
-      var rejected = (value) => {
-        try {
-          step(generator.throw(value));
-        } catch (e) {
-          reject(e);
-        }
-      };
-      var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
-      step((generator = generator.apply(__this, __arguments)).next());
-    });
-  };
 
   // node_modules/file-saver/dist/FileSaver.min.js
   var require_FileSaver_min = __commonJS({
@@ -2016,10 +1978,6 @@
         });
       } else if (typeof module !== "undefined" && module != null) {
         module.exports = LZString2;
-      } else if (typeof angular !== "undefined" && angular != null) {
-        angular.module("LZString", []).factory("LZString", function() {
-          return LZString2;
-        });
       }
     }
   });
@@ -2459,31 +2417,8 @@
   var require_function = __commonJS({
     "node_modules/fp-ts/lib/function.js"(exports) {
       "use strict";
-      var __spreadArray = exports && exports.__spreadArray || function(to, from, pack) {
-        if (pack || arguments.length === 2)
-          for (var i2 = 0, l = from.length, ar; i2 < l; i2++) {
-            if (ar || !(i2 in from)) {
-              if (!ar)
-                ar = Array.prototype.slice.call(from, 0, i2);
-              ar[i2] = from[i2];
-            }
-          }
-        return to.concat(ar || Array.prototype.slice.call(from));
-      };
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.dual = exports.getEndomorphismMonoid = exports.SK = exports.hole = exports.constVoid = exports.constUndefined = exports.constNull = exports.constFalse = exports.constTrue = exports.unsafeCoerce = exports.apply = exports.getRing = exports.getSemiring = exports.getMonoid = exports.getSemigroup = exports.getBooleanAlgebra = void 0;
-      exports.identity = identity2;
-      exports.constant = constant;
-      exports.flip = flip2;
-      exports.flow = flow;
-      exports.tuple = tuple4;
-      exports.increment = increment;
-      exports.decrement = decrement;
-      exports.absurd = absurd;
-      exports.tupled = tupled;
-      exports.untupled = untupled;
-      exports.pipe = pipe;
-      exports.not = not;
+      exports.getEndomorphismMonoid = exports.not = exports.SK = exports.hole = exports.pipe = exports.untupled = exports.tupled = exports.absurd = exports.decrement = exports.increment = exports.tuple = exports.flow = exports.flip = exports.constVoid = exports.constUndefined = exports.constNull = exports.constFalse = exports.constTrue = exports.constant = exports.unsafeCoerce = exports.identity = exports.apply = exports.getRing = exports.getSemiring = exports.getMonoid = exports.getSemigroup = exports.getBooleanAlgebra = void 0;
       var getBooleanAlgebra = /* @__PURE__ */ __name(function(B) {
         return function() {
           return {
@@ -2587,6 +2522,7 @@
         return a2;
       }
       __name(identity2, "identity");
+      exports.identity = identity2;
       exports.unsafeCoerce = identity2;
       function constant(a2) {
         return function() {
@@ -2594,6 +2530,7 @@
         };
       }
       __name(constant, "constant");
+      exports.constant = constant;
       exports.constTrue = constant(true);
       exports.constFalse = constant(false);
       exports.constNull = constant(null);
@@ -2614,6 +2551,7 @@
         };
       }
       __name(flip2, "flip");
+      exports.flip = flip2;
       function flow(ab, bc, cd, de, ef, fg, gh, hi, ij) {
         switch (arguments.length) {
           case 1:
@@ -2654,6 +2592,7 @@
         return;
       }
       __name(flow, "flow");
+      exports.flow = flow;
       function tuple4() {
         var t38 = [];
         for (var _i = 0; _i < arguments.length; _i++) {
@@ -2662,24 +2601,29 @@
         return t38;
       }
       __name(tuple4, "tuple");
+      exports.tuple = tuple4;
       function increment(n) {
         return n + 1;
       }
       __name(increment, "increment");
+      exports.increment = increment;
       function decrement(n) {
         return n - 1;
       }
       __name(decrement, "decrement");
+      exports.decrement = decrement;
       function absurd(_) {
         throw new Error("Called `absurd` function which should be uncallable");
       }
       __name(absurd, "absurd");
+      exports.absurd = absurd;
       function tupled(f) {
         return function(a2) {
           return f.apply(void 0, a2);
         };
       }
       __name(tupled, "tupled");
+      exports.tupled = tupled;
       function untupled(f) {
         return function() {
           var a2 = [];
@@ -2690,6 +2634,7 @@
         };
       }
       __name(untupled, "untupled");
+      exports.untupled = untupled;
       function pipe(a2, ab, bc, cd, de, ef, fg, gh, hi) {
         switch (arguments.length) {
           case 1:
@@ -2720,6 +2665,7 @@
         }
       }
       __name(pipe, "pipe");
+      exports.pipe = pipe;
       exports.hole = absurd;
       var SK = /* @__PURE__ */ __name(function(_, b2) {
         return b2;
@@ -2731,6 +2677,7 @@
         };
       }
       __name(not, "not");
+      exports.not = not;
       var getEndomorphismMonoid = /* @__PURE__ */ __name(function() {
         return {
           concat: function(first, second) {
@@ -2740,21 +2687,6 @@
         };
       }, "getEndomorphismMonoid");
       exports.getEndomorphismMonoid = getEndomorphismMonoid;
-      var dual = /* @__PURE__ */ __name(function(arity, body) {
-        var isDataFirst = typeof arity === "number" ? function(args) {
-          return args.length >= arity;
-        } : arity;
-        return function() {
-          var args = Array.from(arguments);
-          if (isDataFirst(arguments)) {
-            return body.apply(this, args);
-          }
-          return function(self2) {
-            return body.apply(void 0, __spreadArray([self2], args, false));
-          };
-        };
-      }, "dual");
-      exports.dual = dual;
     }
   });
 
@@ -2774,8 +2706,7 @@
         return to.concat(ar || Array.prototype.slice.call(from));
       };
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.flatMapReader = exports.flatMapTask = exports.flatMapIO = exports.flatMapEither = exports.flatMapOption = exports.flatMapNullable = exports.liftOption = exports.liftNullable = exports.fromReadonlyNonEmptyArray = exports.has = exports.emptyRecord = exports.emptyReadonlyArray = exports.tail = exports.head = exports.isNonEmpty = exports.singleton = exports.right = exports.left = exports.isRight = exports.isLeft = exports.some = exports.none = exports.isSome = exports.isNone = void 0;
-      var function_1 = require_function();
+      exports.fromReadonlyNonEmptyArray = exports.has = exports.emptyRecord = exports.emptyReadonlyArray = exports.tail = exports.head = exports.isNonEmpty = exports.singleton = exports.right = exports.left = exports.isRight = exports.isLeft = exports.some = exports.none = exports.isSome = exports.isNone = void 0;
       var isNone = /* @__PURE__ */ __name(function(fa) {
         return fa._tag === "None";
       }, "isNone");
@@ -2828,76 +2759,6 @@
         return __spreadArray([as[0]], as.slice(1), true);
       }, "fromReadonlyNonEmptyArray");
       exports.fromReadonlyNonEmptyArray = fromReadonlyNonEmptyArray;
-      var liftNullable = /* @__PURE__ */ __name(function(F) {
-        return function(f, onNullable) {
-          return function() {
-            var a2 = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-              a2[_i] = arguments[_i];
-            }
-            var o = f.apply(void 0, a2);
-            return F.fromEither(o == null ? (0, exports.left)(onNullable.apply(void 0, a2)) : (0, exports.right)(o));
-          };
-        };
-      }, "liftNullable");
-      exports.liftNullable = liftNullable;
-      var liftOption = /* @__PURE__ */ __name(function(F) {
-        return function(f, onNone) {
-          return function() {
-            var a2 = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-              a2[_i] = arguments[_i];
-            }
-            var o = f.apply(void 0, a2);
-            return F.fromEither((0, exports.isNone)(o) ? (0, exports.left)(onNone.apply(void 0, a2)) : (0, exports.right)(o.value));
-          };
-        };
-      }, "liftOption");
-      exports.liftOption = liftOption;
-      var flatMapNullable = /* @__PURE__ */ __name(function(F, M) {
-        return /* @__PURE__ */ (0, function_1.dual)(3, function(self2, f, onNullable) {
-          return M.flatMap(self2, (0, exports.liftNullable)(F)(f, onNullable));
-        });
-      }, "flatMapNullable");
-      exports.flatMapNullable = flatMapNullable;
-      var flatMapOption = /* @__PURE__ */ __name(function(F, M) {
-        return /* @__PURE__ */ (0, function_1.dual)(3, function(self2, f, onNone) {
-          return M.flatMap(self2, (0, exports.liftOption)(F)(f, onNone));
-        });
-      }, "flatMapOption");
-      exports.flatMapOption = flatMapOption;
-      var flatMapEither = /* @__PURE__ */ __name(function(F, M) {
-        return /* @__PURE__ */ (0, function_1.dual)(2, function(self2, f) {
-          return M.flatMap(self2, function(a2) {
-            return F.fromEither(f(a2));
-          });
-        });
-      }, "flatMapEither");
-      exports.flatMapEither = flatMapEither;
-      var flatMapIO = /* @__PURE__ */ __name(function(F, M) {
-        return /* @__PURE__ */ (0, function_1.dual)(2, function(self2, f) {
-          return M.flatMap(self2, function(a2) {
-            return F.fromIO(f(a2));
-          });
-        });
-      }, "flatMapIO");
-      exports.flatMapIO = flatMapIO;
-      var flatMapTask = /* @__PURE__ */ __name(function(F, M) {
-        return /* @__PURE__ */ (0, function_1.dual)(2, function(self2, f) {
-          return M.flatMap(self2, function(a2) {
-            return F.fromTask(f(a2));
-          });
-        });
-      }, "flatMapTask");
-      exports.flatMapTask = flatMapTask;
-      var flatMapReader = /* @__PURE__ */ __name(function(F, M) {
-        return /* @__PURE__ */ (0, function_1.dual)(2, function(self2, f) {
-          return M.flatMap(self2, function(a2) {
-            return F.fromReader(f(a2));
-          });
-        });
-      }, "flatMapReader");
-      exports.flatMapReader = flatMapReader;
     }
   });
 
@@ -2938,13 +2799,7 @@
         return result;
       };
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.ap = ap;
-      exports.apFirst = apFirst;
-      exports.apSecond = apSecond;
-      exports.apS = apS;
-      exports.getApplySemigroup = getApplySemigroup;
-      exports.sequenceT = sequenceT;
-      exports.sequenceS = sequenceS;
+      exports.sequenceS = exports.sequenceT = exports.getApplySemigroup = exports.apS = exports.apSecond = exports.apFirst = exports.ap = void 0;
       var function_1 = require_function();
       var _ = __importStar(require_internal());
       function ap(F, G) {
@@ -2959,6 +2814,7 @@
         };
       }
       __name(ap, "ap");
+      exports.ap = ap;
       function apFirst(A) {
         return function(second) {
           return function(first) {
@@ -2971,6 +2827,7 @@
         };
       }
       __name(apFirst, "apFirst");
+      exports.apFirst = apFirst;
       function apSecond(A) {
         return function(second) {
           return function(first) {
@@ -2983,6 +2840,7 @@
         };
       }
       __name(apSecond, "apSecond");
+      exports.apSecond = apSecond;
       function apS(F) {
         return function(name2, fb) {
           return function(fa) {
@@ -2996,6 +2854,7 @@
         };
       }
       __name(apS, "apS");
+      exports.apS = apS;
       function getApplySemigroup(F) {
         return function(S2) {
           return {
@@ -3010,6 +2869,7 @@
         };
       }
       __name(getApplySemigroup, "getApplySemigroup");
+      exports.getApplySemigroup = getApplySemigroup;
       function curried(f, n, acc) {
         return function(x) {
           var combined = Array(acc.length + 1);
@@ -3081,6 +2941,7 @@
         };
       }
       __name(sequenceT, "sequenceT");
+      exports.sequenceT = sequenceT;
       function getRecordConstructor(keys) {
         var len = keys.length;
         switch (len) {
@@ -3157,6 +3018,7 @@
         };
       }
       __name(sequenceS, "sequenceS");
+      exports.sequenceS = sequenceS;
     }
   });
 
@@ -3165,13 +3027,7 @@
     "node_modules/fp-ts/lib/Functor.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.map = map;
-      exports.flap = flap;
-      exports.bindTo = bindTo;
-      exports.let = let_;
-      exports.getFunctorComposition = getFunctorComposition;
-      exports.as = as;
-      exports.asUnit = asUnit;
+      exports.getFunctorComposition = exports.let = exports.bindTo = exports.flap = exports.map = void 0;
       var function_1 = require_function();
       function map(F, G) {
         return function(f) {
@@ -3183,6 +3039,7 @@
         };
       }
       __name(map, "map");
+      exports.map = map;
       function flap(F) {
         return function(a2) {
           return function(fab) {
@@ -3193,6 +3050,7 @@
         };
       }
       __name(flap, "flap");
+      exports.flap = flap;
       function bindTo(F) {
         return function(name2) {
           return function(fa) {
@@ -3204,6 +3062,7 @@
         };
       }
       __name(bindTo, "bindTo");
+      exports.bindTo = bindTo;
       function let_(F) {
         return function(name2, f) {
           return function(fa) {
@@ -3215,6 +3074,7 @@
         };
       }
       __name(let_, "let_");
+      exports.let = let_;
       function getFunctorComposition(F, G) {
         var _map = map(F, G);
         return {
@@ -3224,21 +3084,7 @@
         };
       }
       __name(getFunctorComposition, "getFunctorComposition");
-      function as(F) {
-        return function(self2, b2) {
-          return F.map(self2, function() {
-            return b2;
-          });
-        };
-      }
-      __name(as, "as");
-      function asUnit(F) {
-        var asM = as(F);
-        return function(self2) {
-          return asM(self2, void 0);
-        };
-      }
-      __name(asUnit, "asUnit");
+      exports.getFunctorComposition = getFunctorComposition;
     }
   });
 
@@ -3247,8 +3093,7 @@
     "node_modules/fp-ts/lib/Applicative.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.getApplicativeMonoid = getApplicativeMonoid;
-      exports.getApplicativeComposition = getApplicativeComposition;
+      exports.getApplicativeComposition = exports.getApplicativeMonoid = void 0;
       var Apply_1 = require_Apply();
       var function_1 = require_function();
       var Functor_1 = require_Functor();
@@ -3262,6 +3107,7 @@
         };
       }
       __name(getApplicativeMonoid, "getApplicativeMonoid");
+      exports.getApplicativeMonoid = getApplicativeMonoid;
       function getApplicativeComposition(F, G) {
         var map = (0, Functor_1.getFunctorComposition)(F, G).map;
         var _ap = (0, Apply_1.ap)(F, G);
@@ -3276,6 +3122,7 @@
         };
       }
       __name(getApplicativeComposition, "getApplicativeComposition");
+      exports.getApplicativeComposition = getApplicativeComposition;
     }
   });
 
@@ -3284,28 +3131,20 @@
     "node_modules/fp-ts/lib/Chain.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.chainFirst = chainFirst;
-      exports.tap = tap;
-      exports.bind = bind;
+      exports.bind = exports.chainFirst = void 0;
       function chainFirst(M) {
-        var tapM = tap(M);
         return function(f) {
           return function(first) {
-            return tapM(first, f);
+            return M.chain(first, function(a2) {
+              return M.map(f(a2), function() {
+                return a2;
+              });
+            });
           };
         };
       }
       __name(chainFirst, "chainFirst");
-      function tap(M) {
-        return function(first, f) {
-          return M.chain(first, function(a2) {
-            return M.map(f(a2), function() {
-              return a2;
-            });
-          });
-        };
-      }
-      __name(tap, "tap");
+      exports.chainFirst = chainFirst;
       function bind(M) {
         return function(name2, f) {
           return function(ma) {
@@ -3319,6 +3158,7 @@
         };
       }
       __name(bind, "bind");
+      exports.bind = bind;
     }
   });
 
@@ -3376,15 +3216,7 @@
         return result;
       };
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.fromOption = fromOption;
-      exports.fromPredicate = fromPredicate;
-      exports.fromOptionK = fromOptionK;
-      exports.chainOptionK = chainOptionK;
-      exports.fromEitherK = fromEitherK;
-      exports.chainEitherK = chainEitherK;
-      exports.chainFirstEitherK = chainFirstEitherK;
-      exports.filterOrElse = filterOrElse;
-      exports.tapEither = tapEither;
+      exports.filterOrElse = exports.chainFirstEitherK = exports.chainEitherK = exports.fromEitherK = exports.chainOptionK = exports.fromOptionK = exports.fromPredicate = exports.fromOption = void 0;
       var Chain_1 = require_Chain();
       var function_1 = require_function();
       var _ = __importStar(require_internal());
@@ -3396,6 +3228,7 @@
         };
       }
       __name(fromOption, "fromOption");
+      exports.fromOption = fromOption;
       function fromPredicate(F) {
         return function(predicate, onFalse) {
           return function(a2) {
@@ -3404,6 +3237,7 @@
         };
       }
       __name(fromPredicate, "fromPredicate");
+      exports.fromPredicate = fromPredicate;
       function fromOptionK(F) {
         var fromOptionF = fromOption(F);
         return function(onNone) {
@@ -3414,6 +3248,7 @@
         };
       }
       __name(fromOptionK, "fromOptionK");
+      exports.fromOptionK = fromOptionK;
       function chainOptionK(F, M) {
         var fromOptionKF = fromOptionK(F);
         return function(onNone) {
@@ -3426,12 +3261,14 @@
         };
       }
       __name(chainOptionK, "chainOptionK");
+      exports.chainOptionK = chainOptionK;
       function fromEitherK(F) {
         return function(f) {
           return (0, function_1.flow)(f, F.fromEither);
         };
       }
       __name(fromEitherK, "fromEitherK");
+      exports.fromEitherK = fromEitherK;
       function chainEitherK(F, M) {
         var fromEitherKF = fromEitherK(F);
         return function(f) {
@@ -3441,15 +3278,12 @@
         };
       }
       __name(chainEitherK, "chainEitherK");
+      exports.chainEitherK = chainEitherK;
       function chainFirstEitherK(F, M) {
-        var tapEitherM = tapEither(F, M);
-        return function(f) {
-          return function(ma) {
-            return tapEitherM(ma, f);
-          };
-        };
+        return (0, function_1.flow)(fromEitherK(F), (0, Chain_1.chainFirst)(M));
       }
       __name(chainFirstEitherK, "chainFirstEitherK");
+      exports.chainFirstEitherK = chainFirstEitherK;
       function filterOrElse(F, M) {
         return function(predicate, onFalse) {
           return function(ma) {
@@ -3460,14 +3294,7 @@
         };
       }
       __name(filterOrElse, "filterOrElse");
-      function tapEither(F, M) {
-        var fromEither = fromEitherK(F);
-        var tapM = (0, Chain_1.tap)(M);
-        return function(self2, f) {
-          return tapM(self2, fromEither(f));
-        };
-      }
-      __name(tapEither, "tapEither");
+      exports.filterOrElse = filterOrElse;
     }
   });
 
@@ -3569,9 +3396,7 @@
         return result;
       };
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.wiltDefault = wiltDefault;
-      exports.witherDefault = witherDefault;
-      exports.filterE = filterE;
+      exports.filterE = exports.witherDefault = exports.wiltDefault = void 0;
       var _ = __importStar(require_internal());
       function wiltDefault(T, C) {
         return function(F) {
@@ -3582,6 +3407,7 @@
         };
       }
       __name(wiltDefault, "wiltDefault");
+      exports.wiltDefault = wiltDefault;
       function witherDefault(T, C) {
         return function(F) {
           var traverseF = T.traverse(F);
@@ -3591,6 +3417,7 @@
         };
       }
       __name(witherDefault, "witherDefault");
+      exports.witherDefault = witherDefault;
       function filterE(W) {
         return function(F) {
           var witherF = W.wither(F);
@@ -3606,6 +3433,7 @@
         };
       }
       __name(filterE, "filterE");
+      exports.filterE = filterE;
     }
   });
 
@@ -3646,16 +3474,11 @@
         return result;
       };
       Object.defineProperty(exports, "__esModule", { value: true });
-      exports.match = exports.foldW = exports.matchW = exports.isRight = exports.isLeft = exports.fromOption = exports.fromPredicate = exports.FromEither = exports.MonadThrow = exports.throwError = exports.ChainRec = exports.Extend = exports.extend = exports.Alt = exports.alt = exports.altW = exports.Bifunctor = exports.mapLeft = exports.bimap = exports.Traversable = exports.sequence = exports.traverse = exports.Foldable = exports.reduceRight = exports.foldMap = exports.reduce = exports.Monad = exports.Chain = exports.Applicative = exports.Apply = exports.ap = exports.apW = exports.Pointed = exports.of = exports.asUnit = exports.as = exports.Functor = exports.map = exports.getAltValidation = exports.getApplicativeValidation = exports.getWitherable = exports.getFilterable = exports.getCompactable = exports.getSemigroup = exports.getEq = exports.getShow = exports.URI = exports.flatMap = exports.right = exports.left = void 0;
-      exports.either = exports.stringifyJSON = exports.chainFirstW = exports.chainFirst = exports.chain = exports.chainW = exports.sequenceArray = exports.traverseArray = exports.traverseArrayWithIndex = exports.traverseReadonlyArrayWithIndex = exports.traverseReadonlyNonEmptyArrayWithIndex = exports.ApT = exports.apSW = exports.apS = exports.bindW = exports.bind = exports.let = exports.bindTo = exports.Do = exports.exists = exports.toUnion = exports.chainNullableK = exports.fromNullableK = exports.tryCatchK = exports.tryCatch = exports.fromNullable = exports.orElse = exports.orElseW = exports.swap = exports.filterOrElseW = exports.filterOrElse = exports.flatMapOption = exports.flatMapNullable = exports.liftOption = exports.liftNullable = exports.chainOptionKW = exports.chainOptionK = exports.fromOptionK = exports.duplicate = exports.flatten = exports.flattenW = exports.tap = exports.apSecondW = exports.apSecond = exports.apFirstW = exports.apFirst = exports.flap = exports.getOrElse = exports.getOrElseW = exports.fold = void 0;
-      exports.getValidationMonoid = exports.getValidationSemigroup = exports.getApplyMonoid = exports.getApplySemigroup = void 0;
-      exports.toError = toError;
-      exports.elem = elem;
-      exports.parseJSON = parseJSON;
-      exports.getValidation = getValidation;
+      exports.fold = exports.match = exports.foldW = exports.matchW = exports.isRight = exports.isLeft = exports.fromOption = exports.fromPredicate = exports.FromEither = exports.MonadThrow = exports.throwError = exports.ChainRec = exports.Extend = exports.extend = exports.Alt = exports.alt = exports.altW = exports.Bifunctor = exports.mapLeft = exports.bimap = exports.Traversable = exports.sequence = exports.traverse = exports.Foldable = exports.reduceRight = exports.foldMap = exports.reduce = exports.Monad = exports.Chain = exports.chain = exports.chainW = exports.Applicative = exports.Apply = exports.ap = exports.apW = exports.Pointed = exports.of = exports.Functor = exports.map = exports.getAltValidation = exports.getApplicativeValidation = exports.getWitherable = exports.getFilterable = exports.getCompactable = exports.getSemigroup = exports.getEq = exports.getShow = exports.URI = exports.right = exports.left = void 0;
+      exports.getValidation = exports.getValidationMonoid = exports.getValidationSemigroup = exports.getApplyMonoid = exports.getApplySemigroup = exports.either = exports.stringifyJSON = exports.parseJSON = exports.sequenceArray = exports.traverseArray = exports.traverseArrayWithIndex = exports.traverseReadonlyArrayWithIndex = exports.traverseReadonlyNonEmptyArrayWithIndex = exports.ApT = exports.apSW = exports.apS = exports.bindW = exports.bind = exports.let = exports.bindTo = exports.Do = exports.exists = exports.elem = exports.toError = exports.toUnion = exports.chainNullableK = exports.fromNullableK = exports.tryCatchK = exports.tryCatch = exports.fromNullable = exports.orElse = exports.orElseW = exports.swap = exports.filterOrElseW = exports.filterOrElse = exports.chainOptionK = exports.fromOptionK = exports.duplicate = exports.flatten = exports.flattenW = exports.chainFirstW = exports.chainFirst = exports.apSecondW = exports.apSecond = exports.apFirstW = exports.apFirst = exports.flap = exports.getOrElse = exports.getOrElseW = void 0;
       var Applicative_1 = require_Applicative();
       var Apply_1 = require_Apply();
-      var chainable = __importStar(require_Chain());
+      var Chain_1 = require_Chain();
       var ChainRec_1 = require_ChainRec();
       var FromEither_1 = require_FromEither();
       var function_1 = require_function();
@@ -3665,15 +3488,15 @@
       var Witherable_1 = require_Witherable();
       exports.left = _.left;
       exports.right = _.right;
-      exports.flatMap = (0, function_1.dual)(2, function(ma, f) {
-        return (0, exports.isLeft)(ma) ? ma : f(ma.right);
-      });
       var _map = /* @__PURE__ */ __name(function(fa, f) {
         return (0, function_1.pipe)(fa, (0, exports.map)(f));
       }, "_map");
       var _ap = /* @__PURE__ */ __name(function(fab, fa) {
         return (0, function_1.pipe)(fab, (0, exports.ap)(fa));
       }, "_ap");
+      var _chain = /* @__PURE__ */ __name(function(ma, f) {
+        return (0, function_1.pipe)(ma, (0, exports.chain)(f));
+      }, "_chain");
       var _reduce = /* @__PURE__ */ __name(function(fa, b2, f) {
         return (0, function_1.pipe)(fa, (0, exports.reduce)(b2, f));
       }, "_reduce");
@@ -3842,8 +3665,6 @@
         URI: exports.URI,
         map: _map
       };
-      exports.as = (0, function_1.dual)(2, (0, Functor_1.as)(exports.Functor));
-      exports.asUnit = (0, Functor_1.asUnit)(exports.Functor);
       exports.of = exports.right;
       exports.Pointed = {
         URI: exports.URI,
@@ -3867,18 +3688,25 @@
         ap: _ap,
         of: exports.of
       };
+      var chainW = /* @__PURE__ */ __name(function(f) {
+        return function(ma) {
+          return (0, exports.isLeft)(ma) ? ma : f(ma.right);
+        };
+      }, "chainW");
+      exports.chainW = chainW;
+      exports.chain = exports.chainW;
       exports.Chain = {
         URI: exports.URI,
         map: _map,
         ap: _ap,
-        chain: exports.flatMap
+        chain: _chain
       };
       exports.Monad = {
         URI: exports.URI,
         map: _map,
         ap: _ap,
         of: exports.of,
-        chain: exports.flatMap
+        chain: _chain
       };
       var reduce = /* @__PURE__ */ __name(function(b2, f) {
         return function(fa) {
@@ -3973,7 +3801,7 @@
         URI: exports.URI,
         map: _map,
         ap: _ap,
-        chain: exports.flatMap,
+        chain: _chain,
         chainRec: _chainRec
       };
       exports.throwError = exports.left;
@@ -3982,7 +3810,7 @@
         map: _map,
         ap: _ap,
         of: exports.of,
-        chain: exports.flatMap,
+        chain: _chain,
         throwError: exports.throwError
       };
       exports.FromEither = {
@@ -4014,23 +3842,13 @@
       exports.apFirstW = exports.apFirst;
       exports.apSecond = (0, Apply_1.apSecond)(exports.Apply);
       exports.apSecondW = exports.apSecond;
-      exports.tap = (0, function_1.dual)(2, chainable.tap(exports.Chain));
-      exports.flattenW = /* @__PURE__ */ (0, exports.flatMap)(function_1.identity);
+      exports.chainFirst = /* @__PURE__ */ (0, Chain_1.chainFirst)(exports.Chain);
+      exports.chainFirstW = exports.chainFirst;
+      exports.flattenW = /* @__PURE__ */ (0, exports.chainW)(function_1.identity);
       exports.flatten = exports.flattenW;
       exports.duplicate = (0, exports.extend)(function_1.identity);
       exports.fromOptionK = /* @__PURE__ */ (0, FromEither_1.fromOptionK)(exports.FromEither);
       exports.chainOptionK = (0, FromEither_1.chainOptionK)(exports.FromEither, exports.Chain);
-      exports.chainOptionKW = exports.chainOptionK;
-      var _FromEither = {
-        fromEither: exports.FromEither.fromEither
-      };
-      exports.liftNullable = _.liftNullable(_FromEither);
-      exports.liftOption = _.liftOption(_FromEither);
-      var _FlatMap = {
-        flatMap: exports.flatMap
-      };
-      exports.flatMapNullable = _.flatMapNullable(_FromEither, _FlatMap);
-      exports.flatMapOption = _.flatMapOption(_FromEither, _FlatMap);
       exports.filterOrElse = (0, FromEither_1.filterOrElse)(exports.FromEither, exports.Chain);
       exports.filterOrElseW = exports.filterOrElse;
       var swap = /* @__PURE__ */ __name(function(ma) {
@@ -4080,19 +3898,16 @@
       var chainNullableK = /* @__PURE__ */ __name(function(e) {
         var from = (0, exports.fromNullableK)(e);
         return function(f) {
-          return (0, exports.flatMap)(from(f));
+          return (0, exports.chain)(from(f));
         };
       }, "chainNullableK");
       exports.chainNullableK = chainNullableK;
       exports.toUnion = (0, exports.foldW)(function_1.identity, function_1.identity);
       function toError(e) {
-        try {
-          return e instanceof Error ? e : new Error(String(e));
-        } catch (error) {
-          return new Error();
-        }
+        return e instanceof Error ? e : new Error(String(e));
       }
       __name(toError, "toError");
+      exports.toError = toError;
       function elem(E) {
         return function(a2, ma) {
           if (ma === void 0) {
@@ -4105,6 +3920,7 @@
         };
       }
       __name(elem, "elem");
+      exports.elem = elem;
       var exists = /* @__PURE__ */ __name(function(predicate) {
         return function(ma) {
           return (0, exports.isLeft)(ma) ? false : predicate(ma.right);
@@ -4115,7 +3931,7 @@
       exports.bindTo = (0, Functor_1.bindTo)(exports.Functor);
       var let_ = /* @__PURE__ */ (0, Functor_1.let)(exports.Functor);
       exports.let = let_;
-      exports.bind = chainable.bind(exports.Chain);
+      exports.bind = (0, Chain_1.bind)(exports.Chain);
       exports.bindW = exports.bind;
       exports.apS = (0, Apply_1.apS)(exports.Apply);
       exports.apSW = exports.apS;
@@ -4153,16 +3969,13 @@
       }, "traverseArray");
       exports.traverseArray = traverseArray;
       exports.sequenceArray = /* @__PURE__ */ (0, exports.traverseArray)(function_1.identity);
-      exports.chainW = exports.flatMap;
-      exports.chain = exports.flatMap;
-      exports.chainFirst = exports.tap;
-      exports.chainFirstW = exports.tap;
       function parseJSON(s, onError) {
         return (0, exports.tryCatch)(function() {
           return JSON.parse(s);
         }, onError);
       }
       __name(parseJSON, "parseJSON");
+      exports.parseJSON = parseJSON;
       var stringifyJSON = /* @__PURE__ */ __name(function(u, onError) {
         return (0, exports.tryCatch)(function() {
           var s = JSON.stringify(u);
@@ -4178,7 +3991,7 @@
         map: _map,
         of: exports.of,
         ap: _ap,
-        chain: exports.flatMap,
+        chain: _chain,
         reduce: _reduce,
         foldMap: _foldMap,
         reduceRight: _reduceRight,
@@ -4209,7 +4022,7 @@
           _E: void 0,
           map: _map,
           of: exports.of,
-          chain: exports.flatMap,
+          chain: _chain,
           bimap: _bimap,
           mapLeft: _mapLeft,
           reduce: _reduce,
@@ -4225,6 +4038,7 @@
         };
       }
       __name(getValidation, "getValidation");
+      exports.getValidation = getValidation;
     }
   });
 
@@ -4244,8 +4058,6 @@
           return extendStatics(d, b2);
         }, "extendStatics");
         return function(d, b2) {
-          if (typeof b2 !== "function" && b2 !== null)
-            throw new TypeError("Class extends value " + String(b2) + " is not a constructor or null");
           extendStatics(d, b2);
           function __() {
             this.constructor = d;
@@ -4266,24 +4078,21 @@
         };
         return __assign.apply(this, arguments);
       };
-      var __spreadArray = exports && exports.__spreadArray || function(to, from, pack) {
-        if (pack || arguments.length === 2)
-          for (var i2 = 0, l = from.length, ar; i2 < l; i2++) {
-            if (ar || !(i2 in from)) {
-              if (!ar)
-                ar = Array.prototype.slice.call(from, 0, i2);
-              ar[i2] = from[i2];
-            }
-          }
-        return to.concat(ar || Array.prototype.slice.call(from));
+      var __spreadArrays = exports && exports.__spreadArrays || function() {
+        for (var s = 0, i2 = 0, il = arguments.length; i2 < il; i2++)
+          s += arguments[i2].length;
+        for (var r = Array(s), k = 0, i2 = 0; i2 < il; i2++)
+          for (var a2 = arguments[i2], j = 0, jl = a2.length; j < jl; j++, k++)
+            r[k] = a2[j];
+        return r;
       };
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.partial = exports.PartialType = exports.type = exports.InterfaceType = exports.array = exports.ArrayType = exports.recursion = exports.RecursiveType = exports.Int = exports.brand = exports.RefinementType = exports.keyof = exports.KeyofType = exports.literal = exports.LiteralType = exports.void = exports.undefined = exports.null = exports.UnknownRecord = exports.AnyDictionaryType = exports.UnknownArray = exports.AnyArrayType = exports.boolean = exports.BooleanType = exports.bigint = exports.BigIntType = exports.number = exports.NumberType = exports.string = exports.StringType = exports.unknown = exports.UnknownType = exports.voidType = exports.VoidType = exports.UndefinedType = exports.nullType = exports.NullType = exports.getIndex = exports.getTags = exports.emptyTags = exports.mergeAll = exports.getDomainKeys = exports.appendContext = exports.getContextEntry = exports.getFunctionName = exports.identity = exports.Type = exports.success = exports.failure = exports.failures = void 0;
-      exports.alias = exports.clean = exports.StrictType = exports.dictionary = exports.object = exports.ObjectType = exports.Dictionary = exports.getDefaultContext = exports.getValidationError = exports.interface = exports.Array = exports.taggedUnion = exports.TaggedUnionType = exports.Integer = exports.refinement = exports.any = exports.AnyType = exports.never = exports.NeverType = exports.Function = exports.FunctionType = exports.exact = exports.ExactType = exports.strict = exports.readonlyArray = exports.ReadonlyArrayType = exports.readonly = exports.ReadonlyType = exports.tuple = exports.TupleType = exports.intersection = exports.IntersectionType = exports.union = exports.UnionType = exports.record = exports.DictionaryType = void 0;
+      exports.alias = exports.clean = exports.StrictType = exports.dictionary = exports.Integer = exports.refinement = exports.object = exports.ObjectType = exports.Dictionary = exports.any = exports.AnyType = exports.never = exports.NeverType = exports.getDefaultContext = exports.getValidationError = exports.interface = exports.Array = exports.taggedUnion = exports.TaggedUnionType = exports.Function = exports.FunctionType = exports.exact = exports.ExactType = exports.strict = exports.readonlyArray = exports.ReadonlyArrayType = exports.readonly = exports.ReadonlyType = exports.tuple = exports.TupleType = exports.intersection = exports.IntersectionType = exports.union = exports.UnionType = exports.record = exports.DictionaryType = void 0;
       var Either_1 = require_Either();
       exports.failures = Either_1.left;
       var failure2 = /* @__PURE__ */ __name(function(value, context, message) {
-        return (0, exports.failures)([{ value, context, message }]);
+        return exports.failures([{ value, context, message }]);
       }, "failure");
       exports.failure = failure2;
       exports.success = Either_1.right;
@@ -4301,11 +4110,11 @@
           Type3.prototype.pipe = function(ab, name2) {
             var _this = this;
             if (name2 === void 0) {
-              name2 = "pipe(".concat(this.name, ", ").concat(ab.name, ")");
+              name2 = "pipe(" + this.name + ", " + ab.name + ")";
             }
             return new Type3(name2, ab.is, function(i2, c) {
               var e = _this.validate(i2, c);
-              if ((0, Either_1.isLeft)(e)) {
+              if (Either_1.isLeft(e)) {
                 return e;
               }
               return ab.validate(e.right, c);
@@ -4331,7 +4140,7 @@
       }, "identity");
       exports.identity = identity2;
       function getFunctionName(f) {
-        return f.displayName || f.name || "<function".concat(f.length, ">");
+        return f.displayName || f.name || "<function" + f.length + ">";
       }
       __name(getFunctionName, "getFunctionName");
       exports.getFunctionName = getFunctionName;
@@ -4361,7 +4170,7 @@
       var hasOwnProperty = Object.prototype.hasOwnProperty;
       function getNameFromProps(props) {
         return Object.keys(props).map(function(k) {
-          return "".concat(k, ": ").concat(props[k].name);
+          return k + ": " + props[k].name;
         }).join(", ");
       }
       __name(getNameFromProps, "getNameFromProps");
@@ -4375,26 +4184,52 @@
       }
       __name(useIdentity, "useIdentity");
       function getInterfaceTypeName(props) {
-        return "{ ".concat(getNameFromProps(props), " }");
+        return "{ " + getNameFromProps(props) + " }";
       }
       __name(getInterfaceTypeName, "getInterfaceTypeName");
       function getPartialTypeName(inner) {
-        return "Partial<".concat(inner, ">");
+        return "Partial<" + inner + ">";
       }
       __name(getPartialTypeName, "getPartialTypeName");
       function enumerableRecord(keys, domain, codomain, name2) {
         if (name2 === void 0) {
-          name2 = "{ [K in ".concat(domain.name, "]: ").concat(codomain.name, " }");
+          name2 = "{ [K in " + domain.name + "]: " + codomain.name + " }";
         }
         var len = keys.length;
-        var props = {};
-        for (var i2 = 0; i2 < len; i2++) {
-          props[keys[i2]] = codomain;
-        }
-        var exactCodec = (0, exports.strict)(props, name2);
         return new DictionaryType(name2, function(u) {
-          return exactCodec.is(u);
-        }, exactCodec.validate, exactCodec.encode, domain, codomain);
+          return exports.UnknownRecord.is(u) && keys.every(function(k) {
+            return codomain.is(u[k]);
+          });
+        }, function(u, c) {
+          var e = exports.UnknownRecord.validate(u, c);
+          if (Either_1.isLeft(e)) {
+            return e;
+          }
+          var o = e.right;
+          var a2 = {};
+          var errors = [];
+          var changed = false;
+          for (var i2 = 0; i2 < len; i2++) {
+            var k = keys[i2];
+            var ok = o[k];
+            var codomainResult = codomain.validate(ok, appendContext(c, k, codomain, ok));
+            if (Either_1.isLeft(codomainResult)) {
+              pushAll(errors, codomainResult.left);
+            } else {
+              var vok = codomainResult.right;
+              changed = changed || vok !== ok;
+              a2[k] = vok;
+            }
+          }
+          return errors.length > 0 ? exports.failures(errors) : exports.success(changed || Object.keys(o).length !== len ? a2 : o);
+        }, codomain.encode === exports.identity ? exports.identity : function(a2) {
+          var s = {};
+          for (var i2 = 0; i2 < len; i2++) {
+            var k = keys[i2];
+            s[k] = codomain.encode(a2[k]);
+          }
+          return s;
+        }, domain, codomain);
       }
       __name(enumerableRecord, "enumerableRecord");
       function getDomainKeys(domain) {
@@ -4410,36 +4245,20 @@
           var keys = domain.types.map(function(type8) {
             return getDomainKeys(type8);
           });
-          return keys.some(undefinedType.is) ? void 0 : Object.assign.apply(Object, __spreadArray([{}], keys, false));
+          return keys.some(undefinedType.is) ? void 0 : Object.assign.apply(Object, __spreadArrays([{}], keys));
         }
         return void 0;
       }
       __name(getDomainKeys, "getDomainKeys");
       exports.getDomainKeys = getDomainKeys;
-      function stripNonDomainKeys(o, domain) {
-        var keys = Object.keys(o);
-        var len = keys.length;
-        var shouldStrip = false;
-        var r = {};
-        for (var i2 = 0; i2 < len; i2++) {
-          var k = keys[i2];
-          if (domain.is(k)) {
-            r[k] = o[k];
-          } else {
-            shouldStrip = true;
-          }
-        }
-        return shouldStrip ? r : o;
-      }
-      __name(stripNonDomainKeys, "stripNonDomainKeys");
       function nonEnumerableRecord(domain, codomain, name2) {
         if (name2 === void 0) {
-          name2 = "{ [K in ".concat(domain.name, "]: ").concat(codomain.name, " }");
+          name2 = "{ [K in " + domain.name + "]: " + codomain.name + " }";
         }
         return new DictionaryType(name2, function(u) {
           if (exports.UnknownRecord.is(u)) {
             return Object.keys(u).every(function(k) {
-              return !domain.is(k) || codomain.is(u[k]);
+              return domain.is(k) && codomain.is(u[k]);
             });
           }
           return isAnyC(codomain) && Array.isArray(u);
@@ -4454,14 +4273,14 @@
               var k = keys[i2];
               var ok = u[k];
               var domainResult = domain.validate(k, appendContext(c, k, domain, k));
-              if ((0, Either_1.isLeft)(domainResult)) {
-                changed = true;
+              if (Either_1.isLeft(domainResult)) {
+                pushAll(errors, domainResult.left);
               } else {
                 var vk = domainResult.right;
                 changed = changed || vk !== k;
                 k = vk;
                 var codomainResult = codomain.validate(ok, appendContext(c, k, codomain, ok));
-                if ((0, Either_1.isLeft)(codomainResult)) {
+                if (Either_1.isLeft(codomainResult)) {
                   pushAll(errors, codomainResult.left);
                 } else {
                   var vok = codomainResult.right;
@@ -4470,17 +4289,15 @@
                 }
               }
             }
-            return errors.length > 0 ? (0, exports.failures)(errors) : (0, exports.success)(changed ? a2 : u);
+            return errors.length > 0 ? exports.failures(errors) : exports.success(changed ? a2 : u);
           }
           if (isAnyC(codomain) && Array.isArray(u)) {
-            return (0, exports.success)(u);
+            return exports.success(u);
           }
-          return (0, exports.failure)(u, c);
-        }, domain.encode === exports.identity && codomain.encode === exports.identity ? function(a2) {
-          return stripNonDomainKeys(a2, domain);
-        } : function(a2) {
+          return exports.failure(u, c);
+        }, domain.encode === exports.identity && codomain.encode === exports.identity ? exports.identity : function(a2) {
           var s = {};
-          var keys = Object.keys(stripNonDomainKeys(a2, domain));
+          var keys = Object.keys(a2);
           var len = keys.length;
           for (var i2 = 0; i2 < len; i2++) {
             var k = keys[i2];
@@ -4518,7 +4335,7 @@
         for (var _a = 0, us_2 = us; _a < us_2.length; _a++) {
           var u = us_2[_a];
           for (var k in u) {
-            if (!hasOwnProperty.call(r, k) || baseIsNotADictionary || u[k] !== base[k]) {
+            if (!r.hasOwnProperty(k) || baseIsNotADictionary || u[k] !== base[k]) {
               r[k] = u[k];
             }
           }
@@ -4560,11 +4377,11 @@
       __name(stripKeys, "stripKeys");
       function getExactTypeName(codec) {
         if (isTypeC(codec)) {
-          return "{| ".concat(getNameFromProps(codec.props), " |}");
+          return "{| " + getNameFromProps(codec.props) + " |}";
         } else if (isPartialC(codec)) {
-          return getPartialTypeName("{| ".concat(getNameFromProps(codec.props), " |}"));
+          return getPartialTypeName("{| " + getNameFromProps(codec.props) + " |}");
         }
-        return "Exact<".concat(codec.name, ">");
+        return "Exact<" + codec.name + ">";
       }
       __name(getExactTypeName, "getExactTypeName");
       function isNonEmpty(as) {
@@ -4592,7 +4409,7 @@
         }
         var r = Object.assign({}, a2);
         for (var k in b2) {
-          if (hasOwnProperty.call(a2, k)) {
+          if (a2.hasOwnProperty(k)) {
             var intersection_1 = intersect(a2[k], b2[k]);
             if (isNonEmpty(intersection_1)) {
               r[k] = intersection_1;
@@ -4613,7 +4430,7 @@
         }
         var r = exports.emptyTags;
         for (var k in a2) {
-          if (hasOwnProperty.call(b2, k)) {
+          if (b2.hasOwnProperty(k)) {
             var intersection_2 = intersect(a2[k], b2[k]);
             if (intersection_2.length === 0) {
               if (r === exports.emptyTags) {
@@ -4670,10 +4487,6 @@
         return codec._tag === "RecursiveType";
       }
       __name(isRecursiveC, "isRecursiveC");
-      function isReadonlyC(codec) {
-        return codec._tag === "ReadonlyType";
-      }
-      __name(isReadonlyC, "isReadonlyC");
       var lazyCodecs = [];
       function getTags(codec) {
         if (lazyCodecs.indexOf(codec) !== -1) {
@@ -4691,7 +4504,7 @@
             }
           }
           return index;
-        } else if (isExactC(codec) || isRefinementC(codec) || isReadonlyC(codec)) {
+        } else if (isExactC(codec) || isRefinementC(codec)) {
           return getTags(codec.type);
         } else if (isIntersectionC(codec)) {
           return codec.types.reduce(function(tags2, codec2) {
@@ -4760,7 +4573,7 @@
             var _this = _super.call(this, "null", function(u) {
               return u === null;
             }, function(u, c) {
-              return _this.is(u) ? (0, exports.success)(u) : (0, exports.failure)(u, c);
+              return _this.is(u) ? exports.success(u) : exports.failure(u, c);
             }, exports.identity) || this;
             _this._tag = "NullType";
             return _this;
@@ -4780,7 +4593,7 @@
             var _this = _super.call(this, "undefined", function(u) {
               return u === void 0;
             }, function(u, c) {
-              return _this.is(u) ? (0, exports.success)(u) : (0, exports.failure)(u, c);
+              return _this.is(u) ? exports.success(u) : exports.failure(u, c);
             }, exports.identity) || this;
             _this._tag = "UndefinedType";
             return _this;
@@ -4833,7 +4646,7 @@
             var _this = _super.call(this, "string", function(u) {
               return typeof u === "string";
             }, function(u, c) {
-              return _this.is(u) ? (0, exports.success)(u) : (0, exports.failure)(u, c);
+              return _this.is(u) ? exports.success(u) : exports.failure(u, c);
             }, exports.identity) || this;
             _this._tag = "StringType";
             return _this;
@@ -4852,7 +4665,7 @@
             var _this = _super.call(this, "number", function(u) {
               return typeof u === "number";
             }, function(u, c) {
-              return _this.is(u) ? (0, exports.success)(u) : (0, exports.failure)(u, c);
+              return _this.is(u) ? exports.success(u) : exports.failure(u, c);
             }, exports.identity) || this;
             _this._tag = "NumberType";
             return _this;
@@ -4876,7 +4689,7 @@
                 return typeof u === "bigint";
               },
               function(u, c) {
-                return _this.is(u) ? (0, exports.success)(u) : (0, exports.failure)(u, c);
+                return _this.is(u) ? exports.success(u) : exports.failure(u, c);
               },
               exports.identity
             ) || this;
@@ -4897,7 +4710,7 @@
             var _this = _super.call(this, "boolean", function(u) {
               return typeof u === "boolean";
             }, function(u, c) {
-              return _this.is(u) ? (0, exports.success)(u) : (0, exports.failure)(u, c);
+              return _this.is(u) ? exports.success(u) : exports.failure(u, c);
             }, exports.identity) || this;
             _this._tag = "BooleanType";
             return _this;
@@ -4914,7 +4727,7 @@
           __extends(AnyArrayType2, _super);
           function AnyArrayType2() {
             var _this = _super.call(this, "UnknownArray", Array.isArray, function(u, c) {
-              return _this.is(u) ? (0, exports.success)(u) : (0, exports.failure)(u, c);
+              return _this.is(u) ? exports.success(u) : exports.failure(u, c);
             }, exports.identity) || this;
             _this._tag = "AnyArrayType";
             return _this;
@@ -4932,9 +4745,10 @@
           __extends(AnyDictionaryType2, _super);
           function AnyDictionaryType2() {
             var _this = _super.call(this, "UnknownRecord", function(u) {
-              return u !== null && typeof u === "object" && !Array.isArray(u);
+              var s = Object.prototype.toString.call(u);
+              return s === "[object Object]" || s === "[object Window]";
             }, function(u, c) {
-              return _this.is(u) ? (0, exports.success)(u) : (0, exports.failure)(u, c);
+              return _this.is(u) ? exports.success(u) : exports.failure(u, c);
             }, exports.identity) || this;
             _this._tag = "AnyDictionaryType";
             return _this;
@@ -4968,7 +4782,7 @@
           return u === value;
         }, "is");
         return new LiteralType(name2, is, function(u, c) {
-          return is(u) ? (0, exports.success)(value) : (0, exports.failure)(u, c);
+          return is(u) ? exports.success(value) : exports.failure(u, c);
         }, exports.identity, value);
       }
       __name(literal, "literal");
@@ -4998,7 +4812,7 @@
           return exports.string.is(u) && hasOwnProperty.call(keys, u);
         }, "is");
         return new KeyofType(name2, is, function(u, c) {
-          return is(u) ? (0, exports.success)(u) : (0, exports.failure)(u, c);
+          return is(u) ? exports.success(u) : exports.failure(u, c);
         }, exports.identity, keys);
       }
       __name(keyof16, "keyof");
@@ -5086,13 +4900,13 @@
       exports.ArrayType = ArrayType;
       function array8(item, name2) {
         if (name2 === void 0) {
-          name2 = "Array<".concat(item.name, ">");
+          name2 = "Array<" + item.name + ">";
         }
         return new ArrayType(name2, function(u) {
           return exports.UnknownArray.is(u) && u.every(item.is);
         }, function(u, c) {
           var e = exports.UnknownArray.validate(u, c);
-          if ((0, Either_1.isLeft)(e)) {
+          if (Either_1.isLeft(e)) {
             return e;
           }
           var us = e.right;
@@ -5102,7 +4916,7 @@
           for (var i2 = 0; i2 < len; i2++) {
             var ui = us[i2];
             var result = item.validate(ui, appendContext(c, String(i2), item, ui));
-            if ((0, Either_1.isLeft)(result)) {
+            if (Either_1.isLeft(result)) {
               pushAll(errors, result.left);
             } else {
               var ai = result.right;
@@ -5114,7 +4928,7 @@
               }
             }
           }
-          return errors.length > 0 ? (0, exports.failures)(errors) : (0, exports.success)(as);
+          return errors.length > 0 ? exports.failures(errors) : exports.success(as);
         }, item.encode === exports.identity ? exports.identity : function(a2) {
           return a2.map(item.encode);
         }, item);
@@ -5159,7 +4973,7 @@
           return false;
         }, function(u, c) {
           var e = exports.UnknownRecord.validate(u, c);
-          if ((0, Either_1.isLeft)(e)) {
+          if (Either_1.isLeft(e)) {
             return e;
           }
           var o = e.right;
@@ -5170,7 +4984,7 @@
             var ak = a2[k];
             var type_1 = types[i2];
             var result = type_1.validate(ak, appendContext(c, k, type_1, ak));
-            if ((0, Either_1.isLeft)(result)) {
+            if (Either_1.isLeft(result)) {
               pushAll(errors, result.left);
             } else {
               var vak = result.right;
@@ -5182,7 +4996,7 @@
               }
             }
           }
-          return errors.length > 0 ? (0, exports.failures)(errors) : (0, exports.success)(a2);
+          return errors.length > 0 ? exports.failures(errors) : exports.success(a2);
         }, useIdentity(types) ? exports.identity : function(a2) {
           var s = __assign({}, a2);
           for (var i2 = 0; i2 < len; i2++) {
@@ -5236,7 +5050,7 @@
           return false;
         }, function(u, c) {
           var e = exports.UnknownRecord.validate(u, c);
-          if ((0, Either_1.isLeft)(e)) {
+          if (Either_1.isLeft(e)) {
             return e;
           }
           var o = e.right;
@@ -5247,7 +5061,7 @@
             var ak = a2[k];
             var type_2 = props[k];
             var result = type_2.validate(ak, appendContext(c, k, type_2, ak));
-            if ((0, Either_1.isLeft)(result)) {
+            if (Either_1.isLeft(result)) {
               if (ak !== void 0) {
                 pushAll(errors, result.left);
               }
@@ -5261,7 +5075,7 @@
               }
             }
           }
-          return errors.length > 0 ? (0, exports.failures)(errors) : (0, exports.success)(a2);
+          return errors.length > 0 ? exports.failures(errors) : exports.success(a2);
         }, useIdentity(types) ? exports.identity : function(a2) {
           var s = __assign({}, a2);
           for (var i2 = 0; i2 < len; i2++) {
@@ -5337,20 +5151,20 @@
             return false;
           }, function(u, c) {
             var e = exports.UnknownRecord.validate(u, c);
-            if ((0, Either_1.isLeft)(e)) {
+            if (Either_1.isLeft(e)) {
               return e;
             }
             var r = e.right;
             var i2 = find_1(r[tag_1]);
             if (i2 === void 0) {
-              return (0, exports.failure)(u, c);
+              return exports.failure(u, c);
             }
             var codec = codecs[i2];
             return codec.validate(r, appendContext(c, String(i2), codec, r));
           }, useIdentity(codecs) ? exports.identity : function(a2) {
             var i2 = find_1(a2[tag_1]);
             if (i2 === void 0) {
-              throw new Error("no codec found to encode value in union codec ".concat(name2));
+              throw new Error("no codec found to encode value in union codec " + name2);
             } else {
               return codecs[i2].encode(a2);
             }
@@ -5365,13 +5179,13 @@
             for (var i2 = 0; i2 < codecs.length; i2++) {
               var codec = codecs[i2];
               var result = codec.validate(u, appendContext(c, String(i2), codec, u));
-              if ((0, Either_1.isLeft)(result)) {
+              if (Either_1.isLeft(result)) {
                 pushAll(errors, result.left);
               } else {
-                return (0, exports.success)(result.right);
+                return exports.success(result.right);
               }
             }
-            return (0, exports.failures)(errors);
+            return exports.failures(errors);
           }, useIdentity(codecs) ? exports.identity : function(a2) {
             for (var _i = 0, codecs_1 = codecs; _i < codecs_1.length; _i++) {
               var codec = codecs_1[_i];
@@ -5379,7 +5193,7 @@
                 return codec.encode(a2);
               }
             }
-            throw new Error("no codec found to encode value in union type ".concat(name2));
+            throw new Error("no codec found to encode value in union type " + name2);
           }, codecs);
         }
       }
@@ -5402,9 +5216,9 @@
       exports.IntersectionType = IntersectionType;
       function intersection3(codecs, name2) {
         if (name2 === void 0) {
-          name2 = "(".concat(codecs.map(function(type8) {
+          name2 = "(" + codecs.map(function(type8) {
             return type8.name;
-          }).join(" & "), ")");
+          }).join(" & ") + ")";
         }
         var len = codecs.length;
         return new IntersectionType(name2, function(u) {
@@ -5417,13 +5231,13 @@
           for (var i2 = 0; i2 < len; i2++) {
             var codec = codecs[i2];
             var result = codec.validate(u, appendContext(c, String(i2), codec, u));
-            if ((0, Either_1.isLeft)(result)) {
+            if (Either_1.isLeft(result)) {
               pushAll(errors, result.left);
             } else {
               us.push(result.right);
             }
           }
-          return errors.length > 0 ? (0, exports.failures)(errors) : (0, exports.success)(mergeAll(u, us));
+          return errors.length > 0 ? exports.failures(errors) : exports.success(mergeAll(u, us));
         }, codecs.length === 0 ? exports.identity : function(a2) {
           return mergeAll(a2, codecs.map(function(codec) {
             return codec.encode(a2);
@@ -5449,9 +5263,9 @@
       exports.TupleType = TupleType;
       function tuple4(codecs, name2) {
         if (name2 === void 0) {
-          name2 = "[".concat(codecs.map(function(type8) {
+          name2 = "[" + codecs.map(function(type8) {
             return type8.name;
-          }).join(", "), "]");
+          }).join(", ") + "]";
         }
         var len = codecs.length;
         return new TupleType(name2, function(u) {
@@ -5460,7 +5274,7 @@
           });
         }, function(u, c) {
           var e = exports.UnknownArray.validate(u, c);
-          if ((0, Either_1.isLeft)(e)) {
+          if (Either_1.isLeft(e)) {
             return e;
           }
           var us = e.right;
@@ -5470,7 +5284,7 @@
             var a2 = us[i2];
             var type_3 = codecs[i2];
             var result = type_3.validate(a2, appendContext(c, String(i2), type_3, a2));
-            if ((0, Either_1.isLeft)(result)) {
+            if (Either_1.isLeft(result)) {
               pushAll(errors, result.left);
             } else {
               var va = result.right;
@@ -5482,7 +5296,7 @@
               }
             }
           }
-          return errors.length > 0 ? (0, exports.failures)(errors) : (0, exports.success)(as);
+          return errors.length > 0 ? exports.failures(errors) : exports.success(as);
         }, useIdentity(codecs) ? exports.identity : function(a2) {
           return codecs.map(function(type8, i2) {
             return type8.encode(a2[i2]);
@@ -5508,7 +5322,7 @@
       exports.ReadonlyType = ReadonlyType;
       function readonly2(codec, name2) {
         if (name2 === void 0) {
-          name2 = "Readonly<".concat(codec.name, ">");
+          name2 = "Readonly<" + codec.name + ">";
         }
         return new ReadonlyType(name2, codec.is, codec.validate, codec.encode, codec);
       }
@@ -5531,7 +5345,7 @@
       exports.ReadonlyArrayType = ReadonlyArrayType;
       function readonlyArray(item, name2) {
         if (name2 === void 0) {
-          name2 = "ReadonlyArray<".concat(item.name, ">");
+          name2 = "ReadonlyArray<" + item.name + ">";
         }
         var codec = array8(item);
         return new ReadonlyArrayType(name2, codec.is, codec.validate, codec.encode, item);
@@ -5564,14 +5378,14 @@
         var props = getProps(codec);
         return new ExactType(name2, codec.is, function(u, c) {
           var e = exports.UnknownRecord.validate(u, c);
-          if ((0, Either_1.isLeft)(e)) {
+          if (Either_1.isLeft(e)) {
             return e;
           }
           var ce = codec.validate(u, c);
-          if ((0, Either_1.isLeft)(ce)) {
+          if (Either_1.isLeft(ce)) {
             return ce;
           }
-          return (0, Either_1.right)(stripKeys(ce.right, props));
+          return Either_1.right(stripKeys(ce.right, props));
         }, function(a2) {
           return codec.encode(stripKeys(a2, props));
         }, codec);
@@ -5591,7 +5405,7 @@
                 return typeof u === "function";
               },
               function(u, c) {
-                return _this.is(u) ? (0, exports.success)(u) : (0, exports.failure)(u, c);
+                return _this.is(u) ? exports.success(u) : exports.failure(u, c);
               },
               exports.identity
             ) || this;
@@ -5604,6 +5418,46 @@
       );
       exports.FunctionType = FunctionType;
       exports.Function = new FunctionType();
+      var TaggedUnionType = (
+        /** @class */
+        function(_super) {
+          __extends(TaggedUnionType2, _super);
+          function TaggedUnionType2(name2, is, validate, encode, codecs, tag) {
+            var _this = _super.call(this, name2, is, validate, encode, codecs) || this;
+            _this.tag = tag;
+            return _this;
+          }
+          __name(TaggedUnionType2, "TaggedUnionType");
+          return TaggedUnionType2;
+        }(UnionType)
+      );
+      exports.TaggedUnionType = TaggedUnionType;
+      var taggedUnion = /* @__PURE__ */ __name(function(tag, codecs, name2) {
+        if (name2 === void 0) {
+          name2 = getUnionName(codecs);
+        }
+        var U = union6(codecs, name2);
+        if (U instanceof TaggedUnionType) {
+          return U;
+        } else {
+          console.warn("[io-ts] Cannot build a tagged union for " + name2 + ", returning a de-optimized union");
+          return new TaggedUnionType(name2, U.is, U.validate, U.encode, codecs, tag);
+        }
+      }, "taggedUnion");
+      exports.taggedUnion = taggedUnion;
+      var getValidationError = /* @__PURE__ */ __name(function(value, context) {
+        return {
+          value,
+          context
+        };
+      }, "getValidationError");
+      exports.getValidationError = getValidationError;
+      var getDefaultContext = /* @__PURE__ */ __name(function(decoder) {
+        return [
+          { key: "", type: decoder }
+        ];
+      }, "getDefaultContext");
+      exports.getDefaultContext = getDefaultContext;
       var NeverType = (
         /** @class */
         function(_super) {
@@ -5616,7 +5470,7 @@
                 return false;
               },
               function(u, c) {
-                return (0, exports.failure)(u, c);
+                return exports.failure(u, c);
               },
               /* istanbul ignore next */
               function() {
@@ -5649,64 +5503,6 @@
       );
       exports.AnyType = AnyType;
       exports.any = new AnyType();
-      function refinement(codec, predicate, name2) {
-        if (name2 === void 0) {
-          name2 = "(".concat(codec.name, " | ").concat(getFunctionName(predicate), ")");
-        }
-        return new RefinementType2(name2, function(u) {
-          return codec.is(u) && predicate(u);
-        }, function(i2, c) {
-          var e = codec.validate(i2, c);
-          if ((0, Either_1.isLeft)(e)) {
-            return e;
-          }
-          var a2 = e.right;
-          return predicate(a2) ? (0, exports.success)(a2) : (0, exports.failure)(a2, c);
-        }, codec.encode, codec, predicate);
-      }
-      __name(refinement, "refinement");
-      exports.refinement = refinement;
-      exports.Integer = refinement(exports.number, Number.isInteger, "Integer");
-      var TaggedUnionType = (
-        /** @class */
-        function(_super) {
-          __extends(TaggedUnionType2, _super);
-          function TaggedUnionType2(name2, is, validate, encode, codecs, tag) {
-            var _this = _super.call(this, name2, is, validate, encode, codecs) || this;
-            _this.tag = tag;
-            return _this;
-          }
-          __name(TaggedUnionType2, "TaggedUnionType");
-          return TaggedUnionType2;
-        }(UnionType)
-      );
-      exports.TaggedUnionType = TaggedUnionType;
-      var taggedUnion = /* @__PURE__ */ __name(function(tag, codecs, name2) {
-        if (name2 === void 0) {
-          name2 = getUnionName(codecs);
-        }
-        var U = union6(codecs, name2);
-        if (U instanceof TaggedUnionType) {
-          return U;
-        } else {
-          console.warn("[io-ts] Cannot build a tagged union for ".concat(name2, ", returning a de-optimized union"));
-          return new TaggedUnionType(name2, U.is, U.validate, U.encode, codecs, tag);
-        }
-      }, "taggedUnion");
-      exports.taggedUnion = taggedUnion;
-      var getValidationError = /* @__PURE__ */ __name(function(value, context) {
-        return {
-          value,
-          context
-        };
-      }, "getValidationError");
-      exports.getValidationError = getValidationError;
-      var getDefaultContext = /* @__PURE__ */ __name(function(decoder) {
-        return [
-          { key: "", type: decoder }
-        ];
-      }, "getDefaultContext");
-      exports.getDefaultContext = getDefaultContext;
       exports.Dictionary = exports.UnknownRecord;
       var ObjectType = (
         /** @class */
@@ -5716,7 +5512,7 @@
             var _this = _super.call(this, "object", function(u) {
               return u !== null && typeof u === "object";
             }, function(u, c) {
-              return _this.is(u) ? (0, exports.success)(u) : (0, exports.failure)(u, c);
+              return _this.is(u) ? exports.success(u) : exports.failure(u, c);
             }, exports.identity) || this;
             _this._tag = "ObjectType";
             return _this;
@@ -5727,6 +5523,24 @@
       );
       exports.ObjectType = ObjectType;
       exports.object = new ObjectType();
+      function refinement(codec, predicate, name2) {
+        if (name2 === void 0) {
+          name2 = "(" + codec.name + " | " + getFunctionName(predicate) + ")";
+        }
+        return new RefinementType2(name2, function(u) {
+          return codec.is(u) && predicate(u);
+        }, function(i2, c) {
+          var e = codec.validate(i2, c);
+          if (Either_1.isLeft(e)) {
+            return e;
+          }
+          var a2 = e.right;
+          return predicate(a2) ? exports.success(a2) : exports.failure(a2, c);
+        }, codec.encode, codec, predicate);
+      }
+      __name(refinement, "refinement");
+      exports.refinement = refinement;
+      exports.Integer = refinement(exports.number, Number.isInteger, "Integer");
       exports.dictionary = record4;
       var StrictType = (
         /** @class */
@@ -5797,11 +5611,11 @@
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.PathReporter = exports.success = exports.failure = void 0;
-      var Either_1 = require_Either();
       var _1 = require_lib();
+      var Either_1 = require_Either();
       function stringify(v) {
         if (typeof v === "function") {
-          return (0, _1.getFunctionName)(v);
+          return _1.getFunctionName(v);
         }
         if (typeof v === "number" && !isFinite(v)) {
           if (isNaN(v)) {
@@ -5815,12 +5629,12 @@
       function getContextPath(context) {
         return context.map(function(_a) {
           var key = _a.key, type7 = _a.type;
-          return "".concat(key, ": ").concat(type7.name);
+          return key + ": " + type7.name;
         }).join("/");
       }
       __name(getContextPath, "getContextPath");
       function getMessage(e) {
-        return e.message !== void 0 ? e.message : "Invalid value ".concat(stringify(e.value), " supplied to ").concat(getContextPath(e.context));
+        return e.message !== void 0 ? e.message : "Invalid value " + stringify(e.value) + " supplied to " + getContextPath(e.context);
       }
       __name(getMessage, "getMessage");
       function failure2(es) {
@@ -5834,7 +5648,7 @@
       __name(success2, "success");
       exports.success = success2;
       exports.PathReporter = {
-        report: (0, Either_1.fold)(failure2, success2)
+        report: Either_1.fold(failure2, success2)
       };
     }
   });
@@ -5886,6 +5700,8 @@ logic-editor:not(:defined) {
   display: flex;
   flex-direction: column;
   color: black;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .leftToolbarHeader {
@@ -6311,6 +6127,8 @@ svg text {
 .topBar {
   background-color: rgb(239, 239, 239);
   border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
 }
 
 .dark .topBar {
@@ -6427,7 +6245,8 @@ svg text {
   visibility: hidden;
   justify-content: center;
   align-items: center;
-  transition: all 0.15s ease-in-out
+  transition: all 0.15s ease-in-out;
+  pointer-events: none;
 }
 
 .msgZone.visible {
@@ -6443,6 +6262,7 @@ svg text {
   box-shadow: 0px 0px 5px 0px rgba(128, 128, 128, 0.5);
   font-size: 10pt;
   background-color: rgb(190, 190, 190, 0.2);
+  pointer-events: auto;
 }
 
 .dark .msgZone .msgBar {
@@ -7357,7 +7177,7 @@ svg text {
   }
   __name(tuple, "tuple");
   function mergeWhereDefined(a2, b2) {
-    const obj = __spreadValues({}, a2);
+    const obj = { ...a2 };
     for (const [k, v] of Object.entries(b2)) {
       if (v !== void 0) {
         obj[k] = v;
@@ -7366,6 +7186,15 @@ svg text {
     return obj;
   }
   __name(mergeWhereDefined, "mergeWhereDefined");
+  function randomString(n) {
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let str = "";
+    for (let i2 = 0; i2 < n; i2++) {
+      str += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return str;
+  }
+  __name(randomString, "randomString");
   function brand() {
     return (val) => {
       return val;
@@ -7373,7 +7202,7 @@ svg text {
   }
   __name(brand, "brand");
   function defineADTStatics(cases, statics) {
-    return __spreadValues(__spreadValues({}, statics), cases);
+    return { ...statics, ...cases };
   }
   __name(defineADTStatics, "defineADTStatics");
   function isString(v) {
@@ -7533,11 +7362,7 @@ svg text {
   }
   __name(setDisplay, "setDisplay");
   function setActive(elem, active) {
-    if (active) {
-      elem.classList.add("active");
-    } else {
-      elem.classList.remove("active");
-    }
+    elem.classList.toggle("active", active);
   }
   __name(setActive, "setActive");
   function showModal(dlog) {
@@ -7797,7 +7622,13 @@ svg text {
     return values.map(toLogicValueRepr).reverse().join("");
   }
   __name(reprForLogicValues, "reprForLogicValues");
-  function copyToClipboard(textToCopy) {
+  async function copyToClipboard(textToCopy) {
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+      console.log("Text copied to clipboard with new API");
+      return true;
+    } catch (e) {
+    }
     function isOS() {
       return navigator.userAgent.match(/ipad|iphone/i);
     }
@@ -7824,7 +7655,13 @@ svg text {
     return ok;
   }
   __name(copyToClipboard, "copyToClipboard");
-  function pasteFromClipboard() {
+  async function pasteFromClipboard() {
+    try {
+      const text = await navigator.clipboard.readText();
+      console.log("Text pasted from clipboard with new API");
+      return text;
+    } catch (e) {
+    }
     const textArea = document.createElement("textarea");
     textArea.readOnly = false;
     textArea.contentEditable = "true";
@@ -7884,10 +7721,8 @@ svg text {
 
   // simulator/src/DataMigration.ts
   var CurrentFormatVersion = 6;
-  function migrateData(data2) {
+  function migrateData(data2, editorId) {
     var _a;
-    const LogBeforeAfter = false;
-    const initialRepr = !LogBeforeAfter ? void 0 : isString(data2) ? data2 : stringifySmart(data2, { maxLength: 140 });
     let jsonVersion = Number((_a = data2.v) != null ? _a : 0);
     const savedVersion = jsonVersion;
     if (savedVersion > CurrentFormatVersion) {
@@ -7908,13 +7743,10 @@ svg text {
       data2.v = jsonVersion;
     }
     if (jsonVersion !== savedVersion) {
-      console.log(`Migrated data format from v${savedVersion} to v${jsonVersion}, consider upgrading the source`);
-      if (LogBeforeAfter) {
-        console.log("BEFORE:\n" + initialRepr);
-        console.log("AFTER:\n" + Serialization.stringifyObject(data2, false));
-      }
-    } else if (LogBeforeAfter) {
-      console.log(`Data format ${savedVersion} is up to date, no migration necessary`);
+      const newRepr = Serialization.stringifyObject(data2, false);
+      const editorIdStr = editorId !== void 0 ? ` for editor '${editorId}'` : "";
+      console.log(`LogicEditor${editorIdStr} migrated data format from v${savedVersion} to v${jsonVersion}, consider upgrading its source to this:
+${newRepr}`);
     }
   }
   __name(migrateData, "migrateData");
@@ -8072,9 +7904,9 @@ svg text {
       }
       const components = container.components;
       if (isArray(components)) {
-        const ramRegex = new RegExp("^ram-(?<lines>\\d+)x(?<bits>\\d+)$");
-        const muxRegex = new RegExp("^mux-(?<from>\\d+)to(?<to>\\d+)$");
-        const demuxRegex = new RegExp("^demux-(?<from>\\d+)to(?<to>\\d+)$");
+        const ramRegex = /^ram-(?<lines>\d+)x(?<bits>\d+)$/;
+        const muxRegex = /^mux-(?<from>\d+)to(?<to>\d+)$/;
+        const demuxRegex = /^demux-(?<from>\d+)to(?<to>\d+)$/;
         for (const comp of components) {
           if (isString(type7 = comp.type)) {
             if (type7 === "register") {
@@ -8110,7 +7942,7 @@ svg text {
       }
       const layouts = container.layout;
       if (isArray(layouts)) {
-        const passthroughRegex = new RegExp("^pass-(?<bits>\\d+)$");
+        const passthroughRegex = /^pass-(?<bits>\d+)$/;
         for (const layout of layouts) {
           if (isString(type7 = layout.type)) {
             if ((match = passthroughRegex.exec(type7)) !== null) {
@@ -8260,6 +8092,9 @@ svg text {
 
   // simulator/img/icons/bordercolor.icon.svg
   var bordercolor_icon_default = '<svg viewBox="0 0 20 20"><path d="M3.417 20q-.729 0-1.24-.51-.51-.511-.51-1.24t.51-1.24q.511-.51 1.24-.51h13.166q.729 0 1.24.51.51.511.51 1.24t-.51 1.24q-.511.51-1.24.51Zm1.125-5.021q-.354 0-.615-.26-.26-.261-.26-.615v-2.042q0-.166.062-.322.063-.157.188-.282l7.021-7.02 3.27 3.27-7.02 7.021q-.126.125-.282.188-.156.062-.323.062Zm10.729-8.333L12 3.375l1.458-1.458q.25-.25.646-.25t.646.25L16.833 4q.229.229.177.594-.052.364-.281.594Z"/></svg>';
+
+  // simulator/img/icons/browserload.icon.svg
+  var browserload_icon_default = '<svg viewBox="0 0 20 20"><path d="M10,.6h.3c0,0,.2,0,.3.2l2.6,2.6c.2.2.3.3.3.5s0,.3-.3.5-.3.3-.5.3-.3,0-.5-.3l-1.3-1.3v4.9c0,.2,0,.3-.3.5-.2.2-.3.3-.5.3s-.3,0-.5-.3c-.2-.2-.3-.3-.3-.5V3.1l-1.3,1.3c-.2.2-.3.3-.5.3s-.3,0-.5-.3-.3-.3-.3-.5,0-.3.3-.5l2.6-2.6s.2-.2.3-.2.2,0,.3,0Z"/><path d="M18.1,6.2c-.3-.3-.8-.5-1.2-.5h-3.6v3.5h3.6v8.7H3v-8.7h3.6v-3.5h-3.6c-.4,0-.9.2-1.2.5s-.5.8-.5,1.2v10.4c0,.4.2.9.5,1.2s.8.5,1.2.5h13.9c.4,0,.9-.2,1.2-.5s.5-.8.5-1.2V7.4c0-.4-.2-.9-.5-1.2Z"/></svg>';
 
   // simulator/img/icons/check.icon.svg
   var check_icon_default = '<svg viewBox="0 0 20 20"><path d="M7.979 14.646Q7.812 14.646 7.656 14.583Q7.5 14.521 7.354 14.375L3.833 10.854Q3.583 10.604 3.594 10.219Q3.604 9.833 3.854 9.583Q4.104 9.333 4.479 9.333Q4.854 9.333 5.104 9.583L8.021 12.5L14.917 5.604Q15.167 5.354 15.531 5.354Q15.896 5.354 16.146 5.604Q16.396 5.854 16.396 6.219Q16.396 6.583 16.146 6.833L8.604 14.375Q8.458 14.521 8.302 14.583Q8.146 14.646 7.979 14.646Z"/></svg>';
@@ -8589,6 +8424,7 @@ svg text {
   var icons = {
     add: add_icon_default,
     bordercolor: bordercolor_icon_default,
+    browserload: browserload_icon_default,
     check: check_icon_default,
     close: close_icon_default,
     connect: connect_icon_default,
@@ -9043,6 +8879,7 @@ svg text {
       Download: tuple("T\xE9l\xE9charger", "T\xE9l\xE9charge le circuit (ou les composants personnalis\xE9s avec la touche Option/Alt)"),
       Screenshot: tuple("Screenshot", "T\xE9l\xE9charge le circuit sous forme d\u2019image (PNG ou SVG avec touche Option/Alt)"),
       Open: tuple("Ouvrir", "Ouvre un circuit pr\xE9c\xE9demment t\xE9l\xE9charg\xE9"),
+      Restore: tuple("Restaurer", "Restaure le circuit pr\xE9c\xE9demment modifi\xE9"),
       Reset: tuple("R\xE9initialiser", "R\xE9initialise l\u2019\xE9tat de ce circuit"),
       TimelinePlay: tuple("Play", "D\xE9marre l\u2019\xE9coulement du temps"),
       TimelinePause: tuple("Pause", "Arr\xEAte l\u2019\xE9coulement du temps"),
@@ -9063,6 +8900,9 @@ svg text {
       NotImplemented: "Cette fonctionnalit\xE9 n\u2019est pas encore impl\xE9ment\xE9e.",
       NoPermission: "Cette action n\u2019est pas autoris\xE9e dans ce mode.",
       ReallyCloseWindow: "Voulez-vous vraiment fermer la fen\xEAtre sans prendre en compte les derniers changements?",
+      LoadedCircuitFromSessionStorage: template("Circuit restaur\xE9 depuis sauvegarde automatique du ${day} \xE0 ${time}"),
+      FailedToLoadCircuitFromStorage: template("Impossible de restaurer le circuit (${error})."),
+      NoSavedData: "Rien \xE0 restaurer pour cet \xE9diteur.",
       DevelopedBy: "D\xE9velopp\xE9 par ",
       DidUndo: "Annuler",
       DidRedo: "R\xE9tablir",
@@ -9779,6 +9619,7 @@ svg text {
       Download: tuple("Download", "Download the circuit (or the custom components with Option/Alt key down)"),
       Screenshot: tuple("Screenshot", "Download the circuit as an image (PNG or SVG with Option/Alt key down)"),
       Open: tuple("Open", "Open a previously downloaded circuit"),
+      Restore: tuple("Restore", "Restore the circuit to the last state"),
       Reset: tuple("Reset", "Reset the state of this circuit"),
       TimelinePlay: tuple("Play", "Starts logical time"),
       TimelinePause: tuple("Pause", "Stops logical time"),
@@ -9799,6 +9640,9 @@ svg text {
       NotImplemented: "This feature is not implemented yet.",
       NoPermission: "This action is not allowed in this mode.",
       ReallyCloseWindow: "Do you really want to close the window without saving the changes?",
+      LoadedCircuitFromSessionStorage: template("Loaded from last session on ${day} at ${time}"),
+      FailedToLoadCircuitFromStorage: template("Failed to load the circuit (${error})"),
+      NoSavedData: "Nothing to restore for this editor.",
       DevelopedBy: "Developed by",
       DidUndo: "Undo",
       DidRedo: "Redo",
@@ -10707,7 +10551,7 @@ svg text {
             y: dCpts[i2].y + (dCpts[i2 + 1].y - dCpts[i2].y) * t38
           };
           if (typeof dCpts[i2].z !== "undefined") {
-            dCpts[i2].z = dCpts[i2].z + (dCpts[i2 + 1].z - dCpts[i2].z) * t38;
+            dCpts[i2] = dCpts[i2].z + (dCpts[i2 + 1].z - dCpts[i2].z) * t38;
           }
         }
         dCpts.splice(dCpts.length - 1, 1);
@@ -11428,7 +11272,7 @@ svg text {
     getLUT(steps) {
       this.verify();
       steps = steps || 100;
-      if (this._lut.length === steps + 1) {
+      if (this._lut.length === steps) {
         return this._lut;
       }
       this._lut = [];
@@ -12089,9 +11933,9 @@ svg text {
     draw(g, drawParams) {
       var _a, _b;
       const inSelectionRect = (_b = (_a = drawParams.currentSelection) == null ? void 0 : _a.isSelected(this)) != null ? _b : false;
-      const isMouseOver = this === drawParams.currentMouseOverComp || inSelectionRect;
-      const borderColor = !isMouseOver ? COLOR_COMPONENT_BORDER : drawParams.anythingMoving && this.lockPos ? COLOR_MOUSE_OVER_DANGER : COLOR_MOUSE_OVER;
-      const ctx = new _DrawContextImpl(this, g, drawParams, isMouseOver, borderColor);
+      const isPointerOver = this === drawParams.currentCompUnderPointer || inSelectionRect;
+      const borderColor = !isPointerOver ? COLOR_COMPONENT_BORDER : drawParams.anythingMoving && this.lockPos ? COLOR_MOUSE_OVER_DANGER : COLOR_MOUSE_OVER;
+      const ctx = new _DrawContextImpl(this, g, drawParams, isPointerOver, borderColor);
       try {
         this.doDraw(g, ctx);
       } finally {
@@ -12163,22 +12007,22 @@ svg text {
     // Return { wantsDragEvents: true } (default) to signal the component
     // wants to get all mouseDragged and the final mouseUp event. Useful to
     // return false to allow drag destinations to get a mouseUp
-    mouseDown(__) {
+    pointerDown(__) {
       return { wantsDragEvents: true };
     }
-    mouseDragged(__) {
+    pointerDragged(__) {
     }
-    mouseUp(__) {
+    pointerUp(__) {
       return InteractionResult.NoChange;
     }
     // Return true to indicate it was handled and had an effect
     // (and presumably doesn't need to be handled any more)
-    mouseClicked(__) {
+    pointerClicked(__) {
       return InteractionResult.NoChange;
     }
     // Return true to indicate it was handled and had an effect
     // (and presumably doesn't need to be handled any more)
-    mouseDoubleClicked(__) {
+    pointerDoubleClicked(__) {
       return InteractionResult.NoChange;
     }
     keyDown(e) {
@@ -12270,8 +12114,8 @@ svg text {
         this._orient = (_b = saved.orient) != null ? _b : Orientation.default;
       } else {
         const editor = this.parent.editor;
-        this._posX = Math.max(0, editor.mouseX);
-        this._posY = editor.mouseY;
+        this._posX = Math.max(0, editor.pointerX);
+        this._posY = editor.pointerY;
         this._lockPos = false;
         this._orient = Orientation.default;
       }
@@ -12394,7 +12238,7 @@ svg text {
       const anchorItem = this._anchor === void 0 ? [
         ["start", MenuData.item("none", s.SetAnchor, () => {
           this.parent.editor.showMessage(S.Messages.SetAnchorPrompt);
-          this.parent.editor.setCurrentMouseAction("setanchor", false, this);
+          this.parent.editor.setCurrentPointerAction("setanchor", false, this);
         })]
       ] : [
         ["start", MenuData.item("none", span(s.ClearAnchor[0], span(fixedWidthInContextMenu, (_a = this._anchor.ref) != null ? _a : "???"), s.ClearAnchor[1]), () => {
@@ -12484,7 +12328,7 @@ svg text {
         this.doSetPosition(...newPos);
       }
     }
-    mouseDown(e) {
+    pointerDown(e) {
       if (this.parent.mode >= 2 /* CONNECT */) {
         if (e.metaKey) {
           this.parent.linkMgr.startSettingAnchorFrom(this);
@@ -12494,7 +12338,7 @@ svg text {
       }
       return { wantsDragEvents: true };
     }
-    mouseDragged(e) {
+    pointerDragged(e) {
       var _a;
       if (this.parent.mode >= 2 /* CONNECT */ && !this.lockPos) {
         (_a = this.parent.ifEditing) == null ? void 0 : _a.moveMgr.setDrawableMoving(this, e);
@@ -12503,9 +12347,9 @@ svg text {
         this.updateSelfPositionIfNeeded(x, y, snapToGrid, e);
       }
     }
-    mouseUp(e) {
+    pointerUp(e) {
       var _a, _b;
-      (_b = (_a = this._isMovingWithContext) == null ? void 0 : _a.createdClone) == null ? void 0 : _b.mouseUp(e);
+      (_b = (_a = this._isMovingWithContext) == null ? void 0 : _a.createdClone) == null ? void 0 : _b.pointerUp(e);
       const result = this.tryStopMoving(e);
       return InteractionResult.fromBoolean(result);
     }
@@ -12515,7 +12359,7 @@ svg text {
       }
       const { mouseOffsetToPosX, mouseOffsetToPosY, lastAnchorX, lastAnchorY, createdClone } = this._isMovingWithContext;
       if (createdClone !== void 0) {
-        createdClone.mouseDragged(e);
+        createdClone.pointerDragged(e);
         return void 0;
       }
       let targetX = x - mouseOffsetToPosX;
@@ -12536,7 +12380,7 @@ svg text {
       let clone;
       if (e.altKey && this.parent.mode >= 3 /* DESIGN */ && (clone = this.makeClone(true)) !== void 0) {
         this._isMovingWithContext.createdClone = clone;
-        this.parent.editor.eventMgr.setCurrentMouseOverComp(clone);
+        this.parent.editor.eventMgr.setCurrentComponentUnderPointer(clone);
       } else {
         this.doSetPosition(...newPos);
       }
@@ -12668,7 +12512,13 @@ svg text {
     propagateColor(__color) {
     }
     isOver(x, y) {
-      return this.parent.mode >= 2 /* CONNECT */ && isOverWaypoint(x, y, this.posX, this.posY) && this.acceptsMoreConnections;
+      return this.distSquaredIfOver(x, y, false) !== void 0;
+    }
+    distSquaredIfOver(x, y, moreTolerant) {
+      if (!(this.parent.mode >= 2 /* CONNECT */ && this.acceptsMoreConnections)) {
+        return void 0;
+      }
+      return distSquaredToWaypointIfOver(x, y, this.posX, this.posY, moreTolerant);
     }
     destroy() {
       this.preDestroy();
@@ -12699,10 +12549,10 @@ svg text {
       const oldVisibleValue = this.value;
       if (val !== this._value) {
         this._value = val;
-        this.propagateNewValueIfNecessary(oldVisibleValue);
+        this.propagateNewValueIfNeeded(oldVisibleValue);
       }
     }
-    propagateNewValueIfNecessary(oldVisibleValue) {
+    propagateNewValueIfNeeded(oldVisibleValue) {
       const newVisibleValue = this.value;
       if (newVisibleValue !== oldVisibleValue) {
         this.propagateNewValue(newVisibleValue);
@@ -12797,11 +12647,11 @@ svg text {
     cursorWhenMouseover(__e2) {
       return "crosshair";
     }
-    mouseDown(__) {
+    pointerDown(__) {
       this.parent.linkMgr.startDraggingWireFrom(this.asNode);
       return { wantsDragEvents: false };
     }
-    mouseUp(__) {
+    pointerUp(__) {
       const newWire = this.parent.linkMgr.stopDraggingWireOn(this.asNode);
       if (newWire === void 0) {
         return InteractionResult.NoChange;
@@ -12913,7 +12763,7 @@ svg text {
     set forceValue(newForceValue) {
       const oldVisibleValue = this.value;
       this._forceValue = newForceValue;
-      this.propagateNewValueIfNecessary(oldVisibleValue);
+      this.propagateNewValueIfNeeded(oldVisibleValue);
       this.requestRedraw({ why: "changed forced output value", invalidateTests: true });
     }
     get initialValue() {
@@ -12937,8 +12787,8 @@ svg text {
       const disconnected = this._outgoingWires.length === 0;
       return disconnected ? 3 /* OUT_DISCONNECTED */ : 2 /* OUT_CONNECTED */;
     }
-    mouseDoubleClicked(e) {
-      const superChange = super.mouseDoubleClicked(e);
+    pointerDoubleClicked(e) {
+      const superChange = super.pointerDoubleClicked(e);
       if (superChange.isChange) {
         return superChange;
       }
@@ -13201,7 +13051,11 @@ svg text {
         // a few lines below, but this makes the compiler happy
         type: this.jsonType()
       };
-      return __spreadValues(__spreadValues(__spreadValues({}, typeHolder), super.toJSONBase()), this.buildNodesRepr());
+      return {
+        ...typeHolder,
+        ...super.toJSONBase(),
+        ...this.buildNodesRepr()
+      };
     }
     jsonType() {
       return this.def.type;
@@ -13707,7 +13561,7 @@ svg text {
       }
       return newComp;
     }
-    mouseDown(e) {
+    pointerDown(e) {
       if (this.parent.mode >= 2 /* CONNECT */ && !e.shiftKey) {
         const eventMgr = this.parent.editor.eventMgr;
         let elems;
@@ -13715,16 +13569,16 @@ svg text {
           eventMgr.currentSelection = void 0;
         }
       }
-      return super.mouseDown(e);
+      return super.pointerDown(e);
     }
-    mouseUp(e) {
+    pointerUp(e) {
       var _a;
       let wasSpawning = false;
       if (this._state === 0 /* SPAWNING */) {
         this._state = 1 /* SPAWNED */;
         wasSpawning = true;
       }
-      const wasMoving = super.mouseUp(e).isChange;
+      const wasMoving = super.pointerUp(e).isChange;
       if (wasSpawning || wasMoving) {
         const newLinks = this.parent.nodeMgr.tryConnectNodesOf(this);
         if (newLinks.length > 0) {
@@ -13753,14 +13607,14 @@ svg text {
         anchored.setPosition(anchored.posX + delta[0], anchored.posY + delta[1], false);
       }
     }
-    mouseClicked(e) {
+    pointerClicked(e) {
       if (this.parent.mode >= 2 /* CONNECT */ && e.shiftKey) {
         this.parent.editor.eventMgr.toggleSelect(this);
         return InteractionResult.SimpleChange;
       }
       return InteractionResult.NoChange;
     }
-    mouseDoubleClicked(e) {
+    pointerDoubleClicked(e) {
       if (this.parent.mode >= 2 /* CONNECT */ && e.metaKey && this.canRotate()) {
         const doChange = /* @__PURE__ */ __name(() => {
           this.doSetOrient(Orientation.nextClockwise(this.orient));
@@ -13851,8 +13705,8 @@ svg text {
           }
           this.parent.editor.addTestCases(result);
         })],
-        ["start", MenuData.item("testcase", s.MakeAllTestCases, () => __async(this, null, function* () {
-          const result = yield editor.factory.tryMakeAllTestCases(editor);
+        ["start", MenuData.item("testcase", s.MakeAllTestCases, async () => {
+          const result = await editor.factory.tryMakeAllTestCases(editor);
           if (isString(result)) {
             if (result.length > 0) {
               window.alert(s.MakeNewTestCaseFailed + " " + result);
@@ -13860,7 +13714,7 @@ svg text {
             return;
           }
           this.parent.editor.addTestCases(result);
-        }))]
+        })]
       ];
       if (makeNewComponentItems.length > 0 || makeNewTestCaseItems.length > 0) {
         makeNewTestCaseItems.push(["start", MenuData.sep()]);
@@ -14020,7 +13874,7 @@ svg text {
     }
     replaceWithNewParams(newParams) {
       const currentRepr = this.toNodelessJSON();
-      const newRepr = __spreadValues(__spreadValues({}, currentRepr), newParams);
+      const newRepr = { ...currentRepr, ...newParams };
       const newComp = this._defP.makeFromJSON(this.parent, newRepr);
       if (newComp === void 0) {
         console.warn("Could not create component variant");
@@ -14067,7 +13921,7 @@ svg text {
       }
       const newComp = this.replaceWithNewParams({ [paramName]: newParamValue });
       if (newComp !== void 0) {
-        this.parent.editor.eventMgr.setCurrentMouseOverComp(newComp);
+        this.parent.editor.eventMgr.setCurrentComponentUnderPointer(newComp);
       }
     }
   };
@@ -14109,9 +13963,10 @@ svg text {
   }
   __name(groupHorizontal, "groupHorizontal");
   function makeComponentRepr(type7, hasIn, hasOut, props) {
-    return t5.intersection([t5.type(__spreadValues({
-      type: t5.string
-    }, props)), ComponentRepr(hasIn, hasOut)], type7);
+    return t5.intersection([t5.type({
+      type: t5.string,
+      ...props
+    }), ComponentRepr(hasIn, hasOut)], type7);
   }
   __name(makeComponentRepr, "makeComponentRepr");
   var ComponentDef = class {
@@ -14136,11 +13991,12 @@ svg text {
       return this._initialValue(saved, this.aults);
     }
     button(visual, options) {
-      return __spreadValues({
+      return {
         type: this.type,
         visual,
-        width: this._buttonProps.imgWidth
-      }, options);
+        width: this._buttonProps.imgWidth,
+        ...options
+      };
     }
     make(parent) {
       const comp = new this.impl(parent);
@@ -14164,9 +14020,10 @@ svg text {
   }
   __name(defineComponent, "defineComponent");
   function defineAbstractComponent(items) {
-    return __spreadProps(__spreadValues({}, items), {
+    return {
+      ...items,
       aults: items.valueDefaults
-    });
+    };
   }
   __name(defineAbstractComponent, "defineAbstractComponent");
   var ParamDef = class {
@@ -14224,7 +14081,7 @@ svg text {
       this._validateParams = _validateParams;
       this.impl = void 0;
       this.defaultParams = paramDefaults(paramDefs);
-      this.aults = __spreadValues(__spreadValues({}, valueDefaults), this.defaultParams);
+      this.aults = { ...valueDefaults, ...this.defaultParams };
       this.repr = makeComponentRepr(type7, hasIn, hasOut, repr != null ? repr : {});
     }
     isValid() {
@@ -14232,7 +14089,7 @@ svg text {
     }
     with(params) {
       const size = this.size(params);
-      const nodes = this._makeNodes(__spreadValues(__spreadValues({}, size), params), this.aults);
+      const nodes = this._makeNodes({ ...size, ...params }, this.aults);
       return [{
         type: this.type,
         idPrefix: this.idPrefix,
@@ -14243,12 +14100,13 @@ svg text {
       }, this];
     }
     button(params, visual, options) {
-      return __spreadValues({
+      return {
         type: this.type,
         params: defParams(this, params),
         visual,
-        width: this._buttonProps.imgWidth
-      }, options);
+        width: this._buttonProps.imgWidth,
+        ...options
+      };
     }
     make(parent, params) {
       const fullParams = params === void 0 ? this.defaultParams : mergeWhereDefined(this.defaultParams, params);
@@ -14302,17 +14160,14 @@ svg text {
   // simulator/src/drawutils.ts
   var GRID_STEP = 10;
   var WIRE_WIDTH = 8;
-  var WIRE_WIDTH_HALF_SQUARED = __pow(WIRE_WIDTH / 2, 2);
+  var WIRE_WIDTH_HALF_SQUARED = (WIRE_WIDTH / 2) ** 2;
   var WAYPOINT_DIAMETER = 8;
-  var WAYPOINT_HIT_RANGE = WAYPOINT_DIAMETER + 5;
+  var WAYPOINT_HIT_RADIUS_SQUARED = (WAYPOINT_DIAMETER / 2 + 6) ** 2;
+  var WAYPOINT_HIT_RADIUS_SQUARED_TOLERANT = (WAYPOINT_DIAMETER / 2 + 10) ** 2;
   function pxToGrid(x) {
     return Math.round(x / GRID_STEP);
   }
   __name(pxToGrid, "pxToGrid");
-  function clampZoom(zoom) {
-    return Math.max(0.1, Math.min(10, zoom / 100));
-  }
-  __name(clampZoom, "clampZoom");
   function distSquared(x0, y0, x1, y1) {
     const dx = x1 - x0;
     const dy = y1 - y0;
@@ -14508,7 +14363,7 @@ svg text {
       turquoise: ColorString2([0, 162, 162, 0.5])
     };
     COLOR_COMPONENT_BORDER = ColorString2(COLORCOMP_COMPONENT_BORDER);
-    setColorMouseOverIsDanger(false);
+    setColorPointerOverIsDanger(false);
     COLOR_FULL = ColorString2(COLORCOMPS_FULL);
     COLOR_EMPTY = ColorString2(COLORCOMPS_EMPTY);
     COLOR_FULL_ALT = ligherColor(COLOR_FULL, 40);
@@ -14550,10 +14405,10 @@ svg text {
     return pattern;
   }
   __name(createStripedPattern, "createStripedPattern");
-  function setColorMouseOverIsDanger(mouseOverIsDanger) {
+  function setColorPointerOverIsDanger(mouseOverIsDanger) {
     COLOR_MOUSE_OVER = mouseOverIsDanger ? COLOR_MOUSE_OVER_DANGER : COLOR_MOUSE_OVER_NORMAL;
   }
-  __name(setColorMouseOverIsDanger, "setColorMouseOverIsDanger");
+  __name(setColorPointerOverIsDanger, "setColorPointerOverIsDanger");
   function ColorString2(input2) {
     if (isArray(input2)) {
       if (input2.length === 3) {
@@ -14835,10 +14690,15 @@ svg text {
     g.lineCap = oldLineCap;
   }
   __name(strokeWireValue, "strokeWireValue");
-  function isOverWaypoint(x, y, waypointX, waypointY) {
-    return distSquared(x, y, waypointX, waypointY) < __pow(WAYPOINT_HIT_RANGE / 2, 2);
+  function distSquaredToWaypointIfOver(x, y, waypointX, waypointY, moreTolerant) {
+    const distSq = distSquared(x, y, waypointX, waypointY);
+    const hitRadiusSquared = moreTolerant ? WAYPOINT_HIT_RADIUS_SQUARED_TOLERANT : WAYPOINT_HIT_RADIUS_SQUARED;
+    if (distSq < hitRadiusSquared) {
+      return distSq;
+    }
+    return void 0;
   }
-  __name(isOverWaypoint, "isOverWaypoint");
+  __name(distSquaredToWaypointIfOver, "distSquaredToWaypointIfOver");
   function drawWaypoint(g, ctx, x, y, style2, value, isMouseOver, neutral, showForced, showForcedWarning, parentOrientIsVertical) {
     const [circleColor, thickness] = showForced ? [COLOR_DARK_RED, 3] : [COLOR_WIRE_BORDER, 1];
     g.strokeStyle = circleColor;
@@ -15100,10 +14960,10 @@ svg text {
   __name(drawAnchorTo, "drawAnchorTo");
   function bezierPoint(t38, coords) {
     const u = 1 - t38;
-    const f1 = __pow(u, 3);
-    const f2 = 3 * __pow(u, 2) * t38;
-    const f3 = 3 * u * __pow(t38, 2);
-    const f4 = __pow(t38, 3);
+    const f1 = u ** 3;
+    const f2 = 3 * u ** 2 * t38;
+    const f3 = 3 * u * t38 ** 2;
+    const f4 = t38 ** 3;
     const x = f1 * coords[0] + f2 * coords[4] + f3 * coords[6] + f4 * coords[2];
     const y = f1 * coords[1] + f2 * coords[5] + f3 * coords[7] + f4 * coords[3];
     return [x, y];
@@ -15125,7 +14985,7 @@ svg text {
         roots.push(r);
       }
     } else {
-      const discriminant = __pow(b2, 2) - 4 * a2 * c;
+      const discriminant = b2 ** 2 - 4 * a2 * c;
       if (discriminant >= 0) {
         const sqrtD = Math.sqrt(discriminant);
         r = (-b2 - sqrtD) / (2 * a2);
@@ -15158,7 +15018,7 @@ svg text {
   __name(bezierBoundingBox, "bezierBoundingBox");
   function isPointOnStraightWire(x, y, coords) {
     const [x1, y1, x2, y2] = coords;
-    const length2 = __pow(x2 - x1, 2) + __pow(y2 - y1, 2);
+    const length2 = (x2 - x1) ** 2 + (y2 - y1) ** 2;
     if (length2 === 0) {
       return x === x1 && y === y1;
     }
@@ -15168,13 +15028,13 @@ svg text {
     }
     const closestX = x1 + t38 * (x2 - x1);
     const closestY = y1 + t38 * (y2 - y1);
-    const dist2 = __pow(x - closestX, 2) + __pow(y - closestY, 2);
+    const dist2 = (x - closestX) ** 2 + (y - closestY) ** 2;
     return dist2 <= WIRE_WIDTH_HALF_SQUARED;
   }
   __name(isPointOnStraightWire, "isPointOnStraightWire");
   function makeBezierCoords(coords) {
     const [startX, startY, endX, endY] = coords;
-    const endpointDist = Math.sqrt(__pow(endX - startX, 2) + __pow(endY - startY, 2));
+    const endpointDist = Math.sqrt((endX - startX) ** 2 + (endY - startY) ** 2);
     const numPoints = Math.max(3, Math.ceil(endpointDist / WIRE_WIDTH * 1.25));
     const tStepSize = 1 / numPoints;
     const boundingBox = bezierBoundingBox(coords, WIRE_WIDTH / 2);
@@ -15191,7 +15051,7 @@ svg text {
     const stepSize = bezierMeta.tStepSize;
     for (let t38 = 0; t38 <= 1; t38 += stepSize) {
       const [wx, wy] = bezierPoint(t38, coords);
-      const dist2 = __pow(wx - x, 2) + __pow(wy - y, 2);
+      const dist2 = (wx - x) ** 2 + (wy - y) ** 2;
       if (dist2 <= WIRE_WIDTH_HALF_SQUARED) {
         return true;
       }
@@ -15295,10 +15155,11 @@ svg text {
       this.updateNodeOffsets();
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         bits: this.numBits === PassthroughDef.aults.bits ? void 0 : this.numBits,
         slant: this._slant === PassthroughDef.aults.slant ? void 0 : this._slant
-      });
+      };
     }
     destroy() {
       var _a;
@@ -15597,7 +15458,10 @@ svg text {
       return WAYPOINT_DIAMETER;
     }
     isOver(x, y) {
-      return this.parent.mode >= 2 /* CONNECT */ && isOverWaypoint(x, y, this.posX, this.posY);
+      if (!(this.parent.mode >= 2 /* CONNECT */)) {
+        return false;
+      }
+      return distSquaredToWaypointIfOver(x, y, this.posX, this.posY, false) !== void 0;
     }
     positionChanged(__delta) {
       this.wire.invalidateWirePath();
@@ -15874,7 +15738,6 @@ svg text {
       const passthrough = PassthroughDef.make(parent, { bits: 1 });
       passthrough.setSpawned();
       passthrough.setPosition(x, y, false);
-      passthrough.anchor = this.startNode.component;
       this.setEndNode(passthrough.inputs.In[0]);
       const newWire = parent.linkMgr.addWire(passthrough.outputs.Out[0], endNode, false);
       if (newWire === void 0) {
@@ -15913,7 +15776,6 @@ svg text {
         }
       }
       const waypoint = new Waypoint(this, [x, y, orient]);
-      waypoint.anchor = this.startNode.component;
       this._waypoints.splice(partIndex - 1, 0, waypoint);
       this.invalidateWirePath();
       return waypoint;
@@ -15993,30 +15855,30 @@ svg text {
       }
       return this.wirePath.isOver(x, y);
     }
-    mouseDown(e) {
+    pointerDown(e) {
       if (e.altKey && this.parent.mode >= 3 /* DESIGN */) {
         const passthrough = this.addPassthroughFrom(e);
         if (passthrough !== void 0) {
-          return passthrough.outputs.Out[0].mouseDown(e);
+          return passthrough.outputs.Out[0].pointerDown(e);
         }
       }
-      return super.mouseDown(e);
+      return super.pointerDown(e);
     }
-    mouseDragged(e) {
+    pointerDragged(e) {
       if (this._waypointBeingDragged !== void 0) {
-        this._waypointBeingDragged.mouseDragged(e);
+        this._waypointBeingDragged.pointerDragged(e);
       } else {
         if (this.parent.editor.eventMgr.currentSelectionEmpty()) {
           const waypoint = this.addWaypointFrom(e);
           this._waypointBeingDragged = waypoint;
-          waypoint.mouseDown(e);
-          waypoint.mouseDragged(e);
+          waypoint.pointerDown(e);
+          waypoint.pointerDragged(e);
         }
       }
     }
-    mouseUp(e) {
+    pointerUp(e) {
       if (this._waypointBeingDragged !== void 0) {
-        this._waypointBeingDragged.mouseUp(e);
+        this._waypointBeingDragged.pointerUp(e);
         this._waypointBeingDragged = void 0;
         return InteractionResult.SimpleChange;
       }
@@ -16286,9 +16148,8 @@ svg text {
         const x1 = nodeFrom.posX;
         const y1 = nodeFrom.posY;
         const editor = this.parent.editor;
-        const zoomFactor = editor.options.zoom / 100;
-        const x2 = editor.mouseX / zoomFactor;
-        const y2 = editor.mouseY / zoomFactor;
+        const x2 = editor.pointerX;
+        const y2 = editor.pointerY;
         g.beginPath();
         g.moveTo(x1, y1);
         if (this.parent.editor.options.wireStyle === WireStyles.straight) {
@@ -16312,9 +16173,8 @@ svg text {
         const x1 = drawable.posX;
         const y1 = drawable.posY;
         const editor = this.parent.editor;
-        const zoomFactor = editor.options.zoom / 100;
-        const x2 = editor.mouseX / zoomFactor;
-        const y2 = editor.mouseY / zoomFactor;
+        const x2 = editor.pointerX;
+        const y2 = editor.pointerY;
         drawAnchorTo(g, x1, y1, x2, y2, 6, COLOR_ANCHOR_NEW, void 0);
       }
     }
@@ -16338,7 +16198,7 @@ svg text {
       const wire = new Wire(startNode, endNode);
       this._wires.push(wire);
       if (tryOffset) {
-        this.offsetWireIfNecessary(wire);
+        this.offsetWireIfNeeded(wire);
       }
       this.tryMergeWire(wire);
       (_a = this.parent.ifEditing) == null ? void 0 : _a.setToolCursor(null);
@@ -16458,7 +16318,7 @@ svg text {
       }
       return false;
     }
-    offsetWireIfNecessary(wire) {
+    offsetWireIfNeeded(wire) {
       const startNode = wire.startNode;
       const endNode = wire.endNode;
       const comp = startNode.component;
@@ -16585,7 +16445,7 @@ svg text {
       const filename = editor.documentDisplayName + "-lib.json";
       (0, import_file_saver.saveAs)(blob, filename);
     }
-    loadCircuitOrLibrary(editor, content, opts) {
+    loadCircuitOrLibrary(editor, content, takeSnapshot, opts) {
       let parsed;
       if (!isString(content)) {
         parsed = content;
@@ -16602,7 +16462,7 @@ svg text {
       if (isLib) {
         return this.doLoadLibrary(editor, parsed);
       } else {
-        return this.loadCircuit(editor, parsed, opts);
+        return this.loadCircuit(editor, parsed, takeSnapshot, opts);
       }
     }
     pasteComponents(parent, content) {
@@ -16618,7 +16478,7 @@ svg text {
       if (isArray(parsed.pos)) {
         const editor = parent.editor;
         const ceil10 = /* @__PURE__ */ __name((x) => Math.ceil(x / 10) * 10, "ceil10");
-        offsetPos = [ceil10(editor.mouseX - parsed.pos[0]), ceil10(editor.mouseY - parsed.pos[1])];
+        offsetPos = [ceil10(editor.pointerX - parsed.pos[0]), ceil10(editor.pointerY - parsed.pos[1])];
       }
       const compReprs = parsed.components;
       if (!isArray(compReprs) && !isRecord(compReprs)) {
@@ -16630,19 +16490,19 @@ svg text {
     }
     // Private
     doLoadLibrary(editor, parsed) {
-      migrateData(parsed);
+      migrateData(parsed, editor.instanceId);
       const numLoaded = editor.factory.tryLoadCustomDefsFrom(parsed.defs);
       editor.updateCustomComponentButtons();
       editor.showMessage(S.Messages.LoadedDefinitions.expand({ n: numLoaded }));
       return void 0;
     }
-    loadCircuit(parent, parsed_, opts) {
-      var _a, _b, _c, _d;
+    loadCircuit(parent, parsed_, takeSnapshot, opts) {
+      var _a, _b, _c;
       const componentList = parent.components;
-      const parsed = __spreadValues({}, parsed_);
+      const parsed = { ...parsed_ };
       try {
         if (!((_a = opts == null ? void 0 : opts.skipMigration) != null ? _a : false)) {
-          migrateData(parsed);
+          migrateData(parsed, parent.editor.instanceId);
         }
       } catch (err) {
         console.error(err);
@@ -16682,15 +16542,17 @@ svg text {
       if (parent.isMainEditor()) {
         if (parsed.userdata !== void 0) {
           if (typeof parent.userdata === "object" && typeof parsed.userdata === "object") {
-            parent.userdata = __spreadValues(__spreadValues({}, parsed.userdata), parent.userdata);
+            parent.userdata = {
+              ...parsed.userdata,
+              ...parent.userdata
+            };
           } else {
           }
           delete parsed.userdata;
         }
         parent.setPartialOptions(parsed.opts);
         delete parsed.opts;
-        const isUndoRedoAction = (_d = opts == null ? void 0 : opts.isUndoRedoAction) != null ? _d : false;
-        if (!isUndoRedoAction) {
+        if (takeSnapshot) {
           parent.editor.editTools.undoMgr.takeSnapshot();
         }
         parent.updateCustomComponentButtons();
@@ -16715,7 +16577,7 @@ svg text {
       return void 0;
     }
     loadCircuitForCustomComponent(customComp, parsed) {
-      const error = this.loadCircuit(customComp, parsed, { immediateWirePropagation: true, skipMigration: true });
+      const error = this.loadCircuit(customComp, parsed, false, { immediateWirePropagation: true, skipMigration: true });
       if (error !== void 0) {
         return error;
       }
@@ -16877,7 +16739,7 @@ svg text {
       if (compact) {
         return import_json53.default.stringify(_dataObject);
       }
-      const dataObject = __spreadValues({}, _dataObject);
+      const dataObject = { ..._dataObject };
       const parts = [];
       stringifyCompactReprTo(parts, dataObject, "v");
       stringifyCompactReprTo(parts, dataObject, "type");
@@ -16893,7 +16755,7 @@ svg text {
           let subpart = stringifySmart(def, { maxLength: Infinity });
           def.circuit = circuit;
           const compparts = [];
-          stringifyComponentWiresTestsReprsTo(compparts, __spreadValues({}, circuit), 3, true);
+          stringifyComponentWiresTestsReprsTo(compparts, { ...circuit }, 3, true);
           const circuitRepr = compparts.length === 0 ? "{}" : "{\n      " + compparts.join(",\n      ") + "\n    }";
           subpart = subpart.slice(0, subpart.length - 1) + `, circuit: ` + circuitRepr + "}";
           defparts.push(subpart);
@@ -16906,7 +16768,7 @@ svg text {
       if (scratch !== void 0) {
         const scratchparts = [];
         scratchparts.push(`id: ${stringifySmart(scratch.id)}`);
-        stringifyComponentWiresTestsReprsTo(scratchparts, __spreadValues({}, scratch), 2, false);
+        stringifyComponentWiresTestsReprsTo(scratchparts, { ...scratch }, 2, false);
         parts.push(`scratch: {
     ` + scratchparts.join(",\n    ") + "\n  }");
       }
@@ -17259,7 +17121,10 @@ ${outerIndent}]`);
     }
   });
   var Gate2OnlyTypeRepr = t8.keyof(Gate2OnlyTypes.props);
-  var GateNTypes = RichStringEnum.withProps()(__spreadValues(__spreadValues({}, Gate2toNTypes.props), Gate2OnlyTypes.props));
+  var GateNTypes = RichStringEnum.withProps()({
+    ...Gate2toNTypes.props,
+    ...Gate2OnlyTypes.props
+  });
   var GateNTypeRepr = t8.union([
     Gate2toNTypeRepr,
     Gate2OnlyTypeRepr
@@ -17397,12 +17262,12 @@ ${outerIndent}]`);
       this._showOp = (_a = saved == null ? void 0 : saved.showOp) != null ? _a : ALUDef.aults.showOp;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({
+      return {
         bits: this.numBits === ALUDef.aults.bits ? void 0 : this.numBits,
-        ext: this.usesExtendedOpcode === ALUDef.aults.ext ? void 0 : this.usesExtendedOpcode
-      }, this.toJSONBase()), {
+        ext: this.usesExtendedOpcode === ALUDef.aults.ext ? void 0 : this.usesExtendedOpcode,
+        ...this.toJSONBase(),
         showOp: this._showOp !== ALUDef.aults.showOp ? this._showOp : void 0
-      });
+      };
     }
     makeTooltip() {
       const op = this.op;
@@ -17792,9 +17657,10 @@ ${outerIndent}]`);
       this.numBits = params.numBits;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         bits: this.numBits === AdderArrayDef.aults.bits ? void 0 : this.numBits
-      });
+      };
     }
     makeTooltip() {
       const s = S.Components.AdderArray.tooltip;
@@ -17843,13 +17709,14 @@ ${outerIndent}]`);
       this._name = (_a = saved == null ? void 0 : saved.name) != null ? _a : void 0;
     }
     toJSONBase() {
-      return __spreadProps(__spreadValues({}, super.toJSONBase()), {
+      return {
+        ...super.toJSONBase(),
         name: this._name
-      });
+      };
     }
     isOver(x, y) {
       if (this.numBits === 1) {
-        return distSquared(x, y, this.posX, this.posY) < __pow(INPUT_OUTPUT_DIAMETER / 2, 2);
+        return distSquared(x, y, this.posX, this.posY) < (INPUT_OUTPUT_DIAMETER / 2) ** 2;
       }
       return inRect(this.posX, this.posY, this.width, this.height, x, y);
     }
@@ -18058,12 +17925,13 @@ ${outerIndent}]`);
       this._isConstant = (_b = saved == null ? void 0 : saved.isConstant) != null ? _b : InputDef.aults.isConstant;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         bits: this.numBits === InputDef.aults.bits ? void 0 : this.numBits,
         val: this.contentRepr(true),
         isPushButton: this._isPushButton !== InputDef.aults.isPushButton ? this._isPushButton : void 0,
         isConstant: this._isConstant !== InputDef.aults.isConstant ? this._isConstant : void 0
-      });
+      };
     }
     get isConstant() {
       return this._isConstant;
@@ -18108,9 +17976,9 @@ ${outerIndent}]`);
     shouldDrawBorder() {
       return !this._isConstant;
     }
-    mouseClicked(e) {
+    pointerClicked(e) {
       let result;
-      if ((result = super.mouseClicked(e)).isChange) {
+      if ((result = super.pointerClicked(e)).isChange) {
         return result;
       }
       if (this.parent.mode === 0 /* STATIC */ || this._isPushButton || this._isConstant) {
@@ -18132,12 +18000,12 @@ ${outerIndent}]`);
       doChange();
       return InteractionResult.RepeatableChange(doChange);
     }
-    mouseDown(e) {
+    pointerDown(e) {
       this.trySetPushButtonBit(true, e);
-      return super.mouseDown(e);
+      return super.pointerDown(e);
     }
-    mouseUp(e) {
-      const result = super.mouseUp(e);
+    pointerUp(e) {
+      const result = super.pointerUp(e);
       this.trySetPushButtonBit(false, e);
       return result;
     }
@@ -18278,12 +18146,13 @@ ${outerIndent}]`);
       return 1;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         period: this._period,
         dutycycle: this._dutycycle === ClockDef.aults.dutycycle ? void 0 : this._dutycycle,
         phase: this._phase === ClockDef.aults.phase ? void 0 : this._phase,
         showLabel: this._showLabel === ClockDef.aults.showLabel ? void 0 : this._showLabel
-      });
+      };
     }
     toStringDetails() {
       return `period=${this._period} duty=${this._dutycycle} phase=${this._phase}`;
@@ -18533,10 +18402,11 @@ ${outerIndent}]`);
       this.controlPinsAtBottom = params.controlPinsAtBottom;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         bits: this.numBits === ControlledInverterDef.aults.bits ? void 0 : this.numBits,
         bottom: this.controlPinsAtBottom === ControlledInverterDef.aults.bottom ? void 0 : this.controlPinsAtBottom
-      });
+      };
     }
     makeTooltip() {
       const s = S.Components.ControlledInverter.tooltip;
@@ -18641,10 +18511,11 @@ ${outerIndent}]`);
     }
     toJSONBase() {
       const state = this.value[0];
-      return __spreadProps(__spreadValues({}, super.toJSONBase()), {
+      return {
+        ...super.toJSONBase(),
         state: state !== FlipflopOrLatchDef.aults.state ? toLogicValueRepr(state) : void 0,
         showContent: this._showContent !== FlipflopOrLatchDef.aults.showContent ? this._showContent : void 0
-      });
+      };
     }
     propagateValue(newValue) {
       this.outputs.Q.value = newValue[0];
@@ -18684,12 +18555,14 @@ ${outerIndent}]`);
   __name(FlipflopOrLatch, "FlipflopOrLatch");
   var FlipflopBaseDef = defineAbstractComponent({
     button: FlipflopOrLatchDef.button,
-    repr: __spreadProps(__spreadValues({}, FlipflopOrLatchDef.repr), {
+    repr: {
+      ...FlipflopOrLatchDef.repr,
       trigger: typeOrUndefined(t14.keyof(EdgeTrigger))
-    }),
-    valueDefaults: __spreadProps(__spreadValues({}, FlipflopOrLatchDef.valueDefaults), {
+    },
+    valueDefaults: {
+      ...FlipflopOrLatchDef.valueDefaults,
       trigger: EdgeTrigger.rising
-    }),
+    },
     size: FlipflopOrLatchDef.size,
     makeNodes: (clockYOffset) => {
       const base = FlipflopOrLatchDef.makeNodes();
@@ -18713,9 +18586,10 @@ ${outerIndent}]`);
       this._trigger = (_a = saved == null ? void 0 : saved.trigger) != null ? _a : FlipflopBaseDef.aults.trigger;
     }
     toJSONBase() {
-      return __spreadProps(__spreadValues({}, super.toJSONBase()), {
+      return {
+        ...super.toJSONBase(),
         trigger: this._trigger !== FlipflopBaseDef.aults.trigger ? this._trigger : void 0
-      });
+      };
     }
     get trigger() {
       return this._trigger;
@@ -18874,12 +18748,13 @@ ${outerIndent}]`);
       const [__, currentCountOrUnknown] = displayValuesFromArray(this.value[0], false);
       const currentCount = isUnknown(currentCountOrUnknown) ? 0 : currentCountOrUnknown;
       const displayRadix = this._displayRadix === void 0 ? null : this._displayRadix;
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         bits: this.numBits === CounterDef.aults.bits ? void 0 : this.numBits,
         count: currentCount === 0 ? void 0 : currentCount,
         trigger: this._trigger !== CounterDef.aults.trigger ? this._trigger : void 0,
         displayRadix: displayRadix !== CounterDef.aults.displayRadix ? displayRadix : void 0
-      });
+      };
     }
     get trigger() {
       return this._trigger;
@@ -19714,7 +19589,7 @@ ${outerIndent}]`);
     clip(fillRule) {
       const group2 = this._closestGroupOrSvg();
       const clipPath = this._createElement("clipPath");
-      const id = randomString(this._ids);
+      const id = randomString2(this._ids);
       const pathElement = this._createPathElement();
       pathElement.setAttribute("d", this._currentPath.d);
       clipPath.setAttribute("id", id);
@@ -19854,7 +19729,7 @@ ${outerIndent}]`);
      */
     createLinearGradient(x1, y1, x2, y2) {
       const grad = this._createElement("linearGradient", {
-        id: randomString(this._ids),
+        id: randomString2(this._ids),
         x1: x1 + "px",
         x2: x2 + "px",
         y1: y1 + "px",
@@ -19870,7 +19745,7 @@ ${outerIndent}]`);
      */
     createRadialGradient(x0, y0, r0, x1, y1, r1) {
       const grad = this._createElement("radialGradient", {
-        id: randomString(this._ids),
+        id: randomString2(this._ids),
         cx: x1 + "px",
         cy: y1 + "px",
         r: r1 + "px",
@@ -19883,7 +19758,7 @@ ${outerIndent}]`);
     }
     createPattern(image, __repetition) {
       const pattern = this._document.createElementNS("http://www.w3.org/2000/svg", "pattern");
-      const id = randomString(this._ids);
+      const id = randomString2(this._ids);
       pattern.setAttribute("id", id);
       pattern.setAttribute("width", String(image.width));
       pattern.setAttribute("height", String(image.height));
@@ -20208,7 +20083,7 @@ ${outerIndent}]`);
     }
   };
   __name(CanvasPatternSVG, "CanvasPatternSVG");
-  function randomString(holder) {
+  function randomString2(holder) {
     if (!holder) {
       throw new Error("cannot create a random attribute name for an undefined object");
     }
@@ -20222,7 +20097,7 @@ ${outerIndent}]`);
     } while (holder[randomstring] !== void 0);
     return randomstring;
   }
-  __name(randomString, "randomString");
+  __name(randomString2, "randomString");
   var STYLES = {
     "strokeStyle": {
       svgAttr: "stroke",
@@ -20349,14 +20224,15 @@ ${outerIndent}]`);
       this._name = (_a = saved == null ? void 0 : saved.name) != null ? _a : void 0;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         bits: this.numBits === OutputDef.aults.bits ? void 0 : this.numBits,
         name: this._name
-      });
+      };
     }
     isOver(x, y) {
       if (this.numBits === 1) {
-        return this.parent.mode >= 2 /* CONNECT */ && distSquared(x, y, this.posX, this.posY) < __pow(INPUT_OUTPUT_DIAMETER / 2, 2);
+        return this.parent.mode >= 2 /* CONNECT */ && distSquared(x, y, this.posX, this.posY) < (INPUT_OUTPUT_DIAMETER / 2) ** 2;
       }
       return super.isOver(x, y);
     }
@@ -20871,8 +20747,8 @@ ${outerIndent}]`);
         super.keyDown(e);
       }
     }
-    mouseDoubleClicked(e) {
-      const result = super.mouseDoubleClicked(e);
+    pointerDoubleClicked(e) {
+      const result = super.pointerDoubleClicked(e);
       if (result.isChange) {
         return result;
       }
@@ -20926,7 +20802,7 @@ ${outerIndent}]`);
     },
     validateParams: ({ bits }) => ({
       numFrom: bits,
-      numTo: __pow(2, bits)
+      numTo: 2 ** bits
     }),
     size: ({ numTo }) => ({
       gridWidth: 4,
@@ -20949,9 +20825,10 @@ ${outerIndent}]`);
       this.numTo = params.numTo;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         bits: this.numFrom === DecoderDef.aults.bits ? void 0 : this.numFrom
-      });
+      };
     }
     makeTooltip() {
       const s = S.Components.Decoder.tooltip;
@@ -20987,7 +20864,12 @@ ${outerIndent}]`);
       this.outputValues(this.outputs.Out, newValue);
     }
     makeComponentSpecificContextMenuItems() {
-      return this.makeForceOutputsContextMenuItem();
+      const s = S.Components.Generic.contextMenu;
+      return [
+        this.makeChangeParamsContextMenuItem("outputs", s.ParamNumBits, this.numFrom, "bits"),
+        ["mid", MenuData.sep()],
+        ...this.makeForceOutputsContextMenuItem()
+      ];
     }
   };
   __name(Decoder, "Decoder");
@@ -21547,13 +21429,14 @@ ${outerIndent}]`);
       this._disconnectedAsHighZ = (_b = saved == null ? void 0 : saved.disconnectedAsHighZ) != null ? _b : DemuxDef.aults.disconnectedAsHighZ;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, super.toJSONBase()), {
+      return {
+        ...super.toJSONBase(),
         from: this.numFrom,
         to: this.numTo,
         bottom: this.controlPinsAtBottom === DemuxDef.aults.bottom ? void 0 : this.controlPinsAtBottom,
         showWiring: this._showWiring !== DemuxDef.aults.showWiring ? this._showWiring : void 0,
         disconnectedAsHighZ: this._disconnectedAsHighZ !== DemuxDef.aults.disconnectedAsHighZ ? this._disconnectedAsHighZ : void 0
-      });
+      };
     }
     makeTooltip() {
       return tooltipContent(void 0, mods(
@@ -21726,12 +21609,13 @@ ${outerIndent}]`);
       this._showAsUnknown = (_c = saved == null ? void 0 : saved.showAsUnknown) != null ? _c : DisplayDef.aults.showAsUnknown;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         bits: this.numBits === DisplayDef.aults.bits ? void 0 : this.numBits,
         name: this._name,
         radix: this._radix === DisplayDef.aults.radix ? void 0 : this._radix,
         showAsUnknown: this._showAsUnknown === DisplayDef.aults.showAsUnknown ? void 0 : this._showAsUnknown
-      });
+      };
     }
     get showAsUnknown() {
       return this._showAsUnknown || this.parent.editor.options.hideOutputColors;
@@ -21788,8 +21672,8 @@ ${outerIndent}]`);
         }
       });
     }
-    mouseDoubleClicked(e) {
-      const superChange = super.mouseDoubleClicked(e);
+    pointerDoubleClicked(e) {
+      const superChange = super.pointerDoubleClicked(e);
       if (superChange.isChange) {
         return superChange;
       }
@@ -21911,11 +21795,12 @@ ${outerIndent}]`);
       this._name = (_c = saved == null ? void 0 : saved.name) != null ? _c : void 0;
     }
     toJSONBase() {
-      return __spreadProps(__spreadValues({}, super.toJSONBase()), {
+      return {
+        ...super.toJSONBase(),
         color: this._color === DisplayBarDef.aults.color ? void 0 : this._color,
         transparent: this._transparent === this.transparentDefault ? void 0 : this._transparent,
         name: this._name
-      });
+      };
     }
     doSetName(name2) {
       this._name = name2;
@@ -21993,9 +21878,10 @@ ${outerIndent}]`);
       this.doSetDisplay((_a = saved == null ? void 0 : saved.display) != null ? _a : DisplayBarDef.aults.display);
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, super.toJSONBase()), {
+      return {
+        ...super.toJSONBase(),
         display: this._display
-      });
+      };
     }
     get unrotatedWidth() {
       return this.getWidthAndHeight()[0];
@@ -22049,8 +21935,8 @@ ${outerIndent}]`);
           return [w * GRID_STEP, w * GRID_STEP];
       }
     }
-    mouseDoubleClicked(e) {
-      const superChange = super.mouseDoubleClicked(e);
+    pointerDoubleClicked(e) {
+      const superChange = super.pointerDoubleClicked(e);
       if (superChange.isChange) {
         return superChange;
       }
@@ -22392,11 +22278,12 @@ ${outerIndent}]`);
       this._showAsUnknown = (_c = saved == null ? void 0 : saved.showAsUnknown) != null ? _c : false;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         name: this._name,
         additionalReprRadix: this._additionalReprRadix,
         showAsUnknown: this._showAsUnknown ? true : void 0
-      });
+      };
     }
     get showAsUnknown() {
       return this._showAsUnknown || this.parent.editor.options.hideOutputColors;
@@ -22480,8 +22367,8 @@ ${outerIndent}]`);
       }
       return String.fromCharCode(n);
     }
-    mouseDoubleClicked(e) {
-      const superChange = super.mouseDoubleClicked(e);
+    pointerDoubleClicked(e) {
+      const superChange = super.pointerDoubleClicked(e);
       if (superChange.isChange) {
         return superChange;
       }
@@ -22556,20 +22443,21 @@ ${outerIndent}]`);
   DisplayAsciiDef.impl = DisplayAscii;
 
   // simulator/src/components/FlipflopD.ts
-  var FlipflopDDef = defineComponent("ff-d", __spreadProps(__spreadValues({
-    idPrefix: "ff"
-  }, FlipflopBaseDef), {
+  var FlipflopDDef = defineComponent("ff-d", {
+    idPrefix: "ff",
+    ...FlipflopBaseDef,
     makeNodes: () => {
       const base = FlipflopBaseDef.makeNodes(2);
       const s = S.Components.Generic;
       return {
-        ins: __spreadProps(__spreadValues({}, base.ins), {
+        ins: {
+          ...base.ins,
           D: [-4, -2, "w", s.InputDataDesc]
-        }),
+        },
         outs: base.outs
       };
     }
-  }));
+  });
   var FlipflopD = class extends Flipflop {
     constructor(parent, saved) {
       super(parent, FlipflopDDef, saved);
@@ -22592,21 +22480,22 @@ ${outerIndent}]`);
   FlipflopDDef.impl = FlipflopD;
 
   // simulator/src/components/FlipflopJK.ts
-  var FlipflopJKDef = defineComponent("ff-jk", __spreadProps(__spreadValues({
-    idPrefix: "ff"
-  }, FlipflopBaseDef), {
+  var FlipflopJKDef = defineComponent("ff-jk", {
+    idPrefix: "ff",
+    ...FlipflopBaseDef,
     makeNodes: () => {
       const base = FlipflopBaseDef.makeNodes(0);
       const s = S.Components.FlipflopJK;
       return {
-        ins: __spreadProps(__spreadValues({}, base.ins), {
+        ins: {
+          ...base.ins,
           J: [-4, -2, "w", s.InputJDesc],
           K: [-4, 2, "w", s.InputKDesc]
-        }),
+        },
         outs: base.outs
       };
     }
-  }));
+  });
   var FlipflopJK = class extends Flipflop {
     constructor(parent, saved) {
       super(parent, FlipflopJKDef, saved);
@@ -22643,20 +22532,21 @@ ${outerIndent}]`);
   FlipflopJKDef.impl = FlipflopJK;
 
   // simulator/src/components/FlipflopT.ts
-  var FlipflopTDef = defineComponent("ff-t", __spreadProps(__spreadValues({
-    idPrefix: "ff"
-  }, FlipflopBaseDef), {
+  var FlipflopTDef = defineComponent("ff-t", {
+    idPrefix: "ff",
+    ...FlipflopBaseDef,
     makeNodes: () => {
       const base = FlipflopBaseDef.makeNodes(2);
       const s = S.Components.FlipflopT;
       return {
-        ins: __spreadProps(__spreadValues({}, base.ins), {
+        ins: {
+          ...base.ins,
           T: [-4, -2, "w", s.InputTDesc]
-        }),
+        },
         outs: base.outs
       };
     }
-  }));
+  });
   var FlipflopT = class extends Flipflop {
     constructor(parent, saved) {
       super(parent, FlipflopTDef, saved);
@@ -22696,10 +22586,11 @@ ${outerIndent}]`);
       this._showAsUnknown = (_b = saved == null ? void 0 : saved.showAsUnknown) != null ? _b : false;
     }
     toJSONBase() {
-      return __spreadProps(__spreadValues({}, super.toJSONBase()), {
+      return {
+        ...super.toJSONBase(),
         showAsUnknown: this._showAsUnknown ? true : void 0,
         poseAs: this._poseAs
-      });
+      };
     }
     jsonType() {
       return this._type;
@@ -23037,12 +22928,12 @@ ${outerIndent}]`);
         }
       }
     }
-    mouseDoubleClicked(e) {
+    pointerDoubleClicked(e) {
       if (this.parent.mode >= 4 /* FULL */ && e.altKey) {
         this.doSetShowAsUnknown(!this._showAsUnknown);
         return InteractionResult.SimpleChange;
       }
-      return super.mouseDoubleClicked(e);
+      return super.pointerDoubleClicked(e);
     }
     makeComponentSpecificContextMenuItems() {
       const items = [];
@@ -23187,8 +23078,8 @@ ${outerIndent}]`);
     toJSON() {
       return super.toJSONBase();
     }
-    mouseDoubleClicked(e) {
-      const superChange = super.mouseDoubleClicked(e);
+    pointerDoubleClicked(e) {
+      const superChange = super.pointerDoubleClicked(e);
       if (superChange.isChange) {
         return superChange;
       }
@@ -23252,12 +23143,13 @@ ${outerIndent}]`);
       return numBits > 2 ? Gate2toNTypes : GateNTypes;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         bits: this.numBits !== GateNDef.aults.bits ? this.numBits : void 0
-      });
+      };
     }
-    mouseDoubleClicked(e) {
-      const superChange = super.mouseDoubleClicked(e);
+    pointerDoubleClicked(e) {
+      const superChange = super.pointerDoubleClicked(e);
       if (superChange.isChange) {
         return superChange;
       }
@@ -23385,10 +23277,11 @@ ${outerIndent}]`);
       this._showAsUnknown = (_a = saved == null ? void 0 : saved.showAsUnknown) != null ? _a : GateArrayDef.aults.showAsUnknown;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         bits: this.numBits === GateArrayDef.aults.bits ? void 0 : this.numBits,
         showAsUnknown: this._showAsUnknown === GateArrayDef.aults.showAsUnknown ? void 0 : this._showAsUnknown
-      });
+      };
     }
     jsonType() {
       return `${this._type}-array`;
@@ -23697,11 +23590,12 @@ ${outerIndent}]`);
       this._font = (_b = saved == null ? void 0 : saved.font) != null ? _b : LabelDef.aults.font;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         text: this._text,
         // align: this._align === LabelStringDefaults.align ? undefined : this._align,
         font: this._font === LabelDef.aults.font ? void 0 : this._font
-      });
+      };
     }
     get unrotatedWidth() {
       var _a, _b;
@@ -23778,8 +23672,8 @@ ${outerIndent}]`);
         super.keyDown(e);
       }
     }
-    mouseDoubleClicked(e) {
-      const superChange = super.mouseDoubleClicked(e);
+    pointerDoubleClicked(e) {
+      const superChange = super.pointerDoubleClicked(e);
       if (superChange.isChange) {
         return superChange;
       }
@@ -23790,9 +23684,9 @@ ${outerIndent}]`);
   LabelDef.impl = Label;
 
   // simulator/src/components/LatchSR.ts
-  var LatchSRDef = defineComponent("latch-sr", __spreadProps(__spreadValues({
-    idPrefix: "latch"
-  }, FlipflopOrLatchDef), {
+  var LatchSRDef = defineComponent("latch-sr", {
+    idPrefix: "latch",
+    ...FlipflopOrLatchDef,
     makeNodes: () => {
       const base = FlipflopOrLatchDef.makeNodes();
       const s = S.Components.Generic;
@@ -23804,7 +23698,7 @@ ${outerIndent}]`);
         outs: base.outs
       };
     }
-  }));
+  });
   var LatchSR = class extends FlipflopOrLatch {
     constructor(parent, saved) {
       super(parent, LatchSRDef, saved);
@@ -23917,12 +23811,13 @@ ${outerIndent}]`);
       this._showWiring = (_a = saved == null ? void 0 : saved.showWiring) != null ? _a : MuxDef.aults.showWiring;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, super.toJSONBase()), {
+      return {
+        ...super.toJSONBase(),
         from: this.numFrom,
         to: this.numTo,
         bottom: this.controlPinsAtBottom === MuxDef.aults.bottom ? void 0 : this.controlPinsAtBottom,
         showWiring: this._showWiring !== MuxDef.aults.showWiring ? this._showWiring : void 0
-      });
+      };
     }
     makeTooltip() {
       return tooltipContent(void 0, mods(
@@ -24110,13 +24005,14 @@ ${outerIndent}]`);
       return mem;
     }
     toJSONBase() {
-      return __spreadProps(__spreadValues({}, super.toJSONBase()), {
+      return {
+        ...super.toJSONBase(),
         bits: this.numDataBits === RAMDef.aults.bits ? void 0 : this.numDataBits,
         lines: this.numWords === RAMDef.aults.lines ? void 0 : this.numWords,
         showContent: !this.canShowContent() ? void 0 : this._showContent !== RAMDef.aults.showContent ? this._showContent : void 0,
         displayRadix: this._displayRadix !== RAMDef.aults.displayRadix ? this._displayRadix : void 0,
         content: this.contentRepr(" ", true)
-      });
+      };
     }
     contentRepr(delim, trimEnd) {
       const cells = [];
@@ -24237,10 +24133,10 @@ ${outerIndent}]`);
         (0, import_file_saver2.saveAs)(blob, filename);
       })];
       const loadContentItem = ["mid", MenuData.item("open", s.LoadContent, () => {
-        this.parent.editor.runFileChooser("text/plain", (file) => __async(this, null, function* () {
-          const content = yield file.text();
+        this.parent.editor.runFileChooser("text/plain", async (file) => {
+          const content = await file.text();
           this.doSetMem(RAM.contentsFromString(content, this.numDataBits, this.numWords));
-        }));
+        });
       })];
       const swapROMRAMItem = ["mid", MenuData.item("replace", s.SwapROMRAM, () => {
         const isROM = this instanceof ROM;
@@ -24340,10 +24236,11 @@ ${outerIndent}]`);
     return contentBottom;
   }
   __name(drawMemoryCells, "drawMemoryCells");
-  var ROMDef = defineParametrizedComponent("rom", true, true, __spreadValues({
+  var ROMDef = defineParametrizedComponent("rom", true, true, {
     variantName: ({ bits, lines }) => `rom-${lines}x${bits}`,
-    idPrefix: "rom"
-  }, ROMRAMDef));
+    idPrefix: "rom",
+    ...ROMRAMDef
+  });
   var ROM = class extends ROMRAMBase {
     constructor(parent, params, saved) {
       super(parent, ROMDef, params, saved);
@@ -24372,16 +24269,18 @@ ${outerIndent}]`);
   ROMDef.impl = ROM;
 
   // simulator/src/components/RAM.ts
-  var RAMDef = defineParametrizedComponent("ram", true, true, __spreadProps(__spreadValues({
+  var RAMDef = defineParametrizedComponent("ram", true, true, {
     variantName: ({ bits, lines }) => `ram-${lines}x${bits}`,
-    idPrefix: "ram"
-  }, ROMRAMDef), {
-    repr: __spreadProps(__spreadValues({}, ROMRAMDef.repr), {
+    idPrefix: "ram",
+    ...ROMRAMDef,
+    repr: {
+      ...ROMRAMDef.repr,
       trigger: typeOrUndefined(t30.keyof(EdgeTrigger))
-    }),
-    valueDefaults: __spreadProps(__spreadValues({}, ROMRAMDef.valueDefaults), {
+    },
+    valueDefaults: {
+      ...ROMRAMDef.valueDefaults,
       trigger: EdgeTrigger.rising
-    }),
+    },
     makeNodes: (params, defaults) => {
       const base = ROMRAMDef.makeNodes(params, defaults);
       const { numDataBits, gridHeight } = params;
@@ -24399,7 +24298,7 @@ ${outerIndent}]`);
         outs: base.outs
       };
     }
-  }));
+  });
   var RAM = class extends ROMRAMBase {
     constructor(parent, params, saved) {
       var _a;
@@ -24409,9 +24308,10 @@ ${outerIndent}]`);
       this._trigger = (_a = saved == null ? void 0 : saved.trigger) != null ? _a : RAMDef.aults.trigger;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, super.toJSONBase()), {
+      return {
+        ...super.toJSONBase(),
         trigger: this._trigger !== RAMDef.aults.trigger ? this._trigger : void 0
-      });
+      };
     }
     get moduleName() {
       return "RAM";
@@ -24531,13 +24431,13 @@ ${outerIndent}]`);
       this._trigger = (_b = saved == null ? void 0 : saved.trigger) != null ? _b : RegisterDef.aults.trigger;
     }
     toJSONBase() {
-      return __spreadProps(__spreadValues({
-        bits: this.numBits === RegisterDef.aults.bits ? void 0 : this.numBits
-      }, super.toJSONBase()), {
+      return {
+        bits: this.numBits === RegisterDef.aults.bits ? void 0 : this.numBits,
+        ...super.toJSONBase(),
         showContent: this._showContent !== RegisterDef.aults.showContent ? this._showContent : void 0,
         trigger: this._trigger !== RegisterDef.aults.trigger ? this._trigger : void 0,
         content: this.contentRepr(true)
-      });
+      };
     }
     contentRepr(undefinedIfTrivial) {
       const content = this.value;
@@ -24616,17 +24516,19 @@ ${outerIndent}]`);
     }
   };
   __name(RegisterBase, "RegisterBase");
-  var RegisterDef = defineParametrizedComponent("reg", true, true, __spreadProps(__spreadValues({
+  var RegisterDef = defineParametrizedComponent("reg", true, true, {
     variantName: ({ bits }) => `reg-${bits}`,
-    idPrefix: "reg"
-  }, RegisterBaseDef), {
-    repr: __spreadProps(__spreadValues({}, RegisterBaseDef.repr), {
+    idPrefix: "reg",
+    ...RegisterBaseDef,
+    repr: {
+      ...RegisterBaseDef.repr,
       inc: typeOrUndefined(t31.boolean),
       saturating: typeOrUndefined(t31.boolean)
-    }),
-    valueDefaults: __spreadProps(__spreadValues({}, RegisterBaseDef.valueDefaults), {
+    },
+    valueDefaults: {
+      ...RegisterBaseDef.valueDefaults,
       saturating: false
-    }),
+    },
     params: {
       bits: RegisterBaseDef.params.bits,
       inc: paramBool()
@@ -24640,18 +24542,20 @@ ${outerIndent}]`);
       const baseClear = base.ins.Clr;
       const bottomOffset = base.ins.Clr[1];
       return {
-        ins: __spreadValues(__spreadProps(__spreadValues({}, base.ins), {
-          D: groupVertical("w", -5, 0, params.numBits)
-        }), !params.hasIncDec ? {} : {
-          Clr: [2, bottomOffset, "s", baseClear[3], baseClear[4]],
-          // move Clr to the right
-          Inc: [-2, bottomOffset, "s"],
-          Dec: [0, bottomOffset, "s"]
-        }),
+        ins: {
+          ...base.ins,
+          D: groupVertical("w", -5, 0, params.numBits),
+          ...!params.hasIncDec ? {} : {
+            Clr: [2, bottomOffset, "s", baseClear[3], baseClear[4]],
+            // move Clr to the right
+            Inc: [-2, bottomOffset, "s"],
+            Dec: [0, bottomOffset, "s"]
+          }
+        },
         outs: base.outs
       };
     }
-  }));
+  });
   var Register = class extends RegisterBase {
     constructor(parent, params, saved) {
       var _a;
@@ -24660,10 +24564,11 @@ ${outerIndent}]`);
       this._saturating = this.hasIncDec && ((_a = saved == null ? void 0 : saved.saturating) != null ? _a : RegisterDef.aults.saturating);
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         inc: this.hasIncDec === RegisterDef.aults.inc ? void 0 : this.hasIncDec,
         saturating: this._saturating === RegisterDef.aults.saturating ? void 0 : this._saturating
-      });
+      };
     }
     makeTooltip() {
       const s = S.Components.Register.tooltip;
@@ -24690,7 +24595,7 @@ ${outerIndent}]`);
         let newVal;
         if (inc) {
           newVal = val + 1;
-          if (newVal >= __pow(2, this.numBits)) {
+          if (newVal >= 2 ** this.numBits) {
             if (this._saturating) {
               return ArrayFillWith(true, this.numBits);
             }
@@ -24792,13 +24697,14 @@ ${outerIndent}]`);
       this._name = (_c = saved == null ? void 0 : saved.name) != null ? _c : void 0;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, super.toJSONBase()), {
+      return {
+        ...super.toJSONBase(),
         bits: this.numBits === RandomDef.aults.bits ? void 0 : this.numBits,
         name: this._name,
         prob1: this._prob1 !== RandomDef.aults.prob1 ? this._prob1 : void 0,
         showProb: this._showProb !== RandomDef.aults.showProb ? this._showProb : void 0,
         trigger: this._trigger !== RandomDef.aults.trigger ? this._trigger : void 0
-      });
+      };
     }
     get allowsForcedOutputs() {
       return false;
@@ -24963,7 +24869,8 @@ ${outerIndent}]`);
       this._font = (_j = saved == null ? void 0 : saved.font) != null ? _j : RectangleDef.aults.font;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         w: this._w,
         h: this._h,
         color: this._color,
@@ -24974,7 +24881,7 @@ ${outerIndent}]`);
         captionPos: this._captionPos === RectangleDef.aults.captionPos ? void 0 : this._captionPos,
         captionInside: this._captionInside === RectangleDef.aults.captionInside ? void 0 : this._captionInside,
         font: this._font === RectangleDef.aults.font ? void 0 : this._font
-      });
+      };
     }
     canRotate() {
       return false;
@@ -25185,7 +25092,7 @@ ${outerIndent}]`);
       const promptReturnValue = window.prompt(S.Components.Rectangle.contextMenu.SizePrompt, currentSizeStr);
       if (promptReturnValue !== null) {
         let match;
-        if ((match = new RegExp("^(?<w>\\d*)((\\s+|( *[\xD7x,;] *))(?<h>\\d*))?$").exec(promptReturnValue)) !== null) {
+        if ((match = /^(?<w>\d*)((\s+|( *[×x,;] *))(?<h>\d*))?$/.exec(promptReturnValue)) !== null) {
           const parse = /* @__PURE__ */ __name((s, dflt) => {
             if (s === void 0) {
               return dflt;
@@ -25242,7 +25149,7 @@ ${outerIndent}]`);
         this.doSetCaption(newCaption);
       }
     }
-    mouseDoubleClicked(__e2) {
+    pointerDoubleClicked(__e2) {
       this.runSetSizeDialog(this.makeCurrentSizeString());
       return InteractionResult.SimpleChange;
     }
@@ -25330,13 +25237,14 @@ ${outerIndent}]`);
     }
     toJSON() {
       const stateArray = allBitsOf(this.value).map((b2) => toLogicValueRepr(b2));
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         state: stateArray.length === 0 ? void 0 : stateArray.join(""),
         decodeAs: this._decodeAs !== ShiftDisplayDef.aults.decodeAs ? this._decodeAs : void 0,
         groupEvery: this._groupEvery,
         maxItems: this._maxItems,
         trigger: this._trigger !== ShiftDisplayDef.aults.trigger ? this._trigger : void 0
-      });
+      };
     }
     get trigger() {
       return this._trigger;
@@ -25525,22 +25433,23 @@ ${outerIndent}]`);
   __name(allBitsOf, "allBitsOf");
 
   // simulator/src/components/ShiftRegister.ts
-  var ShiftRegisterDef = defineParametrizedComponent("shift-reg", true, true, __spreadProps(__spreadValues({
+  var ShiftRegisterDef = defineParametrizedComponent("shift-reg", true, true, {
     variantName: ({ bits }) => `shift-reg-${bits}`,
-    idPrefix: "reg"
-  }, RegisterBaseDef), {
+    idPrefix: "reg",
+    ...RegisterBaseDef,
     makeNodes: (params, defaults) => {
       const base = RegisterBaseDef.makeNodes(params, defaults);
       const lrYOffset = base.ins.Clock[1] - 2;
       return {
-        ins: __spreadProps(__spreadValues({}, base.ins), {
+        ins: {
+          ...base.ins,
           D: [-5, 0, "w"],
           L\u0305R: [-5, lrYOffset, "w"]
-        }),
+        },
         outs: base.outs
       };
     }
-  }));
+  });
   var ShiftRegister = class extends RegisterBase {
     constructor(parent, params, saved) {
       super(parent, ShiftRegisterDef, params, saved);
@@ -25617,9 +25526,10 @@ ${outerIndent}]`);
       this.controlPinsAtBottom = params.controlPinsAtBottom;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         bottom: this.controlPinsAtBottom === TristateBufferDef.aults.bottom ? void 0 : this.controlPinsAtBottom
-      });
+      };
     }
     makeTooltip() {
       return tooltipContent(void 0, mods(
@@ -25714,10 +25624,11 @@ ${outerIndent}]`);
       this.controlPinsAtBottom = params.controlPinsAtBottom;
     }
     toJSON() {
-      return __spreadProps(__spreadValues({}, this.toJSONBase()), {
+      return {
+        ...this.toJSONBase(),
         bits: this.numBits === TristateBufferArrayDef.aults.bits ? void 0 : this.numBits,
         bottom: this.controlPinsAtBottom === TristateBufferArrayDef.aults.bottom ? void 0 : this.controlPinsAtBottom
-      });
+      };
     }
     makeTooltip() {
       const s = S.Components.TristateBufferArray.tooltip;
@@ -26061,9 +25972,9 @@ ${outerIndent}]`);
       }
       const customComp = maker.make(editor);
       customComp.setSpawned();
-      customComp.setPosition(editor.mouseX + customComp.unrotatedWidth / 2 - 5, editor.mouseY, true);
+      customComp.setPosition(editor.pointerX + customComp.unrotatedWidth / 2 - 5, editor.pointerY, true);
       editor.eventMgr.currentSelection = void 0;
-      editor.eventMgr.setCurrentMouseOverComp(customComp);
+      editor.eventMgr.setCurrentComponentUnderPointer(customComp);
       for (const comp of componentsToInclude) {
         editor.components.tryDelete(comp);
       }
@@ -26120,54 +26031,52 @@ ${outputsStr}
         name: testCaseName.length === 0 ? void 0 : testCaseName
       }, editor.components);
     }
-    tryMakeAllTestCases(editor) {
-      return __async(this, null, function* () {
-        const checkResult = this.checkSelectionForTestCase(editor);
-        if (isString(checkResult)) {
-          return checkResult;
+    async tryMakeAllTestCases(editor) {
+      const checkResult = this.checkSelectionForTestCase(editor);
+      if (isString(checkResult)) {
+        return checkResult;
+      }
+      const { inputs, outputs } = checkResult;
+      const s = S.Messages;
+      const max3 = 10;
+      const inputsByBit = [];
+      let numInputs = 0;
+      for (const input2 of inputs) {
+        for (let i2 = 0; i2 < input2.numBits; i2++) {
+          inputsByBit.push([input2, i2]);
         }
-        const { inputs, outputs } = checkResult;
-        const s = S.Messages;
-        const max3 = 6;
-        const inputsByBit = [];
-        let numInputs = 0;
+        numInputs += input2.numBits;
+      }
+      const setBit = /* @__PURE__ */ __name((i2, value) => {
+        const [input2, bit] = inputsByBit[i2];
+        const newValues = input2.value.slice();
+        newValues[bit] = value;
+        input2.setValue(newValues);
+      }, "setBit");
+      if (numInputs > max3) {
+        return s.TooManyInputsForAutoTestCases.expand({ max: max3 });
+      }
+      const numCases = Math.pow(2, numInputs);
+      if (!confirm(s.AutoTestCasesWarning.expand({ numInputs, numCases }))) {
+        return "";
+      }
+      const result = await editor.disableUIWhile(s.ComputingTestCases, async (restoreAfter) => {
         for (const input2 of inputs) {
-          for (let i2 = 0; i2 < input2.numBits; i2++) {
-            inputsByBit.push([input2, i2]);
-          }
-          numInputs += input2.numBits;
+          restoreAfter.set(input2, input2.value);
         }
-        const setBit = /* @__PURE__ */ __name((i2, value) => {
-          const [input2, bit] = inputsByBit[i2];
-          const newValues = input2.value.slice();
-          newValues[bit] = value;
-          input2.setValue(newValues);
-        }, "setBit");
-        if (numInputs > max3) {
-          return s.TooManyInputsForAutoTestCases.expand({ max: max3 });
-        }
-        const numCases = Math.pow(2, numInputs);
-        if (!confirm(s.AutoTestCasesWarning.expand({ numInputs, numCases }))) {
-          return "";
-        }
-        const result = yield editor.disableUIWhile(s.ComputingTestCases, (restoreAfter) => __async(this, null, function* () {
-          for (const input2 of inputs) {
-            restoreAfter.set(input2, input2.value);
+        const testCases = [];
+        for (let i2 = 0; i2 < numCases; i2++) {
+          for (let j = 0; j < numInputs; j++) {
+            const value = (i2 & 1 << j) !== 0;
+            setBit(j, value);
           }
-          const testCases = [];
-          for (let i2 = 0; i2 < numCases; i2++) {
-            for (let j = 0; j < numInputs; j++) {
-              const value = (i2 & 1 << j) !== 0;
-              setBit(j, value);
-            }
-            editor.recalcPropagateAndDrawIfNeeded(true);
-            yield editor.waitForPropagation();
-            testCases.push(this.makeTestCaseWithCurrentValues(editor, inputs, outputs, false));
-          }
-          return testCases;
-        }));
-        return result != null ? result : "";
+          editor.recalcPropagateAndDrawIfNeeded(true);
+          await editor.waitForPropagation();
+          testCases.push(this.makeTestCaseWithCurrentValues(editor, inputs, outputs, false));
+        }
+        return testCases;
       });
+      return result != null ? result : "";
     }
     tryModifyCustomComponent(def, defRoot) {
       const s = S.Components.Custom.messages;
@@ -26677,10 +26586,16 @@ ${outputsStr}
   var MessageBar = class {
     constructor(editor) {
       this._currentTimeout = void 0;
-      this.msgBox = div(cls("msgBar")).render();
+      this.msgSpan = span().render();
+      this.closeButton = span("\xD7", style("padding-left: 0.5em; cursor: pointer; margin-left: 0.5em; border-left: 1px solid rgba(127,127,127,0.8);")).render();
+      this.closeButton.onclick = () => this.hideNow();
       this.root = div(
         cls("msgZone"),
-        this.msgBox
+        div(
+          cls("msgBar"),
+          this.msgSpan,
+          this.closeButton
+        )
       ).render();
       editor.html.mainCanvas.insertAdjacentElement("afterend", this.root);
       this.hideNow = this.hideNow.bind(this);
@@ -26692,17 +26607,18 @@ ${outputsStr}
     /**
      * @param duration If 0, the message will not disappear automatically (unless replaced by another auto-hiding message)
      */
-    showMessage(msg, duration) {
+    showMessage(msg, duration, withCloseButton) {
       if (this._currentTimeout !== void 0) {
         clearTimeout(this._currentTimeout);
         this._currentTimeout = void 0;
       }
-      this.msgBox.innerHTML = "";
-      applyModifierTo(this.msgBox, msg);
+      this.msgSpan.innerHTML = "";
+      applyModifierTo(this.msgSpan, msg);
       this.root.classList.add("visible");
       if (duration > 0) {
         this._currentTimeout = setTimeout(this.hideNow, duration);
       }
+      setVisible(this.closeButton, withCloseButton);
       return this.hideNow;
     }
   };
@@ -26950,22 +26866,18 @@ ${outputsStr}
         this._isDisplayingResults = false;
       }
     }
-    skipUpdatesWhile(f) {
-      return __async(this, null, function* () {
-        this._skipUpdates = true;
-        try {
-          return yield f();
-        } finally {
-          this._skipUpdates = false;
-        }
-      });
+    async skipUpdatesWhile(f) {
+      this._skipUpdates = true;
+      try {
+        return await f();
+      } finally {
+        this._skipUpdates = false;
+      }
     }
-    runAllTestSuites() {
-      return __async(this, null, function* () {
-        for (const testSuiteUI of this.testSuites.values()) {
-          yield testSuiteUI.runTestCases();
-        }
-      });
+    async runAllTestSuites() {
+      for (const testSuiteUI of this.testSuites.values()) {
+        await testSuiteUI.runTestCases();
+      }
     }
   };
   __name(TestsPalette, "TestsPalette");
@@ -27066,19 +26978,17 @@ ${outputsStr}
       setVisible(this.content, this._expanded);
       this.palette.updateMaxHeight();
     }
-    runTestCases() {
-      return __async(this, null, function* () {
-        const oldExpanded = this.expanded;
-        setHidden(this.runTestCasesButton, true);
-        try {
-          const testResult = yield this.editor.runTestSuite(this.testSuite, { fast: true });
-          if (testResult !== void 0 && testResult.isAllPass()) {
-            this.expanded = oldExpanded;
-          }
-        } finally {
-          setHidden(this.runTestCasesButton, false);
+    async runTestCases() {
+      const oldExpanded = this.expanded;
+      setHidden(this.runTestCasesButton, true);
+      try {
+        const testResult = await this.editor.runTestSuite(this.testSuite, { fast: true });
+        if (testResult !== void 0 && testResult.isAllPass()) {
+          this.expanded = oldExpanded;
         }
-      });
+      } finally {
+        setHidden(this.runTestCasesButton, false);
+      }
     }
     setRunning(i2) {
       if (!this._expanded) {
@@ -27135,13 +27045,13 @@ ${outputsStr}
         title(s.SetTheseInputs),
         makeIcon("setinput")
       ).render();
-      setTheseInputsButton.addEventListener("click", () => __async(this, null, function* () {
+      setTheseInputsButton.addEventListener("click", async () => {
         testCase.tryFixReferences(this.editor.components);
-        this.palette.skipUpdatesWhile(() => __async(this, null, function* () {
+        this.palette.skipUpdatesWhile(async () => {
           this.editor.trySetInputsAndRecalc(testCase.in);
-          yield this.editor.waitForPropagation();
-        }));
-      }));
+          await this.editor.waitForPropagation();
+        });
+      });
       return table(
         cls("testcase-table"),
         thead(tr(th(s.SetInputs, setTheseInputsButton), th(s.WantedOutputs))),
@@ -27398,6 +27308,11 @@ ${outputsStr}
         s.Open,
         this.openHandler.bind(this)
       );
+      this.loadFromBrowserButton = this.makeButtonWithLabel(
+        "browserload",
+        s.Restore,
+        this.loadFromBrowserHandler.bind(this)
+      );
       this.downloadButton = this.makeButtonWithLabel(
         "download",
         s.Download,
@@ -27429,12 +27344,12 @@ ${outputsStr}
       this.designButton = this.makeButtonWithLabel(
         "mouse",
         s.Design,
-        () => this.editor.setCurrentMouseAction("edit")
+        () => this.editor.setCurrentPointerAction("edit")
       );
       this.deleteButton = this.makeButtonWithLabel(
         "trash",
         s.Delete,
-        () => this.editor.setCurrentMouseAction("delete")
+        () => this.editor.setCurrentPointerAction("delete")
       );
       this.testsButton = this.makeButtonWithLabel(
         "check",
@@ -27445,7 +27360,7 @@ ${outputsStr}
       this.moveButton = this.makeButton(
         "move",
         s.Move[1],
-        () => this.editor.setCurrentMouseAction("move")
+        () => this.editor.setCurrentPointerAction("move")
       );
       this.zoomLevelInput = input(
         type("number"),
@@ -27473,6 +27388,7 @@ ${outputsStr}
         this.resetButton,
         this.makeSep(),
         this.openButton,
+        this.editor.autosave ? this.loadFromBrowserButton : emptyMod,
         this.downloadButton,
         this.screenshotButton,
         this.timelineButtonSep,
@@ -27496,7 +27412,6 @@ ${outputsStr}
       editor.timeline.onStateChanged = (newState) => this.setTimelineButtonsVisible(newState);
       this.setTimelineButtonsVisible(editor.timeline.state);
       this.setDirty(false);
-      window.addEventListener("resize", this.updateCompactMode.bind(this));
       this.setEditingCustomComponent(void 0);
       this.setCircuitName(editor.documentDisplayName);
       this.updateCompactMode();
@@ -27523,6 +27438,9 @@ ${outputsStr}
         this.editor.tryLoadFrom(file);
       });
     }
+    loadFromBrowserHandler() {
+      this.editor.tryLoadFromLocalStorage();
+    }
     saveHandler(e) {
       if (e.altKey && this.editor.factory.hasCustomComponents()) {
         Serialization.saveLibraryToFile(this.editor);
@@ -27540,7 +27458,10 @@ ${outputsStr}
     }
     zoomLevelHandler() {
       const zoom = this.zoomLevelInput.valueAsNumber;
-      this.editor.setZoomLevel(zoom);
+      const validatedZoom = this.editor.setZoom(zoom, false);
+      if (validatedZoom !== zoom) {
+        this.setZoom(validatedZoom);
+      }
     }
     // Visibility methods
     updateCompactMode() {
@@ -27601,7 +27522,7 @@ ${outputsStr}
       setVisible(this.circuitNameGroup, this._showingCircuitName || this._customComponentShown !== void 0);
       this.updateCompactMode();
     }
-    setZoomLevel(zoom) {
+    setZoom(zoom) {
       this.zoomLevelInput.value = String(zoom);
     }
     setDirty(dirty) {
@@ -27864,59 +27785,18 @@ ${outputsStr}
   }
   __name(getBasePlacement, "getBasePlacement");
 
-  // node_modules/@popperjs/core/lib/utils/math.js
-  var max2 = Math.max;
-  var min2 = Math.min;
-  var round = Math.round;
-
-  // node_modules/@popperjs/core/lib/utils/userAgent.js
-  function getUAString() {
-    var uaData = navigator.userAgentData;
-    if (uaData != null && uaData.brands && Array.isArray(uaData.brands)) {
-      return uaData.brands.map(function(item) {
-        return item.brand + "/" + item.version;
-      }).join(" ");
-    }
-    return navigator.userAgent;
-  }
-  __name(getUAString, "getUAString");
-
-  // node_modules/@popperjs/core/lib/dom-utils/isLayoutViewport.js
-  function isLayoutViewport() {
-    return !/^((?!chrome|android).)*safari/i.test(getUAString());
-  }
-  __name(isLayoutViewport, "isLayoutViewport");
-
   // node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js
-  function getBoundingClientRect(element, includeScale, isFixedStrategy) {
-    if (includeScale === void 0) {
-      includeScale = false;
-    }
-    if (isFixedStrategy === void 0) {
-      isFixedStrategy = false;
-    }
-    var clientRect = element.getBoundingClientRect();
-    var scaleX = 1;
-    var scaleY = 1;
-    if (includeScale && isHTMLElement(element)) {
-      scaleX = element.offsetWidth > 0 ? round(clientRect.width) / element.offsetWidth || 1 : 1;
-      scaleY = element.offsetHeight > 0 ? round(clientRect.height) / element.offsetHeight || 1 : 1;
-    }
-    var _ref = isElement(element) ? getWindow(element) : window, visualViewport = _ref.visualViewport;
-    var addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
-    var x = (clientRect.left + (addVisualOffsets && visualViewport ? visualViewport.offsetLeft : 0)) / scaleX;
-    var y = (clientRect.top + (addVisualOffsets && visualViewport ? visualViewport.offsetTop : 0)) / scaleY;
-    var width = clientRect.width / scaleX;
-    var height = clientRect.height / scaleY;
+  function getBoundingClientRect(element) {
+    var rect = element.getBoundingClientRect();
     return {
-      width,
-      height,
-      top: y,
-      right: x + width,
-      bottom: y + height,
-      left: x,
-      x,
-      y
+      width: rect.width,
+      height: rect.height,
+      top: rect.top,
+      right: rect.right,
+      bottom: rect.bottom,
+      left: rect.left,
+      x: rect.left,
+      y: rect.top
     };
   }
   __name(getBoundingClientRect, "getBoundingClientRect");
@@ -28008,18 +27888,8 @@ ${outputsStr}
   }
   __name(getTrueOffsetParent, "getTrueOffsetParent");
   function getContainingBlock(element) {
-    var isFirefox = /firefox/i.test(getUAString());
-    var isIE = /Trident/i.test(getUAString());
-    if (isIE && isHTMLElement(element)) {
-      var elementCss = getComputedStyle2(element);
-      if (elementCss.position === "fixed") {
-        return null;
-      }
-    }
+    var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") !== -1;
     var currentNode = getParentNode(element);
-    if (isShadowRoot(currentNode)) {
-      currentNode = currentNode.host;
-    }
     while (isHTMLElement(currentNode) && ["html", "body"].indexOf(getNodeName(currentNode)) < 0) {
       var css = getComputedStyle2(currentNode);
       if (css.transform !== "none" || css.perspective !== "none" || css.contain === "paint" || ["transform", "perspective"].indexOf(css.willChange) !== -1 || isFirefox && css.willChange === "filter" || isFirefox && css.filter && css.filter !== "none") {
@@ -28050,16 +27920,16 @@ ${outputsStr}
   }
   __name(getMainAxisFromPlacement, "getMainAxisFromPlacement");
 
+  // node_modules/@popperjs/core/lib/utils/math.js
+  var max2 = Math.max;
+  var min2 = Math.min;
+  var round = Math.round;
+
   // node_modules/@popperjs/core/lib/utils/within.js
   function within(min3, value, max3) {
     return max2(min3, min2(value, max3));
   }
   __name(within, "within");
-  function withinMaxClamp(min3, value, max3) {
-    var v = within(min3, value, max3);
-    return v > max3 ? max3 : v;
-  }
-  __name(withinMaxClamp, "withinMaxClamp");
 
   // node_modules/@popperjs/core/lib/utils/getFreshSideObject.js
   function getFreshSideObject() {
@@ -28135,7 +28005,15 @@ ${outputsStr}
         return;
       }
     }
+    if (true) {
+      if (!isHTMLElement(arrowElement)) {
+        console.error(['Popper: "arrow" element must be an HTMLElement (not an SVGElement).', "To use an SVG arrow, wrap it in an HTMLElement that will be used as", "the arrow."].join(" "));
+      }
+    }
     if (!contains(state.elements.popper, arrowElement)) {
+      if (true) {
+        console.error(['Popper: "arrow" modifier\'s `element` must be a child of the popper', "element."].join(" "));
+      }
       return;
     }
     state.elements.arrow = arrowElement;
@@ -28151,12 +28029,6 @@ ${outputsStr}
     requiresIfExists: ["preventOverflow"]
   };
 
-  // node_modules/@popperjs/core/lib/utils/getVariation.js
-  function getVariation(placement) {
-    return placement.split("-")[1];
-  }
-  __name(getVariation, "getVariation");
-
   // node_modules/@popperjs/core/lib/modifiers/computeStyles.js
   var unsetSides = {
     top: "auto",
@@ -28164,28 +28036,20 @@ ${outputsStr}
     bottom: "auto",
     left: "auto"
   };
-  function roundOffsetsByDPR(_ref, win) {
+  function roundOffsetsByDPR(_ref) {
     var x = _ref.x, y = _ref.y;
+    var win = window;
     var dpr = win.devicePixelRatio || 1;
     return {
-      x: round(x * dpr) / dpr || 0,
-      y: round(y * dpr) / dpr || 0
+      x: round(round(x * dpr) / dpr) || 0,
+      y: round(round(y * dpr) / dpr) || 0
     };
   }
   __name(roundOffsetsByDPR, "roundOffsetsByDPR");
   function mapToStyles(_ref2) {
     var _Object$assign2;
-    var popper2 = _ref2.popper, popperRect = _ref2.popperRect, placement = _ref2.placement, variation = _ref2.variation, offsets = _ref2.offsets, position = _ref2.position, gpuAcceleration = _ref2.gpuAcceleration, adaptive = _ref2.adaptive, roundOffsets = _ref2.roundOffsets, isFixed = _ref2.isFixed;
-    var _offsets$x = offsets.x, x = _offsets$x === void 0 ? 0 : _offsets$x, _offsets$y = offsets.y, y = _offsets$y === void 0 ? 0 : _offsets$y;
-    var _ref3 = typeof roundOffsets === "function" ? roundOffsets({
-      x,
-      y
-    }) : {
-      x,
-      y
-    };
-    x = _ref3.x;
-    y = _ref3.y;
+    var popper2 = _ref2.popper, popperRect = _ref2.popperRect, placement = _ref2.placement, offsets = _ref2.offsets, position = _ref2.position, gpuAcceleration = _ref2.gpuAcceleration, adaptive = _ref2.adaptive, roundOffsets = _ref2.roundOffsets;
+    var _ref3 = roundOffsets === true ? roundOffsetsByDPR(offsets) : typeof roundOffsets === "function" ? roundOffsets(offsets) : offsets, _ref3$x = _ref3.x, x = _ref3$x === void 0 ? 0 : _ref3$x, _ref3$y = _ref3.y, y = _ref3$y === void 0 ? 0 : _ref3$y;
     var hasX = offsets.hasOwnProperty("x");
     var hasY = offsets.hasOwnProperty("y");
     var sideX = left;
@@ -28197,60 +28061,49 @@ ${outputsStr}
       var widthProp = "clientWidth";
       if (offsetParent === getWindow(popper2)) {
         offsetParent = getDocumentElement(popper2);
-        if (getComputedStyle2(offsetParent).position !== "static" && position === "absolute") {
+        if (getComputedStyle2(offsetParent).position !== "static") {
           heightProp = "scrollHeight";
           widthProp = "scrollWidth";
         }
       }
       offsetParent = offsetParent;
-      if (placement === top || (placement === left || placement === right) && variation === end) {
+      if (placement === top) {
         sideY = bottom;
-        var offsetY = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.height : (
-          // $FlowFixMe[prop-missing]
-          offsetParent[heightProp]
-        );
-        y -= offsetY - popperRect.height;
+        y -= offsetParent[heightProp] - popperRect.height;
         y *= gpuAcceleration ? 1 : -1;
       }
-      if (placement === left || (placement === top || placement === bottom) && variation === end) {
+      if (placement === left) {
         sideX = right;
-        var offsetX = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.width : (
-          // $FlowFixMe[prop-missing]
-          offsetParent[widthProp]
-        );
-        x -= offsetX - popperRect.width;
+        x -= offsetParent[widthProp] - popperRect.width;
         x *= gpuAcceleration ? 1 : -1;
       }
     }
     var commonStyles = Object.assign({
       position
     }, adaptive && unsetSides);
-    var _ref4 = roundOffsets === true ? roundOffsetsByDPR({
-      x,
-      y
-    }, getWindow(popper2)) : {
-      x,
-      y
-    };
-    x = _ref4.x;
-    y = _ref4.y;
     if (gpuAcceleration) {
       var _Object$assign;
-      return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? "0" : "", _Object$assign[sideX] = hasX ? "0" : "", _Object$assign.transform = (win.devicePixelRatio || 1) <= 1 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
+      return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? "0" : "", _Object$assign[sideX] = hasX ? "0" : "", _Object$assign.transform = (win.devicePixelRatio || 1) < 2 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
     }
     return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : "", _Object$assign2[sideX] = hasX ? x + "px" : "", _Object$assign2.transform = "", _Object$assign2));
   }
   __name(mapToStyles, "mapToStyles");
-  function computeStyles(_ref5) {
-    var state = _ref5.state, options = _ref5.options;
+  function computeStyles(_ref4) {
+    var state = _ref4.state, options = _ref4.options;
     var _options$gpuAccelerat = options.gpuAcceleration, gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat, _options$adaptive = options.adaptive, adaptive = _options$adaptive === void 0 ? true : _options$adaptive, _options$roundOffsets = options.roundOffsets, roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
+    if (true) {
+      var transitionProperty = getComputedStyle2(state.elements.popper).transitionProperty || "";
+      if (adaptive && ["transform", "top", "right", "bottom", "left"].some(function(property) {
+        return transitionProperty.indexOf(property) >= 0;
+      })) {
+        console.warn(["Popper: Detected CSS transitions on at least one of the following", 'CSS properties: "transform", "top", "right", "bottom", "left".', "\n\n", 'Disable the "computeStyles" modifier\'s `adaptive` option to allow', "for smooth transitions, or remove these properties from the CSS", "transition declaration on the popper element if only transitioning", "opacity or background-color for example.", "\n\n", "We recommend using the popper element as a wrapper around an inner", "element that can have any CSS property transitioned for animations."].join(" "));
+      }
+    }
     var commonStyles = {
       placement: getBasePlacement(state.placement),
-      variation: getVariation(state.placement),
       popper: state.elements.popper,
       popperRect: state.rects.popper,
-      gpuAcceleration,
-      isFixed: state.options.strategy === "fixed"
+      gpuAcceleration
     };
     if (state.modifiersData.popperOffsets != null) {
       state.styles.popper = Object.assign({}, state.styles.popper, mapToStyles(Object.assign({}, commonStyles, {
@@ -28365,7 +28218,7 @@ ${outputsStr}
   __name(getWindowScrollBarX, "getWindowScrollBarX");
 
   // node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js
-  function getViewportRect(element, strategy) {
+  function getViewportRect(element) {
     var win = getWindow(element);
     var html = getDocumentElement(element);
     var visualViewport = win.visualViewport;
@@ -28376,8 +28229,7 @@ ${outputsStr}
     if (visualViewport) {
       width = visualViewport.width;
       height = visualViewport.height;
-      var layoutViewport = isLayoutViewport();
-      if (layoutViewport || !layoutViewport && strategy === "fixed") {
+      if (!/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
         x = visualViewport.offsetLeft;
         y = visualViewport.offsetTop;
       }
@@ -28462,8 +28314,8 @@ ${outputsStr}
   __name(rectToClientRect, "rectToClientRect");
 
   // node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js
-  function getInnerBoundingClientRect(element, strategy) {
-    var rect = getBoundingClientRect(element, false, strategy === "fixed");
+  function getInnerBoundingClientRect(element) {
+    var rect = getBoundingClientRect(element);
     rect.top = rect.top + element.clientTop;
     rect.left = rect.left + element.clientLeft;
     rect.bottom = rect.top + element.clientHeight;
@@ -28475,8 +28327,8 @@ ${outputsStr}
     return rect;
   }
   __name(getInnerBoundingClientRect, "getInnerBoundingClientRect");
-  function getClientRectFromMixedType(element, clippingParent, strategy) {
-    return clippingParent === viewport ? rectToClientRect(getViewportRect(element, strategy)) : isElement(clippingParent) ? getInnerBoundingClientRect(clippingParent, strategy) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
+  function getClientRectFromMixedType(element, clippingParent) {
+    return clippingParent === viewport ? rectToClientRect(getViewportRect(element)) : isHTMLElement(clippingParent) ? getInnerBoundingClientRect(clippingParent) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
   }
   __name(getClientRectFromMixedType, "getClientRectFromMixedType");
   function getClippingParents(element) {
@@ -28491,18 +28343,18 @@ ${outputsStr}
     });
   }
   __name(getClippingParents, "getClippingParents");
-  function getClippingRect(element, boundary, rootBoundary, strategy) {
+  function getClippingRect(element, boundary, rootBoundary) {
     var mainClippingParents = boundary === "clippingParents" ? getClippingParents(element) : [].concat(boundary);
     var clippingParents2 = [].concat(mainClippingParents, [rootBoundary]);
     var firstClippingParent = clippingParents2[0];
     var clippingRect = clippingParents2.reduce(function(accRect, clippingParent) {
-      var rect = getClientRectFromMixedType(element, clippingParent, strategy);
+      var rect = getClientRectFromMixedType(element, clippingParent);
       accRect.top = max2(rect.top, accRect.top);
       accRect.right = min2(rect.right, accRect.right);
       accRect.bottom = min2(rect.bottom, accRect.bottom);
       accRect.left = max2(rect.left, accRect.left);
       return accRect;
-    }, getClientRectFromMixedType(element, firstClippingParent, strategy));
+    }, getClientRectFromMixedType(element, firstClippingParent));
     clippingRect.width = clippingRect.right - clippingRect.left;
     clippingRect.height = clippingRect.bottom - clippingRect.top;
     clippingRect.x = clippingRect.left;
@@ -28510,6 +28362,12 @@ ${outputsStr}
     return clippingRect;
   }
   __name(getClippingRect, "getClippingRect");
+
+  // node_modules/@popperjs/core/lib/utils/getVariation.js
+  function getVariation(placement) {
+    return placement.split("-")[1];
+  }
+  __name(getVariation, "getVariation");
 
   // node_modules/@popperjs/core/lib/utils/computeOffsets.js
   function computeOffsets(_ref) {
@@ -28572,13 +28430,14 @@ ${outputsStr}
     if (options === void 0) {
       options = {};
     }
-    var _options = options, _options$placement = _options.placement, placement = _options$placement === void 0 ? state.placement : _options$placement, _options$strategy = _options.strategy, strategy = _options$strategy === void 0 ? state.strategy : _options$strategy, _options$boundary = _options.boundary, boundary = _options$boundary === void 0 ? clippingParents : _options$boundary, _options$rootBoundary = _options.rootBoundary, rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary, _options$elementConte = _options.elementContext, elementContext = _options$elementConte === void 0 ? popper : _options$elementConte, _options$altBoundary = _options.altBoundary, altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary, _options$padding = _options.padding, padding = _options$padding === void 0 ? 0 : _options$padding;
+    var _options = options, _options$placement = _options.placement, placement = _options$placement === void 0 ? state.placement : _options$placement, _options$boundary = _options.boundary, boundary = _options$boundary === void 0 ? clippingParents : _options$boundary, _options$rootBoundary = _options.rootBoundary, rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary, _options$elementConte = _options.elementContext, elementContext = _options$elementConte === void 0 ? popper : _options$elementConte, _options$altBoundary = _options.altBoundary, altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary, _options$padding = _options.padding, padding = _options$padding === void 0 ? 0 : _options$padding;
     var paddingObject = mergePaddingObject(typeof padding !== "number" ? padding : expandToHashMap(padding, basePlacements));
     var altContext = elementContext === popper ? reference : popper;
+    var referenceElement = state.elements.reference;
     var popperRect = state.rects.popper;
     var element = state.elements[altBoundary ? altContext : elementContext];
-    var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary, strategy);
-    var referenceClientRect = getBoundingClientRect(state.elements.reference);
+    var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary);
+    var referenceClientRect = getBoundingClientRect(referenceElement);
     var popperOffsets2 = computeOffsets({
       reference: referenceClientRect,
       element: popperRect,
@@ -28621,6 +28480,9 @@ ${outputsStr}
     });
     if (allowedPlacements.length === 0) {
       allowedPlacements = placements2;
+      if (true) {
+        console.error(["Popper: The `allowedAutoPlacements` option did not allow any", "placements. Ensure the `placement` option matches the variation", "of the allowed placements.", 'For example, "auto" cannot be used to allow "bottom-start".', 'Use "auto-start" instead.'].join(" "));
+      }
     }
     var overflows = allowedPlacements.reduce(function(acc, placement2) {
       acc[placement2] = detectOverflow(state, {
@@ -28889,14 +28751,6 @@ ${outputsStr}
     var tetherOffsetValue = typeof tetherOffset === "function" ? tetherOffset(Object.assign({}, state.rects, {
       placement: state.placement
     })) : tetherOffset;
-    var normalizedTetherOffsetValue = typeof tetherOffsetValue === "number" ? {
-      mainAxis: tetherOffsetValue,
-      altAxis: tetherOffsetValue
-    } : Object.assign({
-      mainAxis: 0,
-      altAxis: 0
-    }, tetherOffsetValue);
-    var offsetModifierState = state.modifiersData.offset ? state.modifiersData.offset[state.placement] : null;
     var data2 = {
       x: 0,
       y: 0
@@ -28904,14 +28758,13 @@ ${outputsStr}
     if (!popperOffsets2) {
       return;
     }
-    if (checkMainAxis) {
-      var _offsetModifierState$;
+    if (checkMainAxis || checkAltAxis) {
       var mainSide = mainAxis === "y" ? top : left;
       var altSide = mainAxis === "y" ? bottom : right;
       var len = mainAxis === "y" ? "height" : "width";
       var offset2 = popperOffsets2[mainAxis];
-      var min3 = offset2 + overflow[mainSide];
-      var max3 = offset2 - overflow[altSide];
+      var min3 = popperOffsets2[mainAxis] + overflow[mainSide];
+      var max3 = popperOffsets2[mainAxis] - overflow[altSide];
       var additive = tether ? -popperRect[len] / 2 : 0;
       var minLen = variation === start ? referenceRect[len] : popperRect[len];
       var maxLen = variation === start ? -popperRect[len] : -referenceRect[len];
@@ -28924,32 +28777,28 @@ ${outputsStr}
       var arrowPaddingMin = arrowPaddingObject[mainSide];
       var arrowPaddingMax = arrowPaddingObject[altSide];
       var arrowLen = within(0, referenceRect[len], arrowRect[len]);
-      var minOffset = isBasePlacement ? referenceRect[len] / 2 - additive - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis : minLen - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis;
-      var maxOffset = isBasePlacement ? -referenceRect[len] / 2 + additive + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis : maxLen + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis;
+      var minOffset = isBasePlacement ? referenceRect[len] / 2 - additive - arrowLen - arrowPaddingMin - tetherOffsetValue : minLen - arrowLen - arrowPaddingMin - tetherOffsetValue;
+      var maxOffset = isBasePlacement ? -referenceRect[len] / 2 + additive + arrowLen + arrowPaddingMax + tetherOffsetValue : maxLen + arrowLen + arrowPaddingMax + tetherOffsetValue;
       var arrowOffsetParent = state.elements.arrow && getOffsetParent(state.elements.arrow);
       var clientOffset = arrowOffsetParent ? mainAxis === "y" ? arrowOffsetParent.clientTop || 0 : arrowOffsetParent.clientLeft || 0 : 0;
-      var offsetModifierValue = (_offsetModifierState$ = offsetModifierState == null ? void 0 : offsetModifierState[mainAxis]) != null ? _offsetModifierState$ : 0;
-      var tetherMin = offset2 + minOffset - offsetModifierValue - clientOffset;
-      var tetherMax = offset2 + maxOffset - offsetModifierValue;
-      var preventedOffset = within(tether ? min2(min3, tetherMin) : min3, offset2, tether ? max2(max3, tetherMax) : max3);
-      popperOffsets2[mainAxis] = preventedOffset;
-      data2[mainAxis] = preventedOffset - offset2;
-    }
-    if (checkAltAxis) {
-      var _offsetModifierState$2;
-      var _mainSide = mainAxis === "x" ? top : left;
-      var _altSide = mainAxis === "x" ? bottom : right;
-      var _offset = popperOffsets2[altAxis];
-      var _len = altAxis === "y" ? "height" : "width";
-      var _min = _offset + overflow[_mainSide];
-      var _max = _offset - overflow[_altSide];
-      var isOriginSide = [top, left].indexOf(basePlacement) !== -1;
-      var _offsetModifierValue = (_offsetModifierState$2 = offsetModifierState == null ? void 0 : offsetModifierState[altAxis]) != null ? _offsetModifierState$2 : 0;
-      var _tetherMin = isOriginSide ? _min : _offset - referenceRect[_len] - popperRect[_len] - _offsetModifierValue + normalizedTetherOffsetValue.altAxis;
-      var _tetherMax = isOriginSide ? _offset + referenceRect[_len] + popperRect[_len] - _offsetModifierValue - normalizedTetherOffsetValue.altAxis : _max;
-      var _preventedOffset = tether && isOriginSide ? withinMaxClamp(_tetherMin, _offset, _tetherMax) : within(tether ? _tetherMin : _min, _offset, tether ? _tetherMax : _max);
-      popperOffsets2[altAxis] = _preventedOffset;
-      data2[altAxis] = _preventedOffset - _offset;
+      var offsetModifierValue = state.modifiersData.offset ? state.modifiersData.offset[state.placement][mainAxis] : 0;
+      var tetherMin = popperOffsets2[mainAxis] + minOffset - offsetModifierValue - clientOffset;
+      var tetherMax = popperOffsets2[mainAxis] + maxOffset - offsetModifierValue;
+      if (checkMainAxis) {
+        var preventedOffset = within(tether ? min2(min3, tetherMin) : min3, offset2, tether ? max2(max3, tetherMax) : max3);
+        popperOffsets2[mainAxis] = preventedOffset;
+        data2[mainAxis] = preventedOffset - offset2;
+      }
+      if (checkAltAxis) {
+        var _mainSide = mainAxis === "x" ? top : left;
+        var _altSide = mainAxis === "x" ? bottom : right;
+        var _offset = popperOffsets2[altAxis];
+        var _min = _offset + overflow[_mainSide];
+        var _max = _offset - overflow[_altSide];
+        var _preventedOffset = within(tether ? min2(_min, tetherMin) : _min, _offset, tether ? max2(_max, tetherMax) : _max);
+        popperOffsets2[altAxis] = _preventedOffset;
+        data2[altAxis] = _preventedOffset - _offset;
+      }
     }
     state.modifiersData[name2] = data2;
   }
@@ -28982,21 +28831,13 @@ ${outputsStr}
   __name(getNodeScroll, "getNodeScroll");
 
   // node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js
-  function isElementScaled(element) {
-    var rect = element.getBoundingClientRect();
-    var scaleX = round(rect.width) / element.offsetWidth || 1;
-    var scaleY = round(rect.height) / element.offsetHeight || 1;
-    return scaleX !== 1 || scaleY !== 1;
-  }
-  __name(isElementScaled, "isElementScaled");
   function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
     if (isFixed === void 0) {
       isFixed = false;
     }
-    var isOffsetParentAnElement = isHTMLElement(offsetParent);
-    var offsetParentIsScaled = isHTMLElement(offsetParent) && isElementScaled(offsetParent);
     var documentElement = getDocumentElement(offsetParent);
-    var rect = getBoundingClientRect(elementOrVirtualElement, offsetParentIsScaled, isFixed);
+    var rect = getBoundingClientRect(elementOrVirtualElement);
+    var isOffsetParentAnElement = isHTMLElement(offsetParent);
     var scroll = {
       scrollLeft: 0,
       scrollTop: 0
@@ -29011,7 +28852,7 @@ ${outputsStr}
         scroll = getNodeScroll(offsetParent);
       }
       if (isHTMLElement(offsetParent)) {
-        offsets = getBoundingClientRect(offsetParent, true);
+        offsets = getBoundingClientRect(offsetParent);
         offsets.x += offsetParent.clientLeft;
         offsets.y += offsetParent.clientTop;
       } else if (documentElement) {
@@ -29084,6 +28925,92 @@ ${outputsStr}
   }
   __name(debounce, "debounce");
 
+  // node_modules/@popperjs/core/lib/utils/format.js
+  function format(str) {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+    return [].concat(args).reduce(function(p, c) {
+      return p.replace(/%s/, c);
+    }, str);
+  }
+  __name(format, "format");
+
+  // node_modules/@popperjs/core/lib/utils/validateModifiers.js
+  var INVALID_MODIFIER_ERROR = 'Popper: modifier "%s" provided an invalid %s property, expected %s but got %s';
+  var MISSING_DEPENDENCY_ERROR = 'Popper: modifier "%s" requires "%s", but "%s" modifier is not available';
+  var VALID_PROPERTIES = ["name", "enabled", "phase", "fn", "effect", "requires", "options"];
+  function validateModifiers(modifiers) {
+    modifiers.forEach(function(modifier) {
+      Object.keys(modifier).forEach(function(key) {
+        switch (key) {
+          case "name":
+            if (typeof modifier.name !== "string") {
+              console.error(format(INVALID_MODIFIER_ERROR, String(modifier.name), '"name"', '"string"', '"' + String(modifier.name) + '"'));
+            }
+            break;
+          case "enabled":
+            if (typeof modifier.enabled !== "boolean") {
+              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"enabled"', '"boolean"', '"' + String(modifier.enabled) + '"'));
+            }
+          case "phase":
+            if (modifierPhases.indexOf(modifier.phase) < 0) {
+              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"phase"', "either " + modifierPhases.join(", "), '"' + String(modifier.phase) + '"'));
+            }
+            break;
+          case "fn":
+            if (typeof modifier.fn !== "function") {
+              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"fn"', '"function"', '"' + String(modifier.fn) + '"'));
+            }
+            break;
+          case "effect":
+            if (typeof modifier.effect !== "function") {
+              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"effect"', '"function"', '"' + String(modifier.fn) + '"'));
+            }
+            break;
+          case "requires":
+            if (!Array.isArray(modifier.requires)) {
+              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"requires"', '"array"', '"' + String(modifier.requires) + '"'));
+            }
+            break;
+          case "requiresIfExists":
+            if (!Array.isArray(modifier.requiresIfExists)) {
+              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"requiresIfExists"', '"array"', '"' + String(modifier.requiresIfExists) + '"'));
+            }
+            break;
+          case "options":
+          case "data":
+            break;
+          default:
+            console.error('PopperJS: an invalid property has been provided to the "' + modifier.name + '" modifier, valid properties are ' + VALID_PROPERTIES.map(function(s) {
+              return '"' + s + '"';
+            }).join(", ") + '; but "' + key + '" was provided.');
+        }
+        modifier.requires && modifier.requires.forEach(function(requirement) {
+          if (modifiers.find(function(mod) {
+            return mod.name === requirement;
+          }) == null) {
+            console.error(format(MISSING_DEPENDENCY_ERROR, String(modifier.name), requirement, requirement));
+          }
+        });
+      });
+    });
+  }
+  __name(validateModifiers, "validateModifiers");
+
+  // node_modules/@popperjs/core/lib/utils/uniqueBy.js
+  function uniqueBy(arr, fn2) {
+    var identifiers = /* @__PURE__ */ new Set();
+    return arr.filter(function(item) {
+      var identifier = fn2(item);
+      if (!identifiers.has(identifier)) {
+        identifiers.add(identifier);
+        return true;
+      }
+    });
+  }
+  __name(uniqueBy, "uniqueBy");
+
   // node_modules/@popperjs/core/lib/utils/mergeByName.js
   function mergeByName(modifiers) {
     var merged = modifiers.reduce(function(merged2, current) {
@@ -29101,6 +29028,8 @@ ${outputsStr}
   __name(mergeByName, "mergeByName");
 
   // node_modules/@popperjs/core/lib/createPopper.js
+  var INVALID_ELEMENT_ERROR = "Popper: Invalid reference or popper argument provided. They must be either a DOM element or virtual element.";
+  var INFINITE_LOOP_ERROR = "Popper: An infinite loop in the modifiers cycle has been detected! The cycle has been interrupted to prevent a browser crash.";
   var DEFAULT_OPTIONS = {
     placement: "bottom",
     modifiers: [],
@@ -29140,8 +29069,7 @@ ${outputsStr}
       var isDestroyed = false;
       var instance = {
         state,
-        setOptions: /* @__PURE__ */ __name(function setOptions(setOptionsAction) {
-          var options2 = typeof setOptionsAction === "function" ? setOptionsAction(state.options) : setOptionsAction;
+        setOptions: /* @__PURE__ */ __name(function setOptions(options2) {
           cleanupModifierEffects();
           state.options = Object.assign({}, defaultOptions, state.options, options2);
           state.scrollParents = {
@@ -29152,6 +29080,28 @@ ${outputsStr}
           state.orderedModifiers = orderedModifiers.filter(function(m) {
             return m.enabled;
           });
+          if (true) {
+            var modifiers = uniqueBy([].concat(orderedModifiers, state.options.modifiers), function(_ref) {
+              var name2 = _ref.name;
+              return name2;
+            });
+            validateModifiers(modifiers);
+            if (getBasePlacement(state.options.placement) === auto) {
+              var flipModifier = state.orderedModifiers.find(function(_ref2) {
+                var name2 = _ref2.name;
+                return name2 === "flip";
+              });
+              if (!flipModifier) {
+                console.error(['Popper: "auto" placements require the "flip" modifier be', "present and enabled to work."].join(" "));
+              }
+            }
+            var _getComputedStyle = getComputedStyle2(popper2), marginTop = _getComputedStyle.marginTop, marginRight = _getComputedStyle.marginRight, marginBottom = _getComputedStyle.marginBottom, marginLeft = _getComputedStyle.marginLeft;
+            if ([marginTop, marginRight, marginBottom, marginLeft].some(function(margin) {
+              return parseFloat(margin);
+            })) {
+              console.warn(['Popper: CSS "margin" styles cannot be used to apply padding', "between the popper and its reference element or boundary.", "To replicate margin, use the `offset` modifier, as well as", "the `padding` option in the `preventOverflow` and `flip`", "modifiers."].join(" "));
+            }
+          }
           runModifierEffects();
           return instance.update();
         }, "setOptions"),
@@ -29166,6 +29116,9 @@ ${outputsStr}
           }
           var _state$elements = state.elements, reference3 = _state$elements.reference, popper3 = _state$elements.popper;
           if (!areValidElements(reference3, popper3)) {
+            if (true) {
+              console.error(INVALID_ELEMENT_ERROR);
+            }
             return;
           }
           state.rects = {
@@ -29177,7 +29130,15 @@ ${outputsStr}
           state.orderedModifiers.forEach(function(modifier) {
             return state.modifiersData[modifier.name] = Object.assign({}, modifier.data);
           });
+          var __debug_loops__ = 0;
           for (var index = 0; index < state.orderedModifiers.length; index++) {
+            if (true) {
+              __debug_loops__ += 1;
+              if (__debug_loops__ > 100) {
+                console.error(INFINITE_LOOP_ERROR);
+                break;
+              }
+            }
             if (state.reset === true) {
               state.reset = false;
               index = -1;
@@ -29208,6 +29169,9 @@ ${outputsStr}
         }, "destroy")
       };
       if (!areValidElements(reference2, popper2)) {
+        if (true) {
+          console.error(INVALID_ELEMENT_ERROR);
+        }
         return instance;
       }
       instance.setOptions(options).then(function(state2) {
@@ -29216,8 +29180,8 @@ ${outputsStr}
         }
       });
       function runModifierEffects() {
-        state.orderedModifiers.forEach(function(_ref) {
-          var name2 = _ref.name, _ref$options = _ref.options, options2 = _ref$options === void 0 ? {} : _ref$options, effect4 = _ref.effect;
+        state.orderedModifiers.forEach(function(_ref3) {
+          var name2 = _ref3.name, _ref3$options = _ref3.options, options2 = _ref3$options === void 0 ? {} : _ref3$options, effect4 = _ref3.effect;
           if (typeof effect4 === "function") {
             var cleanupFn = effect4({
               state,
@@ -29251,12 +29215,16 @@ ${outputsStr}
   });
 
   // simulator/src/UIEventManager.ts
-  function setDragStartData(e, dragStartX, dragStartY) {
+  function setDragStartOnEvent(e, dragStartX, dragStartY) {
     const _e = e;
     _e.dragStartX = dragStartX;
     _e.dragStartY = dragStartY;
   }
-  __name(setDragStartData, "setDragStartData");
+  __name(setDragStartOnEvent, "setDragStartOnEvent");
+  function preventDefaultAlways(e) {
+    e.preventDefault();
+  }
+  __name(preventDefaultAlways, "preventDefaultAlways");
   var EditorSelection = class {
     constructor(currentlyDrawnRect) {
       this.currentlyDrawnRect = currentlyDrawnRect;
@@ -29305,22 +29273,22 @@ ${outputsStr}
   __name(EditorSelection, "EditorSelection");
   var UIEventManager = class {
     constructor(editor) {
-      this._currentMouseOverComp = null;
-      this._currentMouseOverPopper = null;
-      this._currentMouseDownData = null;
+      this._currentComponentUnderPointer = null;
+      this._currentTooltip = null;
+      this._currentPointerDownData = null;
       this._startHoverTimeoutHandle = null;
-      this._startDragTimeoutHandle = null;
+      this._longPressTimeoutHandle = null;
       this._lastTouchEnd = void 0;
       this.currentSelection = void 0;
       this.editor = editor;
       this._currentAction = "edit";
       this._currentHandlers = new EditHandlers(editor);
     }
-    get currentMouseOverComp() {
-      return this._currentMouseOverComp;
+    get currentComponentUnderPointer() {
+      return this._currentComponentUnderPointer;
     }
-    get currentMouseDownData() {
-      return this._currentMouseDownData;
+    get currentPointerDownData() {
+      return this._currentPointerDownData;
     }
     setHandlersFor(action, ...params) {
       if (action === this._currentAction) {
@@ -29342,42 +29310,49 @@ ${outputsStr}
       })();
       this._currentHandlers.unmount();
       this._currentHandlers = newHandlers;
-      setColorMouseOverIsDanger(action === "delete");
+      setColorPointerOverIsDanger(action === "delete");
       return true;
     }
-    setStartDragTimeout(startMouseDownData, e) {
+    startLongPressTimeout(startPointerDownData, e) {
       const _e = e;
       _e._savedOffsetX = _e.offsetX;
       _e._savedOffsetY = _e.offsetY;
       _e._savedTarget = _e.target;
-      this._startDragTimeoutHandle = setTimeout(
+      this._longPressTimeoutHandle = setTimeout(
         this.editor.wrapHandler(() => {
-          let fireDrag = true;
-          const endMouseDownData = this._currentMouseDownData;
-          if (endMouseDownData !== null) {
-            endMouseDownData.fireMouseClickedOnFinish = false;
-            if (endMouseDownData.triggeredContextMenu) {
-              fireDrag = false;
+          let cancelLongPressAction = false;
+          const endPointerDownData = this._currentPointerDownData;
+          if (endPointerDownData !== null) {
+            endPointerDownData.fireClickedOnFinish = false;
+            if (endPointerDownData.triggeredContextMenu) {
+              cancelLongPressAction = true;
             }
           }
-          if (fireDrag) {
+          if (cancelLongPressAction) {
+            return;
+          }
+          if (e.pointerType === "mouse") {
             const [dragStartX, dragStartY] = this.editor.offsetXY(e, true);
-            setDragStartData(e, dragStartX, dragStartY);
-            if (startMouseDownData.mainComp instanceof Drawable) {
-              this._currentHandlers.mouseDraggedOn(startMouseDownData.mainComp, e);
+            setDragStartOnEvent(e, dragStartX, dragStartY);
+            if (startPointerDownData.mainComp instanceof Drawable) {
+              this._currentHandlers.pointerDraggedOn(startPointerDownData.mainComp, e);
             }
-            for (const comp of startMouseDownData.selectionComps) {
-              this._currentHandlers.mouseDraggedOn(comp, e);
+            for (const comp of startPointerDownData.selectionComps) {
+              this._currentHandlers.pointerDraggedOn(comp, e);
+            }
+          } else {
+            if (this.editor.mode >= 2 /* CONNECT */ && startPointerDownData.mainComp instanceof Drawable) {
+              this._currentHandlers.contextMenuOn(startPointerDownData.mainComp, e);
             }
           }
         }),
         500
       );
     }
-    clearStartDragTimeout() {
-      if (this._startDragTimeoutHandle !== null) {
-        clearTimeout(this._startDragTimeoutHandle);
-        this._startDragTimeoutHandle = null;
+    clearLongPressTimeout() {
+      if (this._longPressTimeoutHandle !== null) {
+        clearTimeout(this._longPressTimeoutHandle);
+        this._longPressTimeoutHandle = null;
       }
     }
     clearHoverTimeoutHandle() {
@@ -29386,30 +29361,30 @@ ${outputsStr}
         this._startHoverTimeoutHandle = null;
       }
     }
-    setCurrentMouseOverComp(comp) {
-      if (comp !== this._currentMouseOverComp) {
-        this.clearPopperIfNecessary();
+    setCurrentComponentUnderPointer(comp) {
+      if (comp !== this._currentComponentUnderPointer) {
+        this.clearTooltipIfNeeded();
         this.clearHoverTimeoutHandle();
-        this._currentMouseOverComp = comp;
+        this._currentComponentUnderPointer = comp;
         if (comp !== null) {
           this._startHoverTimeoutHandle = setTimeout(() => {
-            this._currentHandlers.mouseHoverOn(comp);
+            this._currentHandlers.pointerHoverOn(comp);
             this._startHoverTimeoutHandle = null;
           }, 1200);
         }
-        this.editor.editTools.redrawMgr.requestRedraw({ why: "mouseover changed" });
+        this.editor.editTools.redrawMgr.requestRedraw({ why: "pointerover changed" });
       }
     }
     currentSelectionEmpty() {
       return this.currentSelection === void 0 || this.currentSelection.previouslySelectedElements.size === 0;
     }
-    updateMouseOver([x, y], pullingWire, settingAnchor) {
-      const findMouseOver = /* @__PURE__ */ __name(() => {
-        const prevMouseOver = this._currentMouseOverComp;
-        if (prevMouseOver !== null && prevMouseOver.drawZIndex !== 0) {
-          const rejectThis = prevMouseOver instanceof Wire || settingAnchor && !(prevMouseOver instanceof ComponentBase);
-          if (!rejectThis && prevMouseOver.isOver(x, y)) {
-            return this._currentMouseOverComp;
+    updateComponentUnderPointer([x, y], pullingWire, settingAnchor, isTouch) {
+      const findComponenentUnderPointer = /* @__PURE__ */ __name(() => {
+        const prevCompUnderPointer = this._currentComponentUnderPointer;
+        if (prevCompUnderPointer !== null && prevCompUnderPointer.drawZIndex !== 0) {
+          const rejectThis = prevCompUnderPointer instanceof Wire || prevCompUnderPointer instanceof NodeBase || settingAnchor && !(prevCompUnderPointer instanceof ComponentBase);
+          if (!rejectThis && prevCompUnderPointer.isOver(x, y)) {
+            return this._currentComponentUnderPointer;
           }
         }
         const root = this.editor.editorRoot;
@@ -29421,16 +29396,18 @@ ${outputsStr}
           }
         }
         for (const comp of root.components.withZIndex(DrawZIndex.Normal)) {
-          let nodeOver = null;
+          let nodeOver = void 0;
+          let bestDistanceSquared = Number.POSITIVE_INFINITY;
           if (!settingAnchor) {
             for (const node of comp.allNodes()) {
-              if (node.isOver(x, y)) {
+              const dist = node.distSquaredIfOver(x, y, isTouch);
+              if (dist !== void 0 && dist < bestDistanceSquared) {
+                bestDistanceSquared = dist;
                 nodeOver = node;
-                break;
               }
             }
           }
-          if (nodeOver !== null && (!pullingWire || root.linkMgr.isValidNodeToConnect(nodeOver))) {
+          if (nodeOver !== void 0 && (!pullingWire || root.linkMgr.isValidNodeToConnect(nodeOver))) {
             return nodeOver;
           }
           if (!pullingWire && comp.isOver(x, y)) {
@@ -29457,8 +29434,8 @@ ${outputsStr}
           }
         }
         return null;
-      }, "findMouseOver");
-      this.setCurrentMouseOverComp(findMouseOver());
+      }, "findComponenentUnderPointer");
+      this.setCurrentComponentUnderPointer(findComponenentUnderPointer());
     }
     selectAll() {
       const sel = new EditorSelection(void 0);
@@ -29483,21 +29460,33 @@ ${outputsStr}
       sel.toggle(comp);
       this.editor.editTools.redrawMgr.requestRedraw({ why: "toggled selection" });
     }
-    clearPopperIfNecessary() {
-      if (this._currentMouseOverPopper !== null) {
-        const [popper2, removeListener] = this._currentMouseOverPopper;
+    moveSelection(dx, dy, snapToGrid) {
+      const sel = this.currentSelection;
+      if (sel === void 0 || sel.previouslySelectedElements.size === 0) {
+        return false;
+      }
+      for (const comp of sel.previouslySelectedElements) {
+        if (comp instanceof DrawableWithDraggablePosition) {
+          comp.setPosition(comp.posX + dx, comp.posY + dy, snapToGrid);
+        }
+      }
+      return true;
+    }
+    clearTooltipIfNeeded() {
+      if (this._currentTooltip !== null) {
+        const [tooltip, removeListener] = this._currentTooltip;
         removeListener();
-        popper2.destroy();
-        this._currentMouseOverPopper = null;
+        tooltip.destroy();
+        this._currentTooltip = null;
         this.editor.html.tooltipElem.style.display = "none";
       }
     }
-    makePopper(tooltipHtml, rect) {
+    makeTooltip(tooltipHtml, rect) {
       const { tooltipContents, tooltipElem, mainCanvas } = this.editor.html;
       tooltipContents.innerHTML = "";
       tooltipHtml.applyTo(tooltipContents);
       tooltipElem.style.removeProperty("display");
-      const popper2 = createPopper({
+      const tooltip = createPopper({
         getBoundingClientRect: rect,
         contextElement: mainCanvas
       }, tooltipElem, {
@@ -29505,16 +29494,285 @@ ${outputsStr}
         modifiers: [{ name: "offset", options: { offset: [4, 8] } }]
       });
       const scrollParent = getScrollParent(mainCanvas);
-      const scrollListener = /* @__PURE__ */ __name(() => popper2.update(), "scrollListener");
+      const scrollListener = /* @__PURE__ */ __name(() => tooltip.update(), "scrollListener");
       scrollParent.addEventListener("scroll", scrollListener);
       const removeListener = /* @__PURE__ */ __name(() => scrollParent.removeEventListener("scroll", scrollListener), "removeListener");
-      this._currentMouseOverPopper = [popper2, removeListener];
+      this._currentTooltip = [tooltip, removeListener];
       tooltipElem.setAttribute("data-show", "");
-      popper2.update();
+      tooltip.update();
+    }
+    hideContextMenuIfNeeded(e) {
+      this._currentHandlers.hideContextMenuIfNeeded(e);
     }
     registerCanvasListenersOn(canvas2) {
       const editor = this.editor;
       const returnFalse = /* @__PURE__ */ __name(() => false, "returnFalse");
+      const preventDefaultIfCanConnect = /* @__PURE__ */ __name((e) => {
+        if (this.editor.mode >= 2 /* CONNECT */) {
+          e.preventDefault();
+        }
+      }, "preventDefaultIfCanConnect");
+      canvas2.ontouchstart = preventDefaultIfCanConnect;
+      canvas2.ontouchmove = preventDefaultIfCanConnect;
+      canvas2.ontouchend = preventDefaultAlways;
+      const downPointers = /* @__PURE__ */ new Map();
+      let trackedPointerId = void 0;
+      let currentZoomSession = void 0;
+      const cancelZoomSession = /* @__PURE__ */ __name(() => {
+        if (currentZoomSession !== void 0) {
+          const translationRoundTo = GRID_STEP / 2;
+          const tX = Math.round(editor.translationX / translationRoundTo) * translationRoundTo;
+          const tY = Math.round(editor.translationY / translationRoundTo) * translationRoundTo;
+          editor.setTranslation(tX, tY);
+          currentZoomSession = void 0;
+        }
+      }, "cancelZoomSession");
+      const applyZoomAndTranslation = /* @__PURE__ */ __name((zoom, startGestureX, startGestureY, endGestureX, endGestureY) => {
+        const effectiveZoom = editor.setZoom(zoom, true);
+        const effectiveScale = effectiveZoom / 100;
+        const tX = endGestureX / effectiveScale - startGestureX;
+        const tY = endGestureY / effectiveScale - startGestureY;
+        editor.setTranslation(tX, tY);
+      }, "applyZoomAndTranslation");
+      const getTwoPointersLoc = /* @__PURE__ */ __name((skipTransform) => {
+        if (downPointers.size !== 2) {
+          throw new Error("Pointer distance called with " + downPointers.size + " pointers instead of 2");
+        }
+        const pointerEvents = downPointers.values();
+        const p1 = pointerEvents.next().value;
+        const p2 = pointerEvents.next().value;
+        const [p1X, p1Y] = editor.offsetXY(p1, skipTransform);
+        const [p2X, p2Y] = editor.offsetXY(p2, skipTransform);
+        const centerX = (p1X + p2X) / 2;
+        const centerY = (p1Y + p2Y) / 2;
+        const dx = p1X - p2X;
+        const dy = p1Y - p2Y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        return { dist, centerX, centerY };
+      }, "getTwoPointersLoc");
+      canvas2.onpointerdown = editor.wrapHandler((e) => {
+        const pointerId = e.pointerId;
+        canvas2.setPointerCapture(pointerId);
+        downPointers.set(pointerId, e);
+        const numPointers = downPointers.size;
+        if (numPointers === 2) {
+          this.doPointerUp(e);
+          trackedPointerId = void 0;
+          if (editor.mode >= 2 /* CONNECT */) {
+            const initialTransform = {
+              zoom: this.editor.userDrawingScale * 100,
+              tX: this.editor.translationX,
+              tY: this.editor.translationY
+            };
+            currentZoomSession = {
+              initialTransform,
+              initialPointersLoc: getTwoPointersLoc(false)
+            };
+          }
+        } else {
+          cancelZoomSession();
+        }
+        if (numPointers === 1) {
+          trackedPointerId = pointerId;
+          this.doPointerDown(e);
+        }
+      });
+      canvas2.onpointermove = editor.wrapHandler((e) => {
+        const pointerId = e.pointerId;
+        if (downPointers.has(pointerId)) {
+          downPointers.set(pointerId, e);
+        }
+        const numPointers = downPointers.size;
+        let handle = false;
+        if (numPointers === 2 && currentZoomSession !== void 0) {
+          const initLoc = currentZoomSession.initialPointersLoc;
+          const newLoc = getTwoPointersLoc(true);
+          const factor = newLoc.dist / initLoc.dist * 100 / currentZoomSession.initialTransform.zoom;
+          const targetZoom = currentZoomSession.initialTransform.zoom * factor;
+          const stickyZoom = targetZoom > 95 && targetZoom < 105 ? 100 : targetZoom;
+          applyZoomAndTranslation(stickyZoom, initLoc.centerX, initLoc.centerY, newLoc.centerX, newLoc.centerY);
+        } else {
+          handle = pointerId === trackedPointerId;
+        }
+        if (e.pointerType !== "touch" || handle) {
+          this.doPointerMove(e);
+        }
+      });
+      canvas2.onpointerleave = this.clearTooltipIfNeeded.bind(this);
+      const onpointerupcancel = editor.wrapHandler((e) => {
+        const pointerId = e.pointerId;
+        downPointers.delete(pointerId);
+        if (pointerId === trackedPointerId) {
+          this.doPointerUp(e);
+          trackedPointerId = void 0;
+        }
+        cancelZoomSession();
+      });
+      canvas2.onpointerup = onpointerupcancel;
+      canvas2.onpointercancel = onpointerupcancel;
+      canvas2.onwheel = editor.wrapHandler((e) => {
+        if (editor.mode >= 2 /* CONNECT */) {
+          e.preventDefault();
+          const isZoomGesture = e.ctrlKey || e.metaKey;
+          if (isZoomGesture) {
+            const delta = -e.deltaY;
+            const zoomFactor = 1 + delta * 5e-3;
+            const oldZoom = editor.userDrawingScale * 100;
+            const [oldCenterX, oldCenterY] = editor.offsetXY(e, false);
+            const [newCenterX, newCenterY] = editor.offsetXY(e, true);
+            applyZoomAndTranslation(oldZoom * zoomFactor, oldCenterX, oldCenterY, newCenterX, newCenterY);
+          } else {
+            const panX = -e.deltaX;
+            const panY = -e.deltaY;
+            editor.setTranslation(editor.translationX + panX, editor.translationY + panY);
+          }
+        }
+      });
+      canvas2.oncontextmenu = editor.wrapHandler((e) => {
+        e.preventDefault();
+        if (this.editor.mode >= 2 /* CONNECT */ && this._currentComponentUnderPointer !== null) {
+          this._currentHandlers.contextMenuOn(this._currentComponentUnderPointer, e);
+        }
+      });
+      canvas2.addEventListener("keyup", editor.wrapHandler((e) => {
+        if (targetIsFieldOrOtherInput(e)) {
+          return;
+        }
+        const keyLower = e.key.toLowerCase();
+        switch (keyLower) {
+          case "escape": {
+            let handled;
+            handled = editor.eventMgr.tryDeleteComponentsWhere((comp) => comp.state === 0 /* SPAWNING */, false) > 0;
+            if (!handled) {
+              handled = editor.linkMgr.tryCancelWireOrAnchor();
+            }
+            if (!handled && this.editor.editorRoot instanceof CustomComponent) {
+              handled = this.editor.tryCloseCustomComponentEditor();
+            }
+            if (!handled) {
+              handled = editor.setCurrentPointerAction("edit");
+            }
+            if (handled) {
+              e.preventDefault();
+            }
+            return;
+          }
+          case "backspace":
+          case "delete": {
+            e.preventDefault();
+            if (!editor.deleteSelection()) {
+              if (this.currentComponentUnderPointer !== null) {
+                const result = editor.eventMgr.tryDeleteDrawable(this.currentComponentUnderPointer);
+                if (result.isChange) {
+                  editor.editTools.undoMgr.takeSnapshot(result);
+                }
+              }
+            }
+            return;
+          }
+          case "e":
+            editor.setCurrentPointerAction("edit");
+            e.preventDefault();
+            return;
+          case "d":
+            editor.setCurrentPointerAction("delete");
+            e.preventDefault();
+            return;
+          case "m":
+            editor.setCurrentPointerAction("move");
+            e.preventDefault();
+            return;
+          case "t":
+            if (editor.editorRoot.testSuites.totalCases() > 0) {
+              editor.setTestsPaletteVisible(true);
+              editor.editTools.testsPalette.runAllTestSuites();
+              e.preventDefault();
+              return;
+            }
+        }
+      }));
+      canvas2.addEventListener("keydown", editor.wrapAsyncHandler(async (e) => {
+        const ctrlOrCommand = e.ctrlKey || e.metaKey;
+        const keyLower = e.key.toLowerCase();
+        const shift = e.shiftKey || keyLower !== e.key;
+        switch (keyLower) {
+          case "a":
+            if (ctrlOrCommand && editor.mode >= 2 /* CONNECT */ && !targetIsFieldOrOtherInput(e)) {
+              e.preventDefault();
+              this.selectAll();
+            }
+            return;
+          case "s":
+            if (ctrlOrCommand && editor.isSingleton) {
+              e.preventDefault();
+              editor.saveCurrentStateToUrl();
+            }
+            return;
+          case "z":
+            if (ctrlOrCommand && !targetIsFieldOrOtherInput(e)) {
+              e.preventDefault();
+              if (shift) {
+                editor.editTools.undoMgr.redoOrRepeat();
+              } else {
+                editor.editTools.undoMgr.undo();
+              }
+            }
+            return;
+          case "y":
+            if (ctrlOrCommand && !targetIsFieldOrOtherInput(e)) {
+              e.preventDefault();
+              editor.editTools.undoMgr.redoOrRepeat();
+            }
+            return;
+          case "x":
+            if (ctrlOrCommand && !targetIsFieldOrOtherInput(e)) {
+              e.preventDefault();
+              await editor.cut();
+            }
+            return;
+          case "c":
+            if (ctrlOrCommand && !targetIsFieldOrOtherInput(e)) {
+              e.preventDefault();
+              await editor.copy();
+            }
+            return;
+          case "v":
+            if (ctrlOrCommand && !targetIsFieldOrOtherInput(e)) {
+              e.preventDefault();
+              await editor.paste();
+            }
+            return;
+          case "g":
+            if (ctrlOrCommand && editor.mode >= 2 /* CONNECT */) {
+              e.preventDefault();
+              editor.makeGroupWithSelection();
+            }
+            return;
+          case "arrowright":
+            if (this.moveSelection(ctrlOrCommand ? 1 : GRID_STEP / 2, 0, e.altKey)) {
+              return;
+            }
+            break;
+          case "arrowleft":
+            if (this.moveSelection(ctrlOrCommand ? -1 : -GRID_STEP / 2, 0, e.altKey)) {
+              return;
+            }
+            break;
+          case "arrowdown":
+            if (this.moveSelection(0, ctrlOrCommand ? 1 : GRID_STEP / 2, e.altKey)) {
+              return;
+            }
+            break;
+          case "arrowup":
+            if (this.moveSelection(0, ctrlOrCommand ? -1 : -GRID_STEP / 2, e.altKey)) {
+              return;
+            }
+            break;
+        }
+        if (this._currentComponentUnderPointer !== null) {
+          this._currentComponentUnderPointer.keyDown(e);
+        }
+      }));
       canvas2.ondragenter = returnFalse;
       canvas2.ondragover = returnFalse;
       canvas2.ondragend = returnFalse;
@@ -29543,346 +29801,110 @@ ${outputsStr}
         }
         return false;
       };
-      canvas2.addEventListener("touchstart", editor.wrapHandler((e) => {
-        if (this.editor.mode >= 2 /* CONNECT */) {
-          e.preventDefault();
-        }
-        this._mouseDownTouchStart(e);
-      }));
-      canvas2.addEventListener("touchmove", editor.wrapHandler((e) => {
-        if (this.editor.mode >= 2 /* CONNECT */) {
-          e.preventDefault();
-        }
-        this._mouseMoveTouchMove(e);
-      }));
-      canvas2.addEventListener("touchend", editor.wrapHandler((e) => {
-        e.preventDefault();
-        this._mouseUpTouchEnd(e);
-        this.setCurrentMouseOverComp(null);
-        this.editor.focus();
-      }));
-      canvas2.addEventListener("mousedown", editor.wrapHandler((e) => {
-        this._mouseDownTouchStart(e);
-      }));
-      canvas2.addEventListener("mousemove", editor.wrapHandler((e) => {
-        this._mouseMoveTouchMove(e);
-        this.editor.updateCursor(e);
-      }));
-      canvas2.addEventListener("mouseleave", editor.wrapHandler(() => {
-        this.clearPopperIfNecessary();
-      }));
-      canvas2.addEventListener("mouseup", editor.wrapHandler((e) => {
-        this._mouseUpTouchEnd(e);
-        this.updateMouseOver(this.editor.offsetXY(e), false, false);
-        this.editor.updateCursor(e);
-        this.editor.focus();
-      }));
-      canvas2.addEventListener("contextmenu", editor.wrapHandler((e) => {
-        e.preventDefault();
-        if (this.editor.mode >= 2 /* CONNECT */ && this._currentMouseOverComp !== null) {
-          this._currentHandlers.contextMenuOn(this._currentMouseOverComp, e);
-        }
-      }));
-      canvas2.addEventListener("keyup", editor.wrapHandler((e) => {
-        var _a;
-        if (targetIsFieldOrOtherInput(e)) {
-          return;
-        }
-        switch (e.key) {
-          case "Escape": {
-            let handled;
-            handled = editor.eventMgr.tryDeleteComponentsWhere((comp) => comp.state === 0 /* SPAWNING */, false) > 0;
-            if (!handled) {
-              handled = editor.linkMgr.tryCancelWireOrAnchor();
-            }
-            if (!handled && this.editor.editorRoot instanceof CustomComponent) {
-              handled = this.editor.tryCloseCustomComponentEditor();
-            }
-            if (!handled) {
-              handled = editor.setCurrentMouseAction("edit");
-            }
-            if (handled) {
-              e.preventDefault();
-            }
-            return;
-          }
-          case "Backspace":
-          case "Delete": {
-            let selComp;
-            if ((selComp = (_a = this.currentSelection) == null ? void 0 : _a.previouslySelectedElements) !== void 0 && selComp.size !== 0) {
-              let anyDeleted = false;
-              for (const comp of selComp) {
-                anyDeleted = editor.eventMgr.tryDeleteDrawable(comp).isChange || anyDeleted;
-              }
-              if (anyDeleted) {
-                editor.editTools.undoMgr.takeSnapshot();
-              }
-            } else if ((selComp = this.currentMouseOverComp) !== null) {
-              const result = editor.eventMgr.tryDeleteDrawable(selComp);
-              editor.editTools.undoMgr.takeSnapshot(result);
-            }
-            e.preventDefault();
-            return;
-          }
-          case "e":
-            editor.setCurrentMouseAction("edit");
-            e.preventDefault();
-            return;
-          case "d":
-            editor.setCurrentMouseAction("delete");
-            e.preventDefault();
-            return;
-          case "m":
-            editor.setCurrentMouseAction("move");
-            e.preventDefault();
-            return;
-          case "t":
-            if (editor.editorRoot.testSuites.totalCases() > 0) {
-              editor.setTestsPaletteVisible(true);
-              editor.editTools.testsPalette.runAllTestSuites();
-              e.preventDefault();
-              return;
-            }
-        }
-      }));
-      canvas2.addEventListener("keydown", editor.wrapHandler((e) => {
-        const ctrlOrCommand = e.ctrlKey || e.metaKey;
-        const keyLower = e.key.toLowerCase();
-        const shift = e.shiftKey || keyLower !== e.key;
-        switch (keyLower) {
-          case "a":
-            if (ctrlOrCommand && editor.mode >= 2 /* CONNECT */ && !targetIsFieldOrOtherInput(e)) {
-              this.selectAll();
-              e.preventDefault();
-            }
-            return;
-          case "s":
-            if (ctrlOrCommand && editor.isSingleton) {
-              editor.saveCurrentStateToUrl();
-              e.preventDefault();
-            }
-            return;
-          case "z":
-            if (ctrlOrCommand && !targetIsFieldOrOtherInput(e)) {
-              if (shift) {
-                editor.editTools.undoMgr.redoOrRepeat();
-              } else {
-                editor.editTools.undoMgr.undo();
-              }
-              e.preventDefault();
-            }
-            return;
-          case "y":
-            if (ctrlOrCommand && !targetIsFieldOrOtherInput(e)) {
-              editor.editTools.undoMgr.redoOrRepeat();
-              e.preventDefault();
-            }
-            return;
-          case "x":
-            if (ctrlOrCommand && !targetIsFieldOrOtherInput(e)) {
-              editor.cut();
-              e.preventDefault();
-            }
-            return;
-          case "c":
-            if (ctrlOrCommand && !targetIsFieldOrOtherInput(e)) {
-              if (editor.copy()) {
-                e.preventDefault();
-              }
-            }
-            return;
-          case "v":
-            if (ctrlOrCommand && !targetIsFieldOrOtherInput(e)) {
-              editor.paste();
-              e.preventDefault();
-            }
-            return;
-          case "g":
-            if (ctrlOrCommand && editor.mode >= 2 /* CONNECT */) {
-              editor.makeGroupWithSelection();
-              e.preventDefault();
-            }
-            return;
-          case "arrowright":
-            if (this.moveSelection(ctrlOrCommand ? 1 : GRID_STEP / 2, 0, e.altKey)) {
-              return;
-            }
-            break;
-          case "arrowleft":
-            if (this.moveSelection(ctrlOrCommand ? -1 : -GRID_STEP / 2, 0, e.altKey)) {
-              return;
-            }
-            break;
-          case "arrowdown":
-            if (this.moveSelection(0, ctrlOrCommand ? 1 : GRID_STEP / 2, e.altKey)) {
-              return;
-            }
-            break;
-          case "arrowup":
-            if (this.moveSelection(0, ctrlOrCommand ? -1 : -GRID_STEP / 2, e.altKey)) {
-              return;
-            }
-            break;
-        }
-        if (this._currentMouseOverComp !== null) {
-          this._currentMouseOverComp.keyDown(e);
-        }
-      }));
     }
-    moveSelection(dx, dy, snapToGrid) {
-      const sel = this.currentSelection;
-      if (sel === void 0 || sel.previouslySelectedElements.size === 0) {
-        return false;
-      }
-      for (const comp of sel.previouslySelectedElements) {
-        if (comp instanceof DrawableWithDraggablePosition) {
-          comp.setPosition(comp.posX + dx, comp.posY + dy, snapToGrid);
-        }
-      }
-      return true;
-    }
-    registerTitleDragListenersOn(title2, closeHandler) {
-      let isDragging = false;
-      let startX, startY, startTop, startRight;
-      title2.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        startX = e.clientX;
-        startY = e.clientY;
-        const parent = title2.parentElement;
-        const computedStyle = window.getComputedStyle(parent);
-        startTop = parseInt(computedStyle.top, 10);
-        startRight = parseInt(computedStyle.right, 10);
-        title2.style.cursor = "grabbing";
-        e.preventDefault();
-      });
-      document.addEventListener("mousemove", (e) => {
-        if (!isDragging) {
-          return;
-        }
-        const deltaX = e.clientX - startX;
-        const deltaY = e.clientY - startY;
-        const parent = title2.parentElement;
-        parent.style.top = `${startTop + deltaY}px`;
-        parent.style.right = `${startRight - deltaX}px`;
-      });
-      document.addEventListener("mouseup", () => {
-        if (isDragging) {
-          isDragging = false;
-          title2.style.removeProperty("cursor");
-        }
-      });
-      if (closeHandler) {
-        const closeButton = makeIcon("close");
-        closeButton.classList.add("close-palette");
-        closeButton.addEventListener("click", closeHandler);
-        title2.appendChild(closeButton);
-      }
-    }
-    _mouseDownTouchStart(e) {
+    doPointerDown(e) {
       this.clearHoverTimeoutHandle();
-      this.clearPopperIfNecessary();
-      if (this._currentMouseDownData === null) {
+      this.clearTooltipIfNeeded();
+      if (this._currentPointerDownData === null) {
         const xy = this.editor.offsetXY(e);
-        this.updateMouseOver(xy, false, false);
-        if (this._currentMouseOverComp !== null) {
-          const { wantsDragEvents } = this._currentHandlers.mouseDownOn(this._currentMouseOverComp, e);
+        this.updateComponentUnderPointer(xy, false, false, e.pointerType === "touch");
+        if (this._currentComponentUnderPointer !== null) {
+          const { wantsDragEvents } = this._currentHandlers.pointerDownOn(this._currentComponentUnderPointer, e);
           if (wantsDragEvents) {
             const selectedComps = this.currentSelection === void 0 ? [] : [...this.currentSelection.previouslySelectedElements];
             for (const comp of selectedComps) {
-              if (comp !== this._currentMouseOverComp) {
-                this._currentHandlers.mouseDownOn(comp, e);
+              if (comp !== this._currentComponentUnderPointer) {
+                this._currentHandlers.pointerDownOn(comp, e);
               }
             }
-            const mouseDownData = {
-              mainComp: this._currentMouseOverComp,
+            const pointerDownData = {
+              mainComp: this._currentComponentUnderPointer,
               selectionComps: selectedComps,
-              firedMouseDraggedAlready: false,
-              fireMouseClickedOnFinish: true,
+              firedPointerDraggedAlready: false,
+              fireClickedOnFinish: true,
               initialXY: xy,
               triggeredContextMenu: false
             };
-            this._currentMouseDownData = mouseDownData;
-            this.setStartDragTimeout(mouseDownData, e);
+            this._currentPointerDownData = pointerDownData;
+            this.startLongPressTimeout(pointerDownData, e);
           }
-          this.editor.editTools.redrawMgr.requestRedraw({ why: "mousedown" });
+          this.editor.editTools.redrawMgr.requestRedraw({ why: "pointerdown" });
         } else {
-          this._currentMouseDownData = {
+          this._currentPointerDownData = {
             mainComp: this.editor.html.canvasContainer,
             selectionComps: [],
             // ignore selection
-            firedMouseDraggedAlready: false,
-            fireMouseClickedOnFinish: true,
+            firedPointerDraggedAlready: false,
+            fireClickedOnFinish: true,
             initialXY: xy,
             triggeredContextMenu: false
           };
-          this._currentHandlers.mouseDownOnBackground(e);
+          this._currentHandlers.pointerDownOnBackground(e);
         }
         this.editor.updateCursor(e);
       } else {
       }
     }
-    _mouseMoveTouchMove(e) {
-      if (this._currentMouseDownData !== null) {
-        if (this._currentMouseDownData.triggeredContextMenu) {
-          this._currentMouseDownData = null;
+    doPointerMove(e) {
+      if (this._currentPointerDownData !== null) {
+        if (this._currentPointerDownData.triggeredContextMenu) {
+          this._currentPointerDownData = null;
         } else {
-          const initialXY = this._currentMouseDownData.initialXY;
-          setDragStartData(e, initialXY[0], initialXY[1]);
-          if (this._currentMouseDownData.mainComp instanceof Drawable) {
+          const initialXY = this._currentPointerDownData.initialXY;
+          setDragStartOnEvent(e, initialXY[0], initialXY[1]);
+          if (this._currentPointerDownData.mainComp instanceof Drawable) {
             let fireDragEvent = (
               // if we fired a drag event already for this "click session", we go on
-              this._currentMouseDownData.firedMouseDraggedAlready
+              this._currentPointerDownData.firedPointerDraggedAlready
             );
             if (!fireDragEvent) {
-              const d2 = distSquared(...this.editor.offsetXY(e), ...this._currentMouseDownData.initialXY);
+              const d2 = distSquared(...this.editor.offsetXY(e), ...this._currentPointerDownData.initialXY);
               fireDragEvent = isNaN(d2) || d2 >= 5 * 5;
             }
             if (fireDragEvent) {
-              this.clearStartDragTimeout();
-              this._currentMouseDownData.fireMouseClickedOnFinish = false;
-              this._currentHandlers.mouseDraggedOn(this._currentMouseDownData.mainComp, e);
-              for (const comp of this._currentMouseDownData.selectionComps) {
-                if (comp !== this._currentMouseDownData.mainComp) {
-                  this._currentHandlers.mouseDraggedOn(comp, e);
+              this.clearLongPressTimeout();
+              this._currentPointerDownData.fireClickedOnFinish = false;
+              this._currentHandlers.pointerDraggedOn(this._currentPointerDownData.mainComp, e);
+              for (const comp of this._currentPointerDownData.selectionComps) {
+                if (comp !== this._currentPointerDownData.mainComp) {
+                  this._currentHandlers.pointerDraggedOn(comp, e);
                 }
               }
-              this._currentMouseDownData.firedMouseDraggedAlready = true;
+              this._currentPointerDownData.firedPointerDraggedAlready = true;
             }
           } else {
-            this._currentHandlers.mouseDraggedOnBackground(e);
+            this._currentHandlers.pointerDraggedOnBackground(e);
           }
         }
       } else {
         const linkMgr = this.editor.editorRoot.linkMgr;
-        this.updateMouseOver(this.editor.offsetXY(e), linkMgr.isAddingWire, linkMgr.isSettingAnchor);
+        this.updateComponentUnderPointer(this.editor.offsetXY(e), linkMgr.isAddingWire, linkMgr.isSettingAnchor, e.pointerType === "touch");
       }
+      this.editor.updateCursor(e);
     }
-    _mouseUpTouchEnd(e) {
+    doPointerUp(e) {
       var _a, _b, _c, _d;
-      const mouseUpTarget = (_b = (_a = this._currentMouseDownData) == null ? void 0 : _a.mainComp) != null ? _b : this._currentMouseOverComp;
-      if (mouseUpTarget instanceof Drawable) {
-        if (this._startDragTimeoutHandle !== null) {
-          clearTimeout(this._startDragTimeoutHandle);
-          this._startDragTimeoutHandle = null;
-        }
-        let change = this._currentHandlers.mouseUpOn(mouseUpTarget, e);
-        for (const comp of (_d = (_c = this._currentMouseDownData) == null ? void 0 : _c.selectionComps) != null ? _d : []) {
-          if (comp !== mouseUpTarget) {
-            const newChange = this._currentHandlers.mouseUpOn(comp, e);
+      const pointerUpTarget = (_b = (_a = this._currentPointerDownData) == null ? void 0 : _a.mainComp) != null ? _b : this._currentComponentUnderPointer;
+      if (pointerUpTarget instanceof Drawable) {
+        this.clearLongPressTimeout();
+        let change = this._currentHandlers.pointerUpOn(pointerUpTarget, e);
+        for (const comp of (_d = (_c = this._currentPointerDownData) == null ? void 0 : _c.selectionComps) != null ? _d : []) {
+          if (comp !== pointerUpTarget) {
+            const newChange = this._currentHandlers.pointerUpOn(comp, e);
             change = InteractionResult.merge(change, newChange);
           }
         }
-        const mouseDownData = this._currentMouseDownData;
-        const fireMouseClicked = mouseDownData === null ? false : mouseDownData.fireMouseClickedOnFinish && !mouseDownData.triggeredContextMenu;
-        if (fireMouseClicked) {
+        const pointerDownData = this._currentPointerDownData;
+        const firePointerClicked = pointerDownData === null ? false : pointerDownData.fireClickedOnFinish && !pointerDownData.triggeredContextMenu;
+        if (firePointerClicked) {
           let newChange;
-          if (this.isDoubleClick(mouseUpTarget, e)) {
-            newChange = this._currentHandlers.mouseDoubleClickedOn(mouseUpTarget, e);
+          if (this.isDoubleClick(pointerUpTarget, e)) {
+            newChange = this._currentHandlers.pointerDoubleClickedOn(pointerUpTarget, e);
             if (!newChange.isChange) {
-              newChange = this._currentHandlers.mouseClickedOn(mouseUpTarget, e);
+              newChange = this._currentHandlers.pointerClickedOn(pointerUpTarget, e);
             }
           } else {
-            newChange = this._currentHandlers.mouseClickedOn(mouseUpTarget, e);
+            newChange = this._currentHandlers.pointerClickedOn(pointerUpTarget, e);
           }
           change = InteractionResult.merge(change, newChange);
         }
@@ -29890,13 +29912,20 @@ ${outputsStr}
           this.editor.editTools.undoMgr.takeSnapshot(change);
         }
       } else {
-        this._currentHandlers.mouseUpOnBackground(e);
+        this._currentHandlers.pointerUpOnBackground(e);
       }
-      this._currentMouseDownData = null;
-      this.editor.editTools.redrawMgr.requestRedraw({ why: "mouseup" });
+      this._currentPointerDownData = null;
+      if (e.pointerType === "touch") {
+        this.setCurrentComponentUnderPointer(null);
+      } else {
+        this.updateComponentUnderPointer(this.editor.offsetXY(e), false, false, false);
+        this.editor.updateCursor(e);
+      }
+      this.editor.editTools.redrawMgr.requestRedraw({ why: "pointerup" });
+      this.editor.focus();
     }
     isDoubleClick(clickedComp, e) {
-      if ("offsetX" in e) {
+      if (e.pointerType === "mouse") {
         return e.detail === 2;
       } else {
         const oldLastTouchEnd = this._lastTouchEnd;
@@ -29916,50 +29945,47 @@ ${outputsStr}
     }
     registerButtonListenersOn(componentButtons, isCustomElement) {
       const editor = this.editor;
+      const pointermoveHandler = editor.wrapHandler((e) => {
+        this.doPointerMove(e);
+      });
+      const pointerupHandler = editor.wrapHandler((e) => {
+        this.doPointerUp(e);
+      });
       for (const compButton of componentButtons) {
-        const buttonMouseDownTouchStart = /* @__PURE__ */ __name((e) => {
-          this.editor.setCurrentMouseAction("edit");
+        compButton.ontouchstart = preventDefaultAlways;
+        compButton.ontouchmove = preventDefaultAlways;
+        compButton.ontouchend = preventDefaultAlways;
+        compButton.onpointermove = pointermoveHandler;
+        compButton.onpointerup = pointerupHandler;
+        compButton.onpointerdown = editor.wrapHandler((e) => {
+          if (e.button === 2 || e.button === 0 && e.ctrlKey) {
+            return;
+          }
+          this.editor.setCurrentPointerAction("edit");
           e.preventDefault();
+          compButton.setPointerCapture(e.pointerId);
           this.editor.eventMgr.currentSelection = void 0;
           const newComponent = editor.factory.makeFromButton(editor.editorRoot, compButton);
           if (newComponent === void 0) {
             return;
           }
-          this._currentMouseOverComp = newComponent;
-          const { wantsDragEvents } = this._currentHandlers.mouseDownOn(newComponent, e);
+          this._currentComponentUnderPointer = newComponent;
+          const { wantsDragEvents } = this._currentHandlers.pointerDownOn(newComponent, e);
           if (wantsDragEvents) {
-            this._currentMouseDownData = {
-              mainComp: this._currentMouseOverComp,
+            this._currentPointerDownData = {
+              mainComp: this._currentComponentUnderPointer,
               selectionComps: [],
               // ignore selection when dragging new component
-              firedMouseDraggedAlready: false,
-              fireMouseClickedOnFinish: false,
+              firedPointerDraggedAlready: false,
+              fireClickedOnFinish: false,
               initialXY: [NaN, NaN],
               triggeredContextMenu: false
             };
           }
           const [x, y] = editor.offsetXY(e, true);
-          setDragStartData(e, x, y);
-          this._currentHandlers.mouseDraggedOn(newComponent, e);
-        }, "buttonMouseDownTouchStart");
-        compButton.addEventListener("mousedown", editor.wrapHandler((e) => {
-          if (e.button === 2 || e.button === 0 && e.ctrlKey) {
-            return;
-          }
-          buttonMouseDownTouchStart(e);
-        }));
-        compButton.addEventListener("touchstart", editor.wrapHandler((e) => {
-          buttonMouseDownTouchStart(e);
-        }));
-        compButton.addEventListener("touchmove", editor.wrapHandler((e) => {
-          e.preventDefault();
-          this._mouseMoveTouchMove(e);
-        }));
-        compButton.addEventListener("touchend", editor.wrapHandler((e) => {
-          e.preventDefault();
-          this._mouseUpTouchEnd(e);
-          this.setCurrentMouseOverComp(null);
-        }));
+          setDragStartOnEvent(e, x, y);
+          this._currentHandlers.pointerDraggedOn(newComponent, e);
+        });
         compButton.addEventListener("contextmenu", editor.wrapHandler((e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -29967,6 +29993,47 @@ ${outputsStr}
             this._currentHandlers.contextMenuOnButton(compButton.dataset, e);
           }
         }));
+      }
+    }
+    registerTitleDragListenersOn(title2, closeHandler) {
+      let isDragging = false;
+      let startX, startY, startTop, startRight;
+      title2.addEventListener("pointerdown", (e) => {
+        if (isDragging) {
+          return;
+        }
+        isDragging = true;
+        title2.setPointerCapture(e.pointerId);
+        startX = e.clientX;
+        startY = e.clientY;
+        const parent = title2.parentElement;
+        const computedStyle = window.getComputedStyle(parent);
+        startTop = parseInt(computedStyle.top, 10);
+        startRight = parseInt(computedStyle.right, 10);
+        title2.style.cursor = "grabbing";
+        e.preventDefault();
+      });
+      title2.addEventListener("pointermove", (e) => {
+        if (!isDragging) {
+          return;
+        }
+        const deltaX = e.clientX - startX;
+        const deltaY = e.clientY - startY;
+        const parent = title2.parentElement;
+        parent.style.top = `${startTop + deltaY}px`;
+        parent.style.right = `${startRight - deltaX}px`;
+      });
+      title2.addEventListener("pointerup", () => {
+        if (isDragging) {
+          isDragging = false;
+          title2.style.removeProperty("cursor");
+        }
+      });
+      if (closeHandler) {
+        const closeButton = makeIcon("close");
+        closeButton.classList.add("close-palette");
+        closeButton.addEventListener("click", closeHandler);
+        title2.appendChild(closeButton);
       }
     }
     tryDeleteDrawable(comp) {
@@ -29990,7 +30057,7 @@ ${outputsStr}
     tryDeleteComponentsWhere(cond, onlyOne) {
       const numDeleted = this.editor.editorRoot.components.tryDeleteWhere(cond, onlyOne).length;
       if (numDeleted > 0) {
-        this.clearPopperIfNecessary();
+        this.clearTooltipIfNeeded();
         this.editor.editTools.redrawMgr.requestRedraw({ why: "component(s) deleted", invalidateMask: true, invalidateTests: true });
       }
       return numDeleted;
@@ -30001,20 +30068,20 @@ ${outputsStr}
     constructor(editor) {
       this.editor = editor;
     }
-    mouseHoverOn(__comp) {
+    pointerHoverOn(__comp) {
     }
-    mouseDownOn(__comp, __e2) {
+    pointerDownOn(__comp, __e2) {
       return { wantsDragEvents: true };
     }
-    mouseDraggedOn(__comp, __e2) {
+    pointerDraggedOn(__comp, __e2) {
     }
-    mouseUpOn(__comp, __e2) {
+    pointerUpOn(__comp, __e2) {
       return InteractionResult.NoChange;
     }
-    mouseClickedOn(__comp, __e2) {
+    pointerClickedOn(__comp, __e2) {
       return InteractionResult.NoChange;
     }
-    mouseDoubleClickedOn(__comp, __e2) {
+    pointerDoubleClickedOn(__comp, __e2) {
       return InteractionResult.NoChange;
     }
     contextMenuOn(__comp, __e2) {
@@ -30022,11 +30089,13 @@ ${outputsStr}
     }
     contextMenuOnButton(__props, __e2) {
     }
-    mouseDownOnBackground(__e2) {
+    hideContextMenuIfNeeded(__e2) {
     }
-    mouseDraggedOnBackground(__e2) {
+    pointerDownOnBackground(__e2) {
     }
-    mouseUpOnBackground(__e2) {
+    pointerDraggedOnBackground(__e2) {
+    }
+    pointerUpOnBackground(__e2) {
     }
     unmount() {
     }
@@ -30036,10 +30105,11 @@ ${outputsStr}
     constructor(editor) {
       super(editor);
       this._openedContextMenu = null;
+      this._currentPanningSession = void 0;
     }
-    mouseHoverOn(comp) {
+    pointerHoverOn(comp) {
       const editor = this.editor;
-      editor.eventMgr.clearPopperIfNecessary();
+      editor.eventMgr.clearTooltipIfNeeded();
       if (editor.options.hideTooltips) {
         return;
       }
@@ -30050,29 +30120,31 @@ ${outputsStr}
       if (tooltip !== void 0) {
         const rect = /* @__PURE__ */ __name(() => {
           const containerRect = editor.html.canvasContainer.getBoundingClientRect();
-          const f = editor.actualZoomFactor;
-          const [cx, cy, w, h] = comp instanceof DrawableWithPosition ? [comp.posX * f, comp.posY * f, comp.width * f, comp.height * f] : [editor.mouseX, editor.mouseY, 4, 4];
+          const f = editor.userDrawingScale;
+          const dx = editor.translationX;
+          const dy = editor.translationY;
+          const [cx, cy, w, h] = comp instanceof DrawableWithPosition ? [(comp.posX + dx) * f, (comp.posY + dy) * f, comp.width * f, comp.height * f] : [editor.pointerX, editor.pointerY, 4, 4];
           return new DOMRect(containerRect.x + cx - w / 2, containerRect.y + cy - h / 2, w, h);
         }, "rect");
-        editor.eventMgr.makePopper(tooltip, rect);
+        editor.eventMgr.makeTooltip(tooltip, rect);
       }
     }
-    mouseDownOn(comp, e) {
-      return comp.mouseDown(e);
+    pointerDownOn(comp, e) {
+      return comp.pointerDown(e);
     }
-    mouseDraggedOn(comp, e) {
-      comp.mouseDragged(e);
+    pointerDraggedOn(comp, e) {
+      comp.pointerDragged(e);
     }
-    mouseUpOn(comp, e) {
-      const change = comp.mouseUp(e);
+    pointerUpOn(comp, e) {
+      const change = comp.pointerUp(e);
       this.editor.editorRoot.linkMgr.tryCancelWireOrAnchor();
       return change;
     }
-    mouseClickedOn(comp, e) {
-      return comp.mouseClicked(e);
+    pointerClickedOn(comp, e) {
+      return comp.pointerClicked(e);
     }
-    mouseDoubleClickedOn(comp, e) {
-      return comp.mouseDoubleClicked(e);
+    pointerDoubleClickedOn(comp, e) {
+      return comp.pointerDoubleClicked(e);
     }
     contextMenuOn(comp, e) {
       return this.showContextMenu(comp.makeContextMenu(), e);
@@ -30080,48 +30152,63 @@ ${outputsStr}
     contextMenuOnButton(props, e) {
       return this.showContextMenu(this.editor.factory.makeContextMenu(props.type), e);
     }
-    mouseDownOnBackground(e) {
+    pointerDownOnBackground(e) {
       const editor = this.editor;
-      const eventMgr = editor.eventMgr;
-      const currentSelection = eventMgr.currentSelection;
-      if (currentSelection !== void 0) {
-        const allowSelection = editor.mode >= 2 /* CONNECT */;
-        if (e.shiftKey && allowSelection) {
-          if (currentSelection.currentlyDrawnRect !== void 0) {
-            console.log("unexpected defined current rect when about to begin a new one");
-          }
-          const [left2, top2] = editor.offsetXY(e);
-          const rect = new DOMRect(left2, top2, 1, 1);
-          currentSelection.currentlyDrawnRect = rect;
-        } else {
-          eventMgr.currentSelection = void 0;
-        }
-        editor.editTools.redrawMgr.requestRedraw({ why: "selection rect changed" });
-      }
-    }
-    mouseDraggedOnBackground(e) {
-      const editor = this.editor;
-      const allowSelection = editor.mode >= 2 /* CONNECT */;
-      if (allowSelection) {
+      if (LogicEditor.spaceDown && editor.mode >= 2 /* CONNECT */) {
+        editor.setToolCursor("grabbing");
+        const [startX, startY] = editor.offsetXY(e, true);
+        this._currentPanningSession = { startX, startY, initialTranslationX: editor.translationX, initialTranslationY: editor.translationY };
+      } else {
         const eventMgr = editor.eventMgr;
         const currentSelection = eventMgr.currentSelection;
-        const [x, y] = editor.offsetXY(e);
-        if (currentSelection === void 0) {
-          const rect = new DOMRect(x, y, 1, 1);
-          eventMgr.currentSelection = new EditorSelection(rect);
-        } else {
-          const rect = currentSelection.currentlyDrawnRect;
-          if (rect === void 0) {
-            console.log("trying to update a selection rect that is not defined");
+        if (currentSelection !== void 0) {
+          const allowSelection = editor.mode >= 2 /* CONNECT */;
+          if (e.shiftKey && allowSelection) {
+            if (currentSelection.currentlyDrawnRect !== void 0) {
+              console.log("unexpected defined current rect when about to begin a new one");
+            }
+            const [left2, top2] = editor.offsetXY(e);
+            const rect = new DOMRect(left2, top2, 1, 1);
+            currentSelection.currentlyDrawnRect = rect;
           } else {
-            rect.width = x - rect.x;
-            rect.height = y - rect.y;
-            editor.editTools.redrawMgr.requestRedraw({ why: "selection rect changed" });
+            eventMgr.currentSelection = void 0;
+          }
+          editor.editTools.redrawMgr.requestRedraw({ why: "selection rect changed" });
+        }
+      }
+    }
+    pointerDraggedOnBackground(e) {
+      const editor = this.editor;
+      if (this._currentPanningSession !== void 0) {
+        const { startX, startY, initialTranslationX, initialTranslationY } = this._currentPanningSession;
+        const [x, y] = editor.offsetXY(e, true);
+        const dx = x - startX;
+        const dy = y - startY;
+        const scaleFactor = editor.userDrawingScale;
+        editor.setTranslation(initialTranslationX + dx / scaleFactor, initialTranslationY + dy / scaleFactor);
+      } else {
+        const allowSelection = editor.mode >= 2 /* CONNECT */;
+        if (allowSelection) {
+          const eventMgr = editor.eventMgr;
+          const currentSelection = eventMgr.currentSelection;
+          const [x, y] = editor.offsetXY(e);
+          if (currentSelection === void 0) {
+            const rect = new DOMRect(x, y, 1, 1);
+            eventMgr.currentSelection = new EditorSelection(rect);
+          } else {
+            const rect = currentSelection.currentlyDrawnRect;
+            if (rect === void 0) {
+              console.log("trying to update a selection rect that is not defined");
+            } else {
+              rect.width = x - rect.x;
+              rect.height = y - rect.y;
+              editor.editTools.redrawMgr.requestRedraw({ why: "selection rect changed" });
+            }
           }
         }
       }
     }
-    mouseUpOnBackground(__e2) {
+    pointerUpOnBackground(__e2) {
       const editor = this.editor;
       editor.linkMgr.tryCancelWireOrAnchor();
       const eventMgr = editor.eventMgr;
@@ -30130,105 +30217,103 @@ ${outputsStr}
         currentSelection.finishCurrentRect(this.editor);
         editor.editTools.redrawMgr.requestRedraw({ why: "selection rect changed" });
       }
+      editor.setToolCursor(null);
+      this._currentPanningSession = void 0;
     }
-    showContextMenu(menuData, e) {
-      const hideMenu = /* @__PURE__ */ __name(() => {
-        if (this._openedContextMenu !== null) {
+    hideContextMenuIfNeeded(e) {
+      if (this._openedContextMenu !== null) {
+        const menuContainsTarget = e !== void 0 && this._openedContextMenu.contains(e.composedPath()[0]);
+        if (!menuContainsTarget) {
           this._openedContextMenu.classList.remove("show-menu");
           this._openedContextMenu.innerHTML = "";
           this._openedContextMenu = null;
         }
-      }, "hideMenu");
-      hideMenu();
-      if (menuData !== void 0) {
-        const currentMouseDownData = this.editor.eventMgr.currentMouseDownData;
-        if (currentMouseDownData !== null) {
-          currentMouseDownData.triggeredContextMenu = true;
-        }
-        let hasContentJustifyingSeparator = false;
-        const defToElem = /* @__PURE__ */ __name((item) => {
-          var _a;
-          function mkButton(spec, shortcut, danger) {
-            return button(
-              type("button"),
-              cls(`menu-btn${danger ? " danger" : ""}`),
-              spec.icon === void 0 ? spec.caption : mods(
-                makeIcon(spec.icon),
-                span(cls("menu-text"), spec.caption)
-              ),
-              shortcut === void 0 ? emptyMod : span(cls("menu-shortcut"), shortcut)
-            );
-          }
-          __name(mkButton, "mkButton");
-          hasContentJustifyingSeparator || (hasContentJustifyingSeparator = item._tag !== "sep");
-          switch (item._tag) {
-            case "sep":
-              if (hasContentJustifyingSeparator) {
-                hasContentJustifyingSeparator = false;
-                return li(cls("menu-separator")).render();
-              } else {
-                return emptyMod;
-              }
-            case "text":
-              return li(cls("menu-item-static"), item.caption).render();
-            case "item": {
-              const but = mkButton(item, item.shortcut, (_a = item.danger) != null ? _a : false).render();
-              but.addEventListener("click", this.editor.wrapHandler((itemEvent) => __async(this, null, function* () {
-                const result = yield Promise.resolve(item.action(itemEvent, e));
-                this.editor.editTools.undoMgr.takeSnapshot(result);
-                this.editor.focus();
-              })));
-              return li(cls("menu-item"), but).render();
-            }
-            case "submenu": {
-              return li(
-                cls("menu-item submenu"),
-                mkButton(item, void 0, false),
-                ul(
-                  cls("menu"),
-                  ...item.items.map(defToElem)
-                )
-              ).render();
-            }
-          }
-        }, "defToElem");
-        const items = menuData.map(defToElem);
-        const mainContextMenu = this.editor.html.mainContextMenu;
-        applyModifiersTo(mainContextMenu, items);
-        const em = e;
-        mainContextMenu.classList.add("show-menu");
-        let menuTop = em.pageY;
-        mainContextMenu.style.top = menuTop + "px";
-        mainContextMenu.style.left = em.pageX + "px";
-        let needsScrollY = false;
-        const menuRect = mainContextMenu.getBoundingClientRect();
-        const hOverflow = window.innerHeight - menuRect.bottom;
-        if (hOverflow < 0) {
-          menuTop += Math.min(0, hOverflow);
-          if (menuTop < 5) {
-            menuTop = 5;
-            needsScrollY = true;
-          }
-          mainContextMenu.style.top = menuTop + "px";
-        }
-        if (needsScrollY) {
-          mainContextMenu.style.setProperty("max-height", window.innerHeight - 10 + "px");
-          mainContextMenu.style.setProperty("overflow-y", "scroll");
-        } else {
-          mainContextMenu.style.removeProperty("max-height");
-          mainContextMenu.style.removeProperty("overflow-y");
-        }
-        this._openedContextMenu = mainContextMenu;
-        const clickHandler = /* @__PURE__ */ __name(() => {
-          hideMenu();
-          document.removeEventListener("click", clickHandler);
-        }, "clickHandler");
-        setTimeout(() => {
-          document.addEventListener("click", clickHandler, false);
-        }, 200);
-        return true;
       }
-      return false;
+    }
+    showContextMenu(menuData, e) {
+      this.hideContextMenuIfNeeded();
+      if (menuData === void 0) {
+        return false;
+      }
+      const currentPointerDownData = this.editor.eventMgr.currentPointerDownData;
+      if (currentPointerDownData !== null) {
+        currentPointerDownData.triggeredContextMenu = true;
+      }
+      let hasContentJustifyingSeparator = false;
+      const defToElem = /* @__PURE__ */ __name((item) => {
+        var _a;
+        function mkButton(spec, shortcut, danger) {
+          return button(
+            type("button"),
+            cls(`menu-btn${danger ? " danger" : ""}`),
+            spec.icon === void 0 ? spec.caption : mods(
+              makeIcon(spec.icon),
+              span(cls("menu-text"), spec.caption)
+            ),
+            shortcut === void 0 ? emptyMod : span(cls("menu-shortcut"), shortcut)
+          );
+        }
+        __name(mkButton, "mkButton");
+        hasContentJustifyingSeparator || (hasContentJustifyingSeparator = item._tag !== "sep");
+        switch (item._tag) {
+          case "sep":
+            if (hasContentJustifyingSeparator) {
+              hasContentJustifyingSeparator = false;
+              return li(cls("menu-separator")).render();
+            } else {
+              return emptyMod;
+            }
+          case "text":
+            return li(cls("menu-item-static"), item.caption).render();
+          case "item": {
+            const but = mkButton(item, item.shortcut, (_a = item.danger) != null ? _a : false).render();
+            but.addEventListener("click", this.editor.wrapAsyncHandler(async (itemEvent) => {
+              this.hideContextMenuIfNeeded();
+              const result = await Promise.resolve(item.action(itemEvent, e));
+              this.editor.editTools.undoMgr.takeSnapshot(result);
+              this.editor.focus();
+            }));
+            return li(cls("menu-item"), but).render();
+          }
+          case "submenu": {
+            return li(
+              cls("menu-item submenu"),
+              mkButton(item, void 0, false),
+              ul(
+                cls("menu"),
+                ...item.items.map(defToElem)
+              )
+            ).render();
+          }
+        }
+      }, "defToElem");
+      const items = menuData.map(defToElem);
+      const mainContextMenu = this.editor.html.mainContextMenu;
+      applyModifiersTo(mainContextMenu, items);
+      mainContextMenu.classList.add("show-menu");
+      let menuTop = e.pageY;
+      mainContextMenu.style.top = menuTop + "px";
+      mainContextMenu.style.left = e.pageX + "px";
+      let needsScrollY = false;
+      const menuRect = mainContextMenu.getBoundingClientRect();
+      const hOverflow = window.innerHeight - menuRect.bottom;
+      if (hOverflow < 0) {
+        menuTop += Math.min(0, hOverflow);
+        if (menuTop < 5) {
+          menuTop = 5;
+          needsScrollY = true;
+        }
+        mainContextMenu.style.top = menuTop + "px";
+      }
+      if (needsScrollY) {
+        mainContextMenu.style.setProperty("max-height", window.innerHeight - 10 + "px");
+        mainContextMenu.style.setProperty("overflow-y", "scroll");
+      } else {
+        mainContextMenu.style.removeProperty("max-height");
+        mainContextMenu.style.removeProperty("overflow-y");
+      }
+      this._openedContextMenu = mainContextMenu;
+      return true;
     }
   };
   __name(EditHandlers, "EditHandlers");
@@ -30236,7 +30321,7 @@ ${outputsStr}
     constructor(editor) {
       super(editor);
     }
-    mouseClickedOn(comp, __) {
+    pointerClickedOn(comp, __) {
       return this.editor.eventMgr.tryDeleteDrawable(comp);
     }
   };
@@ -30251,9 +30336,9 @@ ${outputsStr}
       this.editor.linkMgr.tryCancelSetAnchor();
     }
     finish() {
-      this.editor.setCurrentMouseAction("edit");
+      this.editor.setCurrentPointerAction("edit");
     }
-    mouseClickedOn(comp, __) {
+    pointerClickedOn(comp, __) {
       let result = InteractionResult.NoChange;
       if (comp instanceof ComponentBase) {
         result = this.editor.linkMgr.trySetAnchor(this._from, comp);
@@ -30263,7 +30348,7 @@ ${outputsStr}
       this.finish();
       return result;
     }
-    mouseUpOnBackground(__) {
+    pointerUpOnBackground(__) {
       this.editor.linkMgr.tryCancelSetAnchor();
       this.finish();
     }
@@ -30273,33 +30358,33 @@ ${outputsStr}
     constructor(editor) {
       super(editor);
     }
-    mouseDownOnBackground(e) {
+    pointerDownOnBackground(e) {
       for (const comp of this.editor.components.all()) {
-        comp.mouseDown(e);
+        comp.pointerDown(e);
       }
       for (const wire of this.editor.linkMgr.wires) {
         for (const waypoint of wire.waypoints) {
-          waypoint.mouseDown(e);
+          waypoint.pointerDown(e);
         }
       }
     }
-    mouseDraggedOnBackground(e) {
+    pointerDraggedOnBackground(e) {
       for (const comp of this.editor.components.all()) {
-        comp.mouseDragged(e);
+        comp.pointerDragged(e);
       }
       for (const wire of this.editor.linkMgr.wires) {
         for (const waypoint of wire.waypoints) {
-          waypoint.mouseDragged(e);
+          waypoint.pointerDragged(e);
         }
       }
     }
-    mouseUpOnBackground(e) {
+    pointerUpOnBackground(e) {
       for (const comp of this.editor.components.all()) {
-        comp.mouseUp(e);
+        comp.pointerUp(e);
       }
       for (const wire of this.editor.linkMgr.wires) {
         for (const waypoint of wire.waypoints) {
-          waypoint.mouseUp(e);
+          waypoint.pointerUp(e);
         }
       }
     }
@@ -30308,6 +30393,10 @@ ${outputsStr}
 
   // simulator/src/UndoManager.ts
   var MAX_UNDO_SNAPSHOTS = 100;
+  function areStatesEqual2(s1, s2) {
+    return s1.canUndo === s2.canUndo && s1.canRedoOrRepeat === s2.canRedoOrRepeat;
+  }
+  __name(areStatesEqual2, "areStatesEqual");
   var UndoManager = class {
     constructor(editor) {
       this._undoSnapshots = [];
@@ -30339,8 +30428,9 @@ ${outputsStr}
     }
     doTakeSnapshot(repeatAction) {
       const now = Date.now();
-      const dataObject = this.editor.save();
-      const jsonStr = Serialization.stringifyObject(dataObject, true);
+      const circuit = this.editor.save();
+      const jsonStr = Serialization.stringifyObject(circuit, true);
+      this.editor.trySaveInBrowserStorage(circuit);
       this._undoSnapshots.push({ time: now, circuitStr: jsonStr, repeatAction });
       while (this._undoSnapshots.length > MAX_UNDO_SNAPSHOTS) {
         this._undoSnapshots.shift();
@@ -30399,7 +30489,7 @@ ${outputsStr}
       printStack("Redo stack", this._redoSnapshots);
     }
     loadSnapshot(snapshot) {
-      Serialization.loadCircuitOrLibrary(this.editor, snapshot.circuitStr, { isUndoRedoAction: true });
+      Serialization.loadCircuitOrLibrary(this.editor, snapshot.circuitStr, false);
     }
     fireStateChangedIfNeeded() {
       const newState = this.state;
@@ -30410,10 +30500,6 @@ ${outputsStr}
     }
   };
   __name(UndoManager, "UndoManager");
-  function areStatesEqual2(s1, s2) {
-    return s1.canUndo === s2.canUndo && s1.canRedoOrRepeat === s2.canRedoOrRepeat;
-  }
-  __name(areStatesEqual2, "areStatesEqual");
 
   // simulator/src/gallery.ts
   var gallery = {
@@ -31430,11 +31516,14 @@ ${outputsStr}
   var MAX_MODE_WHEN_SINGLETON = 4 /* FULL */;
   var MAX_MODE_WHEN_EMBEDDED = 3 /* DESIGN */;
   var DEFAULT_MODE = 3 /* DESIGN */;
+  var SINGLETON_INSTANCE_ID = "_main";
   var ATTRIBUTE_NAMES = {
     lang: "lang",
     singleton: "singleton",
     // whether this is the only editor in the page
     mode: "mode",
+    id: "id",
+    autosave: "autosave",
     hidereset: "hidereset",
     exportformat: "exportformat",
     // differences between MyST and pymarkdown
@@ -31472,7 +31561,7 @@ ${outputsStr}
     allowPausePropagation: false,
     zoom: 100
   };
-  var MouseActions = {
+  var PointerActions = {
     edit: {
       cursor: null,
       paramTypes: []
@@ -31520,6 +31609,12 @@ ${outputsStr}
       /// Other internal state ///
       this._isEmbedded = false;
       this._isSingleton = false;
+      /** Mirrors the id HTML attribute, is used to preserve the state across a simple reload with sessionStorage */
+      this._instanceId = void 0;
+      /** Stores the id used for exporting. This is generated once if we are in the standalone editor, or reused if we are in a populated instance */
+      this._idWhenExporting = void 0;
+      /** Whether localStorage should be used in addition to sessionStorage, saving the state across page visits */
+      this._autosave = false;
       this._maxInstanceMode = MAX_MODE_WHEN_EMBEDDED;
       // can be set later
       this._isDirty = false;
@@ -31528,7 +31623,7 @@ ${outputsStr}
       this._dontHogFocus = false;
       this._mode = DEFAULT_MODE;
       this._initialData = void 0;
-      this._options = __spreadValues({}, DEFAULT_EDITOR_OPTIONS);
+      this._options = { ...DEFAULT_EDITOR_OPTIONS };
       this._hideResetButton = false;
       this._exportformat = void 0;
       this._menu = void 0;
@@ -31542,11 +31637,13 @@ ${outputsStr}
       this._editorRoot = this;
       this.optionsHtml = void 0;
       this.userdata = void 0;
-      this._baseDrawingScale = 1;
-      this._actualZoomFactor = 1;
-      this.mouseX = -1e3;
+      this._baseUIDrawingScale = 1;
+      this._userDrawingScale = 1;
+      this._translationX = 0;
+      this._translationY = 0;
+      this.pointerX = -1e3;
       // offscreen at start
-      this.mouseY = -1e3;
+      this.pointerY = -1e3;
       this.root = this.attachShadow({ mode: "open" });
       this.root.appendChild(window.Logic.template.content.cloneNode(true));
       const html = {
@@ -31572,6 +31669,9 @@ ${outputsStr}
       this.html = html;
       dialog_polyfill_esm_default.registerDialog(html.embedDialog);
     }
+    static get spaceDown() {
+      return _LogicEditor._spaceDown;
+    }
     static get allConnectedEditors() {
       return _LogicEditor._allConnectedEditors;
     }
@@ -31592,9 +31692,39 @@ ${outputsStr}
     startEditingThis(tools) {
       this._ifEditing = tools;
     }
+    get isSingleton() {
+      return this._isSingleton;
+    }
+    get instanceId() {
+      return this._instanceId;
+    }
+    get persistenceKey() {
+      return this._instanceId === void 0 ? void 0 : "logic/" + this._instanceId;
+    }
+    get idWhenExporting() {
+      if (this._idWhenExporting === void 0) {
+        this._idWhenExporting = randomString(6);
+      }
+      return this._idWhenExporting;
+    }
+    get autosave() {
+      return this._autosave;
+    }
+    get mode() {
+      return this._mode;
+    }
     /** Either the LogicEditor itself, or a CustomComponent, whichever is being edited right now. */
     get editorRoot() {
       return this._editorRoot;
+    }
+    get userDrawingScale() {
+      return this._userDrawingScale;
+    }
+    get translationX() {
+      return this._translationX;
+    }
+    get translationY() {
+      return this._translationY;
     }
     elemWithId(id) {
       let elem = this.root.querySelector(`#${id}`);
@@ -31613,15 +31743,6 @@ ${outputsStr}
     static get observedAttributes() {
       return [];
     }
-    get mode() {
-      return this._mode;
-    }
-    get actualZoomFactor() {
-      return this._actualZoomFactor;
-    }
-    get isSingleton() {
-      return this._isSingleton;
-    }
     get options() {
       return this._options;
     }
@@ -31631,7 +31752,7 @@ ${outputsStr}
     }
     setPartialOptions(opts) {
       var _a, _b;
-      const newOptions = __spreadValues(__spreadValues({}, DEFAULT_EDITOR_OPTIONS), opts);
+      const newOptions = { ...DEFAULT_EDITOR_OPTIONS, ...opts };
       if (this._isSingleton) {
         newOptions.showOnly = this._options.showOnly;
       }
@@ -31654,10 +31775,10 @@ ${outputsStr}
         optionsHtml.propagationDelayField.valueAsNumber = newOptions.propagationDelay;
         this.setWindowTitleFrom(newOptions.name);
         (_a = this._topBar) == null ? void 0 : _a.setCircuitName(this.editor.options.name);
-        (_b = this._topBar) == null ? void 0 : _b.setZoomLevel(newOptions.zoom);
+        (_b = this._topBar) == null ? void 0 : _b.setZoom(newOptions.zoom);
         optionsHtml.showUserDataLinkContainer.style.display = this.userdata !== void 0 ? "initial" : "none";
       }
-      this._actualZoomFactor = clampZoom(newOptions.zoom);
+      this._userDrawingScale = newOptions.zoom / 100;
       this.editTools.redrawMgr.requestRedraw({ why: "options changed", invalidateMask: true, invalidateTests: true });
     }
     setWindowTitleFrom(docName) {
@@ -31709,7 +31830,7 @@ ${outputsStr}
       mainCanvas.setAttribute("height", String(h * f));
       mainCanvas.style.setProperty("width", w + "px");
       mainCanvas.style.setProperty("height", h + "px");
-      this._baseDrawingScale = f;
+      this._baseUIDrawingScale = f;
     }
     connectedCallback() {
       if (_LogicEditor._allConnectedEditors.length === 0) {
@@ -31763,6 +31884,7 @@ ${outputsStr}
         }, "transferUrlParamToAttribute");
         for (const attr2 of [
           ATTRIBUTE_NAMES.mode,
+          ATTRIBUTE_NAMES.id,
           ATTRIBUTE_NAMES.showonly,
           ATTRIBUTE_NAMES.showgatetypes,
           ATTRIBUTE_NAMES.showdisconnectedpins,
@@ -31856,6 +31978,25 @@ ${outputsStr}
       if (modeAttr !== null && (modeAttr = modeAttr.toUpperCase()) in Mode2) {
         this._maxInstanceMode = Mode2[modeAttr];
       }
+      const autosaveAttr = this.getAttribute(ATTRIBUTE_NAMES.autosave);
+      if (autosaveAttr !== null && !isFalsyString(autosaveAttr)) {
+        this._autosave = true;
+      }
+      const idAttr = this.getAttribute(ATTRIBUTE_NAMES.id);
+      if (idAttr !== null || this._isSingleton) {
+        if (idAttr !== null) {
+          this._instanceId = idAttr;
+          if (idAttr !== SINGLETON_INSTANCE_ID) {
+            this._idWhenExporting = idAttr;
+          }
+        } else {
+          this._instanceId = SINGLETON_INSTANCE_ID;
+        }
+      } else {
+        const fct = this._autosave ? "error" : "warn";
+        console[fct]("No id attribute on logic-editor, undownloaded state will be lost", this);
+        this._autosave = false;
+      }
       const showonlyAttr = this.getAttribute(ATTRIBUTE_NAMES.showonly);
       if (showonlyAttr !== null) {
         this._options.showOnly = showonlyAttr.toLowerCase().split(/[, +]+/).filter((x) => x.trim());
@@ -31884,7 +32025,7 @@ ${outputsStr}
           if (innerScriptElem !== null) {
             this._initialData = { _type: "json", json: innerScriptElem.innerHTML };
             innerScriptElem.remove();
-            this.tryLoadCircuitFromData();
+            this.tryLoadCircuitFromData(true, false);
             this.doRedraw(true);
             return true;
           } else {
@@ -31926,7 +32067,7 @@ ${outputsStr}
           console.log("ERROR: Could not find group button");
         }
       } else {
-        groupButton.addEventListener("mousedown", this.wrapHandler((e) => {
+        groupButton.addEventListener("pointerdown", this.wrapHandler((e) => {
           const success2 = this.makeGroupWithSelection();
           if (success2) {
             e.preventDefault();
@@ -32007,7 +32148,7 @@ ${outputsStr}
         textArea.addEventListener("pointerdown", selectAllListener);
         textArea.addEventListener("focus", selectAllListener);
       }
-      this.setCurrentMouseAction("edit", true);
+      this.setCurrentPointerAction("edit", true);
       this.timeline.reset();
       const settingsPalette = this.html.settingsPalette;
       const settingsTitleElem = div(cls("toolbar-title with-border"), S.Settings.Settings).render();
@@ -32117,7 +32258,7 @@ ${outputsStr}
       onVisible(this.html.canvasContainer, () => {
         this.redraw();
       });
-      this.tryLoadCircuitFromData();
+      this.tryLoadCircuitFromData(true, false);
       this.setModeFromString(this.getAttribute(ATTRIBUTE_NAMES.mode));
       this.setCanvasSize();
       _LogicEditor.installGlobalListeners();
@@ -32140,17 +32281,42 @@ ${outputsStr}
       window.decodeOld = _LogicEditor.decodeFromURLOld;
       window.formatString = formatString;
       window.gallery = gallery;
-      window.addEventListener("mousemove", (e) => {
+      const makeUpdatePointerPositionHandler = /* @__PURE__ */ __name((closingContextMenus) => (e) => {
         for (const editor of _LogicEditor._allConnectedEditors) {
           const canvasContainer = editor.html.canvasContainer;
           if (canvasContainer !== void 0) {
             const canvasPos = canvasContainer.getBoundingClientRect();
-            editor.mouseX = e.clientX - canvasPos.left;
-            editor.mouseY = e.clientY - canvasPos.top;
+            const x = e.clientX - canvasPos.left;
+            const y = e.clientY - canvasPos.top;
+            editor.pointerX = x / editor._userDrawingScale - editor._translationX;
+            editor.pointerY = y / editor._userDrawingScale - editor._translationY;
+          }
+          if (closingContextMenus) {
+            editor.eventMgr.hideContextMenuIfNeeded(e);
           }
         }
-      }, true);
+      }, "makeUpdatePointerPositionHandler");
+      window.addEventListener("pointerdown", makeUpdatePointerPositionHandler(true), true);
+      window.addEventListener("pointermove", makeUpdatePointerPositionHandler(false), true);
+      const updateCursors = /* @__PURE__ */ __name(() => {
+        for (const editor of _LogicEditor._allConnectedEditors) {
+          editor.updateCursor();
+        }
+      }, "updateCursors");
+      window.addEventListener("keydown", (e) => {
+        if (e.key === " ") {
+          _LogicEditor._spaceDown = true;
+          updateCursors();
+        }
+      });
+      window.addEventListener("keyup", (e) => {
+        if (e.key === " ") {
+          _LogicEditor._spaceDown = false;
+          updateCursors();
+        }
+      });
       window.addEventListener("resize", () => {
+        var _a;
         for (const editor of _LogicEditor._allConnectedEditors) {
           const canvasContainer = editor.html.canvasContainer;
           if (canvasContainer !== void 0) {
@@ -32159,6 +32325,7 @@ ${outputsStr}
               editor.editTools.redrawMgr.requestRedraw({ why: "window resized", invalidateMask: true });
             })();
           }
+          (_a = editor._topBar) == null ? void 0 : _a.updateCompactMode();
         }
         registerPixelRatioListener();
       });
@@ -32226,7 +32393,7 @@ ${outputsStr}
           }
         });
         if (mode < 2 /* CONNECT */) {
-          this.setCurrentMouseAction("edit");
+          this.setCurrentPointerAction("edit");
         }
         const showComponentsAndEditControls = mode >= 3 /* DESIGN */ ? "show" : this._maxInstanceMode >= 3 /* DESIGN */ ? "inactive" : "hide";
         const showEditControls = showComponentsAndEditControls === "show";
@@ -32262,10 +32429,22 @@ ${outputsStr}
       (_a = this._topBar) == null ? void 0 : _a.setCircuitName(name2);
       this.setWindowTitleFrom(this._options.name);
     }
-    setZoomLevel(zoom) {
-      this._options.zoom = zoom;
-      this._actualZoomFactor = clampZoom(zoom);
+    setZoom(zoom, updateTopBar) {
+      var _a;
+      zoom = Math.max(10, Math.min(1e3, zoom));
+      const roundedZoomForUI = Math.round(zoom);
+      this._options.zoom = roundedZoomForUI;
+      this._userDrawingScale = zoom / 100;
+      if (updateTopBar) {
+        (_a = this._topBar) == null ? void 0 : _a.setZoom(roundedZoomForUI);
+      }
       this.editTools.redrawMgr.requestRedraw({ why: "zoom level changed", invalidateMask: true });
+      return zoom;
+    }
+    setTranslation(tX, tY) {
+      this._translationX = tX;
+      this._translationY = tY;
+      this.editTools.redrawMgr.requestRedraw({ why: "translation changed", invalidateMask: true });
     }
     updateCustomComponentButtons() {
       var _a;
@@ -32281,6 +32460,117 @@ ${outputsStr}
     }
     focus() {
       this.html.mainCanvas.focus();
+    }
+    /**
+     * This saves the passed circuit to both sessionStorage and localStorage.
+     * The idea is that sessionStorage is always restored (page reload),
+     * and localStorage items can be proposed in the UI for reloading.
+     */
+    trySaveInBrowserStorage(circuit) {
+      const key = this.persistenceKey;
+      if (key === void 0) {
+        return;
+      }
+      const now = Date.now();
+      const saveStr = now + ";" + Serialization.stringifyObject(circuit, true);
+      try {
+        sessionStorage.setItem(key, saveStr);
+        if (this._autosave) {
+          localStorage.setItem(key, saveStr);
+        } else {
+        }
+      } catch (e) {
+        console.error("Failed to save circuit to browser storage", e);
+      }
+    }
+    /**
+     * Automatically called upon load after the initial data has been loaded.
+     * Allows to restore the circuit from the session storage only (local storage is
+     * only upon user request).
+     */
+    tryLoadFromSessionStorage() {
+      const savedTime = this.tryLoadFromStorage(sessionStorage, false);
+      if (savedTime === void 0) {
+        return false;
+      }
+      if (isString(savedTime)) {
+        console.error("Failed to load circuit from session storage", savedTime);
+        return false;
+      }
+      this.showLoadedMessage(savedTime, true);
+      return true;
+    }
+    /**
+     * This does something similar as `tryLoadFromSessionStorage` but it is initiated
+     * by the user and should show errors
+     */
+    tryLoadFromLocalStorage() {
+      const savedTime = this.tryLoadFromStorage(localStorage, true);
+      if (savedTime === void 0) {
+        window.alert(S.Messages.NoSavedData);
+        return false;
+      }
+      if (isString(savedTime)) {
+        window.alert(S.Messages.FailedToLoadCircuitFromStorage.expand({ error: savedTime }));
+        console.error("Failed to load circuit from session storage", savedTime);
+        return false;
+      }
+      this.showLoadedMessage(savedTime, false);
+      return true;
+    }
+    showLoadedMessage(savedTime, keepOpen) {
+      const day = savedTime.toLocaleDateString(void 0, {
+        year: "2-digit",
+        month: "2-digit",
+        day: "2-digit"
+      });
+      const time = savedTime.toLocaleTimeString(void 0, {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: void 0
+      });
+      this.showMessage(S.Messages.LoadedCircuitFromSessionStorage.expand({ day, time }), keepOpen ? 0 : 2e3, keepOpen);
+    }
+    /**
+     * @returns undefined if no persistence id is set or nothing is saved; a string in case of an error to report; a Date if loaded successfully
+     */
+    tryLoadFromStorage(storage, takeSnapshot) {
+      const key = this.persistenceKey;
+      if (key === void 0) {
+        return void 0;
+      }
+      const savedStr = storage.getItem(key);
+      if (savedStr === null || savedStr.length === 0) {
+        return void 0;
+      }
+      let semicolIndex = -1;
+      if ((semicolIndex = savedStr.indexOf(";")) === -1) {
+        return "unparseable saved string";
+      }
+      const circuitStr = savedStr.substring(semicolIndex + 1);
+      const error = Serialization.loadCircuitOrLibrary(this, circuitStr, takeSnapshot);
+      if (error !== void 0) {
+        return error;
+      }
+      try {
+        return new Date(Number(savedStr.substring(0, semicolIndex)));
+      } catch (e) {
+        return /* @__PURE__ */ new Date();
+      }
+    }
+    tryClearBrowserStorage() {
+      const key = this.persistenceKey;
+      if (key === void 0) {
+        return;
+      }
+      try {
+        localStorage.removeItem(key);
+      } catch (e) {
+      }
+      try {
+        sessionStorage.removeItem(key);
+      } catch (e) {
+      }
     }
     tryLoadFrom(file) {
       if (file.type === "application/json" || file.type === "application/json5" || file.type === "text/plain") {
@@ -32305,7 +32595,7 @@ ${outputsStr}
             if (isString(compressedJSON)) {
               this._initialData = { _type: "compressed", str: compressedJSON };
               this.wrapHandler(() => {
-                this.tryLoadCircuitFromData();
+                this.tryLoadCircuitFromData(false, true);
               })();
             }
           }
@@ -32332,57 +32622,64 @@ ${outputsStr}
         this.showMessage(S.Messages.UnsupportedFileType.expand({ type: file.type }));
       }
     }
-    tryLoadCircuitFromData() {
+    tryLoadCircuitFromData(tryLoadStorage, takeSnapshot) {
       var _a;
-      if (this._initialData === void 0) {
-        return;
-      }
-      if (this._initialData._type === "url") {
-        const url = this._initialData.url;
-        fetch(url, { mode: "cors" }).then((response) => response.text()).then((json) => {
-          console.log(`Loaded initial data from URL '${url}'`);
-          this._initialData = { _type: "json", json };
-          this.tryLoadCircuitFromData();
-        });
-        return;
-      }
-      let error = void 0;
-      if (this._initialData._type === "json") {
-        try {
-          error = Serialization.loadCircuitOrLibrary(this, this._initialData.json);
-        } catch (e) {
-          error = String(e) + " (JSON)";
+      if (this._initialData !== void 0) {
+        if (this._initialData._type === "url") {
+          const url = this._initialData.url;
+          fetch(url, { mode: "cors" }).then((response) => response.text()).then((json) => {
+            console.log(`Loaded initial data from URL '${url}'`);
+            this._initialData = { _type: "json", json };
+            this.tryLoadCircuitFromData(tryLoadStorage, takeSnapshot);
+          });
+          return;
         }
-      } else {
-        let decodedData;
-        try {
-          decodedData = LZString.decompressFromEncodedURIComponent(this._initialData.str);
-          if (this._initialData.str.length !== 0 && ((_a = decodedData == null ? void 0 : decodedData.length) != null ? _a : 0) === 0) {
-            throw new Error("zero decoded length");
-          }
-        } catch (err) {
-          error = String(err) + " (LZString)";
+        let error = void 0;
+        if (this._initialData._type === "json") {
           try {
-            decodedData = _LogicEditor.decodeFromURLOld(this._initialData.str);
-            error = void 0;
+            error = Serialization.loadCircuitOrLibrary(this, this._initialData.json, takeSnapshot);
           } catch (e) {
+            error = String(e) + " (JSON)";
+          }
+        } else {
+          let decodedData;
+          try {
+            decodedData = LZString.decompressFromEncodedURIComponent(this._initialData.str);
+            if (this._initialData.str.length !== 0 && ((_a = decodedData == null ? void 0 : decodedData.length) != null ? _a : 0) === 0) {
+              throw new Error("zero decoded length");
+            }
+          } catch (err) {
+            error = String(err) + " (LZString)";
+            try {
+              decodedData = _LogicEditor.decodeFromURLOld(this._initialData.str);
+              error = void 0;
+            } catch (e) {
+            }
+          }
+          if (error === void 0 && isString(decodedData)) {
+            error = Serialization.loadCircuitOrLibrary(this, decodedData, takeSnapshot);
+            if (error === void 0) {
+              this._initialData = { _type: "json", json: decodedData };
+            }
           }
         }
-        if (error === void 0 && isString(decodedData)) {
-          error = Serialization.loadCircuitOrLibrary(this, decodedData);
-          if (error === void 0) {
-            this._initialData = { _type: "json", json: decodedData };
-          }
+        if (error !== void 0) {
+          console.log("ERROR could not not load initial data: " + error);
         }
       }
-      if (error !== void 0) {
-        console.log("ERROR could not not load initial data: " + error);
-      } else {
+      let isConsideredDirty = false;
+      if (tryLoadStorage) {
+        if (this.tryLoadFromSessionStorage()) {
+          isConsideredDirty = true;
+        }
+      }
+      if (!isConsideredDirty) {
         this.clearDirty();
       }
     }
     resetCircuit() {
-      this.editor.tryLoadCircuitFromData();
+      this.tryClearBrowserStorage();
+      this.editor.tryLoadCircuitFromData(false, false);
     }
     tryCloseCustomComponentEditor() {
       const editorRoot = this.editor.editorRoot;
@@ -32406,7 +32703,7 @@ ${outputsStr}
     }
     loadCircuitOrLibrary(jsonStringOrObject) {
       this.wrapHandler(
-        (jsonStringOrObject2) => Serialization.loadCircuitOrLibrary(this, jsonStringOrObject2)
+        (jsonStringOrObject2) => Serialization.loadCircuitOrLibrary(this, jsonStringOrObject2, true)
       )(jsonStringOrObject);
     }
     makeGroupWithSelection() {
@@ -32459,18 +32756,18 @@ ${outputsStr}
       (_b = this._topBar) == null ? void 0 : _b.setEditingCustomComponent(customComp == null ? void 0 : customComp.customDef);
       this._highlightedItems = void 0;
       this.eventMgr.currentSelection = void 0;
-      this.eventMgr.clearPopperIfNecessary();
-      this.eventMgr.updateMouseOver([this.mouseX, this.mouseY], false, false);
+      this.eventMgr.clearTooltipIfNeeded();
+      this.eventMgr.updateComponentUnderPointer([this.pointerX, this.pointerY], false, false, false);
       this.editTools.testsPalette.update();
       this.editTools.moveMgr.clear();
       this.editTools.redrawMgr.requestRedraw({ why: "editor root changed", invalidateMask: true, invalidateTests: true });
       this.focus();
     }
-    setCurrentMouseAction(action, forceUpdate = false, ...params) {
+    setCurrentPointerAction(action, forceUpdate = false, ...params) {
       var _a;
       const changed = this.eventMgr.setHandlersFor(action, ...params);
       if (forceUpdate || changed) {
-        this.setToolCursor(MouseActions[action].cursor);
+        this.setToolCursor(PointerActions[action].cursor);
         (_a = this._topBar) == null ? void 0 : _a.updateActiveTool(action);
         this.editTools.redrawMgr.requestRedraw({ why: "mouse action changed" });
         this.editor.focus();
@@ -32479,12 +32776,12 @@ ${outputsStr}
     }
     updateCursor(e) {
       var _a, _b, _c;
-      const cursor = this.editTools.moveMgr.areDrawablesMoving() ? "grabbing" : (_c = (_b = this._toolCursor) != null ? _b : (_a = this.eventMgr.currentMouseOverComp) == null ? void 0 : _a.cursorWhenMouseover(e)) != null ? _c : "default";
+      const cursor = this.editTools.moveMgr.areDrawablesMoving() ? "grabbing" : (_c = (_b = this._toolCursor) != null ? _b : (_a = this.eventMgr.currentComponentUnderPointer) == null ? void 0 : _a.cursorWhenMouseover(e)) != null ? _c : _LogicEditor._spaceDown && this._mode >= 2 /* CONNECT */ ? "grab" : "default";
       this.html.canvasContainer.style.cursor = cursor;
     }
-    showMessage(msg, duration = 2e3) {
+    showMessage(msg, duration = 2e3, withCloseButton = false) {
       var _a, _b;
-      return (_b = (_a = this._messageBar) == null ? void 0 : _a.showMessage(msg, duration)) != null ? _b : () => void 0;
+      return (_b = (_a = this._messageBar) == null ? void 0 : _a.showMessage(msg, duration, withCloseButton)) != null ? _b : () => void 0;
     }
     offsetXYForContextMenu(e, snapToGrid = false) {
       const mainCanvas = this.html.mainCanvas;
@@ -32504,7 +32801,7 @@ ${outputsStr}
       }
       return [x, y];
     }
-    offsetXY(e, skipScaling = false) {
+    offsetXY(e, skipTransform = false) {
       const [unscaledX, unscaledY] = (() => {
         const mainCanvas = this.html.mainCanvas;
         let target2 = e.target;
@@ -32533,24 +32830,12 @@ ${outputsStr}
             ];
           }
         } else {
-          const elemRect = target2.getBoundingClientRect();
-          const bodyRect = document.body.getBoundingClientRect();
-          const touch = e.changedTouches[0];
-          const offsetX = touch.pageX - (elemRect.left - bodyRect.left);
-          const offsetY = touch.pageY - (elemRect.top - bodyRect.top);
-          if (target2 === mainCanvas) {
-            return [offsetX, offsetY];
-          } else {
-            const canvasRect = mainCanvas.getBoundingClientRect();
-            return [
-              Math.max(GRID_STEP * 2, offsetX + elemRect.x - canvasRect.x),
-              Math.max(GRID_STEP * 2, offsetY + elemRect.y - canvasRect.y)
-            ];
-          }
+          console.error("calling offsetXY with TouchEvent");
+          throw new Error("not implemented");
         }
       })();
-      const currentScale = skipScaling ? 1 : this._actualZoomFactor;
-      return [unscaledX / currentScale, unscaledY / currentScale];
+      const [f, tX, tY] = skipTransform ? [1, 0, 0] : [this._userDrawingScale, this._translationX, this._translationY];
+      return [unscaledX / f - tX, unscaledY / f - tY];
     }
     offsetXYForComponent(e, comp) {
       const offset2 = this.offsetXY(e);
@@ -32610,52 +32895,52 @@ ${outputsStr}
       if (isNaN(h)) {
         h = 150;
       }
-      const f = applyZoom ? this._actualZoomFactor : 1;
+      const f = applyZoom ? this._userDrawingScale : 1;
       return [f * w, f * h];
     }
-    shareSheetForMode(mode) {
-      return __async(this, null, function* () {
-        if (this._mode > MAX_MODE_WHEN_EMBEDDED) {
-          this._mode = MAX_MODE_WHEN_EMBEDDED;
-        }
-        const modeStr = Mode2[mode].toLowerCase();
-        const { fullJson, compressedJsonForUri, showOnlyArr } = this.fullJsonStateAndCompressedForUri(true);
-        console.log("JSON:\n" + fullJson);
-        const fullUrl = this.fullUrlForMode(mode, compressedJsonForUri, showOnlyArr);
-        this.html.embedUrl.value = fullUrl;
-        const modeParam = mode === MAX_MODE_WHEN_EMBEDDED ? "" : `:mode: ${modeStr}`;
-        const embedHeight = this.guessAdequateCanvasSize(true)[1];
-        const showOnlySpaceDelim = showOnlyArr === void 0 ? void 0 : showOnlyArr.join(" ");
-        const markdownBlock = this._exportformat === "superfence" ? `\`\`\`{.logic height=${embedHeight} mode=${modeStr}${showOnlySpaceDelim === void 0 ? "" : `showonly=${showOnlySpaceDelim}`}}
+    async shareSheetForMode(mode) {
+      if (this._mode > MAX_MODE_WHEN_EMBEDDED) {
+        this._mode = MAX_MODE_WHEN_EMBEDDED;
+      }
+      const modeStr = Mode2[mode].toLowerCase();
+      const idWhenExporting = this.idWhenExporting;
+      const { fullJson, compressedJsonForUri, showOnlyArr } = this.fullJsonStateAndCompressedForUri(true);
+      console.log("JSON:\n" + fullJson);
+      const fullUrl = this.fullUrlForMode(mode, compressedJsonForUri, showOnlyArr, idWhenExporting);
+      this.html.embedUrl.value = fullUrl;
+      const modeParam = mode === MAX_MODE_WHEN_EMBEDDED ? "" : `:mode: ${modeStr}`;
+      const embedHeight = this.guessAdequateCanvasSize(true)[1];
+      const showOnlySpaceDelim = showOnlyArr === void 0 ? void 0 : showOnlyArr.join(" ");
+      const markdownBlock = this._exportformat === "superfence" ? `\`\`\`{.logic id=${idWhenExporting} height=${embedHeight} mode=${modeStr}${showOnlySpaceDelim === void 0 ? "" : `showonly=${showOnlySpaceDelim}`}}
 ${fullJson}
 \`\`\`` : `\`\`\`{logic}
+:id: ${idWhenExporting}
 :height: ${embedHeight}
 ${modeParam}
 ${showOnlySpaceDelim === void 0 ? "" : `:showonly: ${showOnlySpaceDelim}
 `}
 ${fullJson}
 \`\`\``;
-        this.html.embedMarkdown.value = markdownBlock;
-        const showOnlyHtmlAttr = showOnlySpaceDelim === void 0 ? "" : ` showonly="${showOnlySpaceDelim}"`;
-        const iframeEmbed = `<iframe style="width: 100%; height: ${embedHeight}px; border: 0"${showOnlyHtmlAttr} src="${fullUrl}"></iframe>`;
-        this.html.embedIframe.value = iframeEmbed;
-        const webcompEmbed = `<div style="width: 100%; height: ${embedHeight}px">
-  <logic-editor mode="${Mode2[mode].toLowerCase()}"${showOnlyHtmlAttr}>
+      this.html.embedMarkdown.value = markdownBlock;
+      const showOnlyHtmlAttr = showOnlySpaceDelim === void 0 ? "" : ` showonly="${showOnlySpaceDelim}"`;
+      const iframeEmbed = `<iframe style="width: 100%; height: ${embedHeight}px; border: 0"${showOnlyHtmlAttr} src="${fullUrl}"></iframe>`;
+      this.html.embedIframe.value = iframeEmbed;
+      const webcompEmbed = `<div style="width: 100%; height: ${embedHeight}px">
+  <logic-editor id="${idWhenExporting}" mode="${Mode2[mode].toLowerCase()}"${showOnlyHtmlAttr}>
     <script type="application/json5">
       ${fullJson.replace(/\n/g, "\n      ")}
     <\/script>
   </logic-editor>
 </div>`;
-        this.html.embedWebcomp.value = webcompEmbed;
-        this.saveToUrl(compressedJsonForUri, showOnlyArr);
-        if (!showModal(this.html.embedDialog)) {
-          if (copyToClipboard(fullUrl)) {
-            console.log("  -> Copied!");
-          } else {
-            console.log("  -> Could not copy!");
-          }
+      this.html.embedWebcomp.value = webcompEmbed;
+      this.saveToUrl(compressedJsonForUri, showOnlyArr);
+      if (!showModal(this.html.embedDialog)) {
+        if (await copyToClipboard(fullUrl)) {
+          console.log("  -> Copied!");
+        } else {
+          console.log("  -> Could not copy!");
         }
-      });
+      }
     }
     saveCurrentStateToUrl() {
       const { fullJson, compressedJsonForUri, showOnlyArr } = this.fullJsonStateAndCompressedForUri(true);
@@ -32667,7 +32952,7 @@ ${fullJson}
     }
     saveToUrl(compressedUriSafeJson, showOnly) {
       if (this._isSingleton) {
-        history.pushState(null, "", this.fullUrlForMode(MAX_MODE_WHEN_SINGLETON, compressedUriSafeJson, showOnly));
+        history.pushState(null, "", this.fullUrlForMode(MAX_MODE_WHEN_SINGLETON, compressedUriSafeJson, showOnly, this.instanceId));
         this.clearDirty();
         this.showMessage(S.Messages.SavedToUrl);
       }
@@ -32689,13 +32974,17 @@ ${fullJson}
       const compressedJsonForUri = LZString.compressToEncodedURIComponent(jsonForUri);
       return { fullJson, compressedJsonForUri, showOnlyArr };
     }
-    fullUrlForMode(mode, compressedUriSafeJson, showOnlyArr) {
+    fullUrlForMode(mode, compressedUriSafeJson, showOnlyArr, id) {
       const loc = window.location;
       const showOnlyParam = showOnlyArr === void 0 ? "" : `&${ATTRIBUTE_NAMES.showonly}=${showOnlyArr.join(",")}`;
       const currentLang = getLang();
       const hasCorrectLangParam = new URL(loc.href).searchParams.get(ATTRIBUTE_NAMES.lang) === currentLang;
       const langParam = !hasCorrectLangParam ? "" : `&${ATTRIBUTE_NAMES.lang}=${currentLang}`;
-      return `${loc.protocol}//${loc.host}${loc.pathname}?${ATTRIBUTE_NAMES.mode}=${Mode2[mode].toLowerCase()}${langParam}${showOnlyParam}&${ATTRIBUTE_NAMES.data}=${compressedUriSafeJson}`;
+      if (id === SINGLETON_INSTANCE_ID) {
+        id = void 0;
+      }
+      const idParam = id === void 0 ? "" : `id=${id}&`;
+      return `${loc.protocol}//${loc.host}${loc.pathname}?${idParam}${ATTRIBUTE_NAMES.mode}=${Mode2[mode].toLowerCase()}${langParam}${showOnlyParam}&${ATTRIBUTE_NAMES.data}=${compressedUriSafeJson}`;
     }
     toBase64(blob) {
       return new Promise((resolve, __) => {
@@ -32712,65 +33001,59 @@ ${fullJson}
         reader.readAsDataURL(blob);
       });
     }
-    toPNG(withMetadata, heightHint) {
-      return __async(this, null, function* () {
-        const pngBareBlob = yield new Promise((resolve) => {
-          const drawingScale = 3;
-          let [width, height] = this.guessAdequateCanvasSize(false);
-          if (heightHint !== void 0) {
-            height = heightHint;
-          }
-          width *= drawingScale;
-          height *= drawingScale;
-          const transform = new DOMMatrix(`scale(${drawingScale})`);
-          const tmpCanvas = document.createElement("canvas");
-          tmpCanvas.width = width;
-          tmpCanvas.height = height;
-          const g = _LogicEditor.getGraphics(tmpCanvas);
-          const wasDark = isDarkMode();
-          if (wasDark) {
-            setDarkMode(false, false);
-          }
-          this.doDrawWithContext(g, width, height, transform, transform, true, true, false);
-          if (wasDark) {
-            setDarkMode(true, false);
-          }
-          tmpCanvas.toBlob(resolve, "image/png");
-          tmpCanvas.remove();
-        });
-        if (pngBareBlob === null) {
-          return void 0;
+    async toPNG(withMetadata, heightHint) {
+      const pngBareBlob = await new Promise((resolve) => {
+        const drawingScale = 3;
+        let [width, height] = this.guessAdequateCanvasSize(false);
+        if (heightHint !== void 0) {
+          height = heightHint;
         }
-        if (!withMetadata) {
-          return pngBareBlob;
+        width *= drawingScale;
+        height *= drawingScale;
+        const transform = new DOMMatrix().scale(drawingScale);
+        const tmpCanvas = document.createElement("canvas");
+        tmpCanvas.width = width;
+        tmpCanvas.height = height;
+        const g = _LogicEditor.getGraphics(tmpCanvas);
+        const wasDark = isDarkMode();
+        if (wasDark) {
+          setDarkMode(false, false);
         }
-        const { compressedJsonForUri } = this.fullJsonStateAndCompressedForUri(false);
-        const pngBareData = new Uint8Array(yield pngBareBlob.arrayBuffer());
-        const pngChunks = pngMeta.extractChunks(pngBareData);
-        pngMeta.insertMetadata(pngChunks, { "tEXt": { "Description": compressedJsonForUri } });
-        return new Blob([pngMeta.encodeChunks(pngChunks)], { type: "image/png" });
+        this.doDrawWithContext(g, width, height, transform, transform, true, true, false);
+        if (wasDark) {
+          setDarkMode(true, false);
+        }
+        tmpCanvas.toBlob(resolve, "image/png");
+        tmpCanvas.remove();
       });
+      if (pngBareBlob === null) {
+        return void 0;
+      }
+      if (!withMetadata) {
+        return pngBareBlob;
+      }
+      const { compressedJsonForUri } = this.fullJsonStateAndCompressedForUri(false);
+      const pngBareData = new Uint8Array(await pngBareBlob.arrayBuffer());
+      const pngChunks = pngMeta.extractChunks(pngBareData);
+      pngMeta.insertMetadata(pngChunks, { "tEXt": { "Description": compressedJsonForUri } });
+      return new Blob([pngMeta.encodeChunks(pngChunks)], { type: "image/png" });
     }
-    toSVG(withMetadata) {
-      return __async(this, null, function* () {
-        const metadata = !withMetadata ? void 0 : Serialization.stringifyObject(Serialization.buildCircuitObject(this), false);
-        const [width, height] = this.guessAdequateCanvasSize(false);
-        const id = new DOMMatrix();
-        const svgCtx = new SVGRenderingContext({ width, height, metadata });
-        this.doDrawWithContext(svgCtx, width, height, id, id, true, true, false);
-        const serializedSVG = svgCtx.getSerializedSvg();
-        return Promise.resolve(new Blob([serializedSVG], { type: "image/svg+xml" }));
-      });
+    async toSVG(withMetadata) {
+      const metadata = !withMetadata ? void 0 : Serialization.stringifyObject(Serialization.buildCircuitObject(this), false);
+      const [width, height] = this.guessAdequateCanvasSize(false);
+      const id = new DOMMatrix();
+      const svgCtx = new SVGRenderingContext({ width, height, metadata });
+      this.doDrawWithContext(svgCtx, width, height, id, id, true, true, false);
+      const serializedSVG = svgCtx.getSerializedSvg();
+      return Promise.resolve(new Blob([serializedSVG], { type: "image/svg+xml" }));
     }
-    download(data2, extension) {
-      return __async(this, null, function* () {
-        const blob = yield data2;
-        if (blob === void 0) {
-          return;
-        }
-        const filename = this.documentDisplayName + extension;
-        (0, import_file_saver3.saveAs)(blob, filename);
-      });
+    async download(data2, extension) {
+      const blob = await data2;
+      if (blob === void 0) {
+        return;
+      }
+      const filename = this.documentDisplayName + extension;
+      (0, import_file_saver3.saveAs)(blob, filename);
     }
     setTestsPaletteVisible(visible) {
       var _a;
@@ -32814,74 +33097,78 @@ ${fullJson}
         }
       }
     }
-    disableUIWhile(message, action) {
-      return __async(this, null, function* () {
-        if (this._isRunningOrCreatingTests) {
-          return void 0;
+    async disableUIWhile(message, action) {
+      if (this._isRunningOrCreatingTests) {
+        return void 0;
+      }
+      this._isRunningOrCreatingTests = true;
+      const oldMode = this.mode;
+      const restoreAfter = /* @__PURE__ */ new Map();
+      const hideMsg = this.showMessage(message, 0);
+      try {
+        this.setMode(0 /* STATIC */, false);
+        const result = await action(restoreAfter);
+        return result;
+      } finally {
+        hideMsg();
+        this.setMode(oldMode, true);
+        for (const [input2, value] of restoreAfter) {
+          input2.setValue(value);
         }
-        this._isRunningOrCreatingTests = true;
-        const oldMode = this.mode;
-        const restoreAfter = /* @__PURE__ */ new Map();
-        const hideMsg = this.showMessage(message, 0);
-        try {
-          this.setMode(0 /* STATIC */, false);
-          const result = yield action(restoreAfter);
-          return result;
-        } finally {
-          hideMsg();
-          this.setMode(oldMode, true);
-          for (const [input2, value] of restoreAfter) {
-            input2.setValue(value);
-          }
-          this.recalcPropagateAndDrawIfNeeded();
-          yield this.waitForPropagation();
-          this._isRunningOrCreatingTests = false;
-        }
-      });
+        this.recalcPropagateAndDrawIfNeeded();
+        await this.waitForPropagation();
+        this._isRunningOrCreatingTests = false;
+      }
     }
-    runTestSuite(testSuite, options) {
-      return __async(this, null, function* () {
-        var _a, _b;
-        const palette = this.editTools.testsPalette;
-        if (palette === void 0) {
+    async runTestSuite(testSuite, options) {
+      var _a, _b, _c;
+      const palette = this.editTools.testsPalette;
+      if (palette === void 0) {
+        return void 0;
+      }
+      const noUI = (_a = options == null ? void 0 : options.noUI) != null ? _a : false;
+      const fast = noUI || ((_b = options == null ? void 0 : options.fast) != null ? _b : false);
+      const doLog = (_c = options == null ? void 0 : options.doLog) != null ? _c : false;
+      if (!(testSuite instanceof TestSuite)) {
+        const testSuiteRepr = validateJson(testSuite, TestSuite.Repr, "test suite");
+        if (testSuiteRepr === void 0) {
           return void 0;
         }
-        const fast = (_a = options == null ? void 0 : options.fast) != null ? _a : false;
-        const doLog = (_b = options == null ? void 0 : options.doLog) != null ? _b : false;
-        return this.disableUIWhile(S.Messages.RunningTests, (restoreAfter) => __async(this, null, function* () {
-          this.setTestsPaletteVisible(true);
-          const results = new TestSuiteResults(testSuite);
-          const ui = palette.getOrMakeUIFor(testSuite);
-          let isFirst = true;
-          let skip = false;
-          for (let i2 = 0; i2 < testSuite.testCases.length; i2++) {
-            const testCase = testSuite.testCases[i2];
-            ui.setRunning(i2);
-            if (isFirst) {
-              isFirst = false;
-            } else if (!skip && !fast) {
-              yield new Promise((resolve) => setTimeout(resolve, 2e3));
-            }
-            let testCaseResult;
-            if (skip) {
-              testCaseResult = TestCaseResult.Skip;
-            } else {
-              const [oldInValues, result] = yield this.runTestCase(testCase, testSuite, doLog);
-              testCaseResult = result;
-              for (const [input2, value] of oldInValues) {
-                if (!restoreAfter.has(input2)) {
-                  restoreAfter.set(input2, value);
-                }
+        testSuite = new TestSuite([testSuiteRepr, this.editor.components]);
+      }
+      return this.disableUIWhile(S.Messages.RunningTests, async (restoreAfter) => {
+        this.setTestsPaletteVisible(true);
+        const results = new TestSuiteResults(testSuite);
+        const ui = noUI ? void 0 : palette.getOrMakeUIFor(testSuite);
+        let isFirst = true;
+        let skip = false;
+        for (let i2 = 0; i2 < testSuite.testCases.length; i2++) {
+          const testCase = testSuite.testCases[i2];
+          ui == null ? void 0 : ui.setRunning(i2);
+          if (isFirst) {
+            isFirst = false;
+          } else if (!skip && !fast) {
+            await new Promise((resolve) => setTimeout(resolve, 2e3));
+          }
+          let testCaseResult;
+          if (skip) {
+            testCaseResult = TestCaseResult.Skip;
+          } else {
+            const [oldInValues, result] = await this.runTestCase(testCase, testSuite, doLog);
+            testCaseResult = result;
+            for (const [input2, value] of oldInValues) {
+              if (!restoreAfter.has(input2)) {
+                restoreAfter.set(input2, value);
               }
             }
-            results.addTestCaseResult(testCase, testCaseResult);
-            ui.setResult(i2, testCaseResult);
-            if (testCase.stopOnFail && testCaseResult._tag === "fail") {
-              skip = true;
-            }
           }
-          return results;
-        }));
+          results.addTestCaseResult(testCase, testCaseResult);
+          ui == null ? void 0 : ui.setResult(i2, testCaseResult);
+          if (testCase.stopOnFail && testCaseResult._tag === "fail") {
+            skip = true;
+          }
+        }
+        return results;
       });
     }
     trySetInputsAndRecalc(inputs) {
@@ -32894,52 +33181,50 @@ ${fullJson}
       }
       this.recalcPropagateAndDrawIfNeeded(false);
     }
-    runTestCase(testCase, sourceSuite, doLog) {
-      return __async(this, null, function* () {
+    async runTestCase(testCase, sourceSuite, doLog) {
+      if (doLog) {
+        const fullTestNameParts = [sourceSuite.name, testCase.name].filter(Boolean);
+        const fullTestName = fullTestNameParts.length === 0 ? S.Tests.DefaultTestCaseName : fullTestNameParts.join("/");
+        console.group("Running test case " + fullTestName);
+      }
+      testCase.tryFixReferences(this.editorRoot.components);
+      const oldInValues = /* @__PURE__ */ new Map();
+      try {
+        for (const [input2, valueRepr] of testCase.in) {
+          if (isString(input2)) {
+            return [oldInValues, TestCaseResult.Error(`Input component ${input2} not found`)];
+          }
+          oldInValues.set(input2, input2.value);
+          input2.setValue(valuesFromReprForInput(valueRepr, input2.numBits));
+        }
+        this.recalcPropagateAndDrawIfNeeded(true);
+        await this.waitForPropagation();
+        const mismatches = [];
+        for (const [output, expectedRepr] of testCase.out) {
+          if (isString(output)) {
+            return [oldInValues, TestCaseResult.Error(`Output component ${output} not found`)];
+          }
+          const actual = output.value;
+          const expected = valuesFromReprForInput(expectedRepr, output.numBits);
+          if (!deepArrayEquals(actual, expected)) {
+            mismatches.push({ output, expected, actual });
+            if (doLog) {
+              const failMsg = `${output.ref} is ${actual} instead of ${expected}`;
+              console.log(`%cFAIL:%c ${failMsg}`, "color: red; font-weight: bold;", "");
+            }
+          } else {
+            if (doLog) {
+              const passMsg = `${output.ref} is ${expected}`;
+              console.log(`%cPASS:%c ${passMsg}`, "color: green; font-weight: bold;", "");
+            }
+          }
+        }
+        return [oldInValues, mismatches.length === 0 ? TestCaseResult.Pass : TestCaseResult.Fail(mismatches)];
+      } finally {
         if (doLog) {
-          const fullTestNameParts = [sourceSuite.name, testCase.name].filter(Boolean);
-          const fullTestName = fullTestNameParts.length === 0 ? S.Tests.DefaultTestCaseName : fullTestNameParts.join("/");
-          console.group("Running test case " + fullTestName);
+          console.groupEnd();
         }
-        testCase.tryFixReferences(this.editorRoot.components);
-        const oldInValues = /* @__PURE__ */ new Map();
-        try {
-          for (const [input2, valueRepr] of testCase.in) {
-            if (isString(input2)) {
-              return [oldInValues, TestCaseResult.Error(`Input component ${input2} not found`)];
-            }
-            oldInValues.set(input2, input2.value);
-            input2.setValue(valuesFromReprForInput(valueRepr, input2.numBits));
-          }
-          this.recalcPropagateAndDrawIfNeeded(true);
-          yield this.waitForPropagation();
-          const mismatches = [];
-          for (const [output, expectedRepr] of testCase.out) {
-            if (isString(output)) {
-              return [oldInValues, TestCaseResult.Error(`Output component ${output} not found`)];
-            }
-            const actual = output.value;
-            const expected = valuesFromReprForInput(expectedRepr, output.numBits);
-            if (!deepArrayEquals(actual, expected)) {
-              mismatches.push({ output, expected, actual });
-              if (doLog) {
-                const failMsg = `${output.ref} is ${actual} instead of ${expected}`;
-                console.log(`%cFAIL:%c ${failMsg}`, "color: red; font-weight: bold;", "");
-              }
-            } else {
-              if (doLog) {
-                const passMsg = `${output.ref} is ${expected}`;
-                console.log(`%cPASS:%c ${passMsg}`, "color: green; font-weight: bold;", "");
-              }
-            }
-          }
-          return [oldInValues, mismatches.length === 0 ? TestCaseResult.Pass : TestCaseResult.Fail(mismatches)];
-        } finally {
-          if (doLog) {
-            console.groupEnd();
-          }
-        }
-      });
+      }
     }
     /**
      * Make sure that `recalcPropagateAndDrawIfNeeded` has been called after the change
@@ -33046,11 +33331,11 @@ ${fullJson}
       (_a = this._topBar) == null ? void 0 : _a.updateTimeLabelIfNeeded();
       const g = _LogicEditor.getGraphics(this.html.mainCanvas);
       const mainCanvas = this.html.mainCanvas;
-      const baseDrawingScale = this._baseDrawingScale;
+      const baseDrawingScale = this._baseUIDrawingScale;
       const width = mainCanvas.width / baseDrawingScale;
       const height = mainCanvas.height / baseDrawingScale;
-      const baseTransform = new DOMMatrix(`scale(${this._baseDrawingScale})`);
-      const contentTransform = baseTransform.scale(this._actualZoomFactor);
+      const baseTransform = new DOMMatrix().scale(this._baseUIDrawingScale);
+      const contentTransform = baseTransform.scale(this._userDrawingScale).translate(this._translationX, this._translationY);
       this.doDrawWithContext(g, width, height, baseTransform, contentTransform, false, false, redrawMask);
     }
     doDrawWithContext(g, width, height, baseTransform, contentTransform, skipBorder, transparentBackground, __redrawMask) {
@@ -33110,23 +33395,26 @@ ${fullJson}
       const moveMgr = this.editTools.moveMgr;
       const isMovingComponent = moveMgr.areDrawablesMoving();
       if (isMovingComponent) {
+        g.setTransform(baseTransform);
+        g.scale(this._userDrawingScale, this._userDrawingScale);
         g.beginGroup("grid");
-        const widthAdjusted = width / this._actualZoomFactor;
-        const heightAdjusted = height / this._actualZoomFactor;
+        const widthAdjusted = width / this._userDrawingScale;
+        const heightAdjusted = height / this._userDrawingScale;
         const step = GRID_STEP;
         g.strokeStyle = COLOR_GRID_LINES;
         g.lineWidth = 1;
         g.beginPath();
         for (let x = step; x < widthAdjusted; x += step) {
           g.moveTo(x, 0);
-          g.lineTo(x, height);
+          g.lineTo(x, heightAdjusted);
         }
         for (let y = step; y < heightAdjusted; y += step) {
           g.moveTo(0, y);
-          g.lineTo(width, y);
+          g.lineTo(widthAdjusted, y);
         }
         g.stroke();
         g.endGroup();
+        g.setTransform(contentTransform);
       }
       const singleMovingWayoint = moveMgr.getSingleMovingWaypoint();
       if (singleMovingWayoint !== void 0) {
@@ -33173,11 +33461,11 @@ ${fullJson}
       const drawTime = this.timeline.logicalTime();
       const drawTimeAnimationFraction = !this._options.animateWires ? void 0 : drawTime / 1e3 % 1;
       g.strokeStyle = COLOR_COMPONENT_BORDER;
-      const currentMouseOverComp = this.eventMgr.currentMouseOverComp;
+      const currentCompUnderPointer = this.eventMgr.currentComponentUnderPointer;
       const drawParams = {
         drawTime,
         drawTimeAnimationFraction,
-        currentMouseOverComp,
+        currentCompUnderPointer,
         highlightedItems,
         highlightColor,
         currentSelection: void 0,
@@ -33255,10 +33543,52 @@ ${fullJson}
         g.endGroup();
       }
     }
-    cut() {
-      console.log("cut");
+    drawDebugInfo(g) {
+      drawPoint(0, 0);
+      for (const d of [100, 200]) {
+        for (const [x, y] of [[-d, -d], [-d, 0], [-d, d], [0, -d], [0, d], [d, d], [d, 0], [d, -d]]) {
+          drawPoint(x, y);
+        }
+      }
+      function drawPoint(x, y) {
+        g.lineWidth = 2;
+        g.strokeStyle = "red";
+        g.beginPath();
+        g.moveTo(x - 10, y);
+        g.lineTo(x + 10, y);
+        g.moveTo(x, y - 10);
+        g.lineTo(x, y + 10);
+        g.stroke();
+        g.fillStyle = "black";
+        g.font = "bold 10px sans-serif";
+        g.textAlign = "left";
+        fillTextVAlign(g, TextVAlign.top, `${x},${y}`, x + 4, y + 4);
+      }
+      __name(drawPoint, "drawPoint");
     }
-    copy() {
+    deleteSelection() {
+      var _a, _b;
+      if (this.eventMgr.currentSelectionEmpty()) {
+        return false;
+      }
+      let anyDeleted = false;
+      for (const elem of (_b = (_a = this.eventMgr.currentSelection) == null ? void 0 : _a.previouslySelectedElements) != null ? _b : []) {
+        anyDeleted = this.eventMgr.tryDeleteDrawable(elem).isChange || anyDeleted;
+      }
+      if (!anyDeleted) {
+        return false;
+      }
+      this.editTools.undoMgr.takeSnapshot();
+      return true;
+    }
+    async cut() {
+      const copied = await this.copy();
+      if (!copied) {
+        return;
+      }
+      await this.deleteSelection();
+    }
+    async copy() {
       var _a, _b;
       if (this.eventMgr.currentSelectionEmpty()) {
         return false;
@@ -33269,22 +33599,26 @@ ${fullJson}
           componentsToInclude.push(elem);
         }
       }
-      const reprs = Serialization.buildComponentsAndWireObject(componentsToInclude, [], [this.mouseX, this.mouseY]);
+      const reprs = Serialization.buildComponentsAndWireObject(componentsToInclude, [], [this.pointerX, this.pointerY]);
       if (reprs.components === void 0 && reprs.wires === void 0) {
         return false;
       }
       const jsonStr = Serialization.stringifyObject(reprs, false);
-      console.log("Copied:\n" + jsonStr);
-      copyToClipboard(jsonStr);
+      const copied = await copyToClipboard(jsonStr);
+      if (copied) {
+        console.log("Copied:\n" + jsonStr);
+      } else {
+        console.log("Could not copy");
+      }
       this.focus();
-      return true;
+      return copied;
     }
-    paste() {
+    async paste() {
       const oldDontHogFocus = this._dontHogFocus;
       this._dontHogFocus = true;
       let jsonStr = void 0;
       try {
-        jsonStr = pasteFromClipboard();
+        jsonStr = await pasteFromClipboard();
       } finally {
         this._dontHogFocus = oldDontHogFocus;
       }
@@ -33310,6 +33644,13 @@ ${fullJson}
         return result;
       };
     }
+    wrapAsyncHandler(f) {
+      return async (...params) => {
+        const result = await f(...params);
+        this.recalcPropagateAndDrawIfNeeded();
+        return result;
+      };
+    }
     static decodeFromURLOld(str) {
       return decodeURIComponent(atob(str.replace(/-/g, "+").replace(/_/g, "/").replace(/%3D/g, "=")));
     }
@@ -33324,6 +33665,7 @@ ${fullJson}
   var LogicEditor = _LogicEditor;
   __name(LogicEditor, "LogicEditor");
   LogicEditor._globalListenersInstalled = false;
+  LogicEditor._spaceDown = false;
   LogicEditor._allConnectedEditors = [];
   var LogicStatic = class {
     constructor(template2) {
@@ -33332,11 +33674,12 @@ ${fullJson}
       this.Serialization = Serialization;
     }
     highlight(diagramRefs, componentRefs) {
+      var _a;
       if (isString(diagramRefs)) {
         diagramRefs = [diagramRefs];
       }
       for (const diagramRef of diagramRefs) {
-        const diagram = document.getElementById("logic_" + diagramRef);
+        const diagram = (_a = document.getElementById("logic_" + diagramRef)) != null ? _a : document.getElementById(diagramRef);
         if (diagram === null) {
           console.log(`Cannot find logic diagram with reference '${diagramRef}'`);
           return;
@@ -33349,7 +33692,7 @@ ${fullJson}
       }
     }
     runSampleTestSuite(options) {
-      const f = /* @__PURE__ */ __name(() => __async(this, null, function* () {
+      const f = /* @__PURE__ */ __name(async () => {
         if (this.singleton) {
           const testSuite = new TestSuite([{
             name: "Simple XOR gate test suite",
@@ -33373,14 +33716,14 @@ ${fullJson}
             }]
           }, this.singleton.editorRoot.components]);
           const _opts = isRecord(options) ? options : {};
-          const results = yield this.singleton.runTestSuite(testSuite, _opts);
+          const results = await this.singleton.runTestSuite(testSuite, _opts);
           if (results === void 0) {
             console.error("Could not run test suite");
           } else {
             results.dump();
           }
         }
-      }), "f");
+      }, "f");
       setTimeout(f, 0);
     }
     printUndoStack() {

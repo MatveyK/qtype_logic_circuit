@@ -28,7 +28,10 @@ class qtype_logic_question extends question_graded_automatically {
 
     public function get_expected_data() {
         error_log("Getting expected data...");
-        return array('answer' => PARAM_RAW);
+        return array(
+            'answer' => PARAM_RAW,
+            'test_results' => PARAM_RAW
+        );
     }
 
     public function get_correct_response() {
