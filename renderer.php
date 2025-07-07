@@ -45,26 +45,24 @@ class qtype_logic_renderer extends qtype_renderer {
         return $OUTPUT->render_from_template('qtype_logic/logic-editor', $template_data);
     }
 
+    # TODO improve the specific feedback in case of failure
+    /*
     public function specific_feedback(question_attempt $qa) {
-        $question = $qa->get_question();
-        $response = $qa->get_last_qt_var('answer', '');
+        $resultAnalysis = $qa->get_response_summary();
 
-        if ($response) {
-            return $question->format_text($question->truefeedback, $question->truefeedbackformat,
-                    $qa, 'question', 'answerfeedback', $question->trueanswerid);
-        } else if ($response !== '') {
-            return $question->format_text($question->falsefeedback, $question->falsefeedbackformat,
-                    $qa, 'question', 'answerfeedback', $question->falseanswerid);
+        if ($resultAnalysis) {
+            return $resultAnalysis;
         }
     }
+    */
 
     public function correct_response(question_attempt $qa) {
         $question = $qa->get_question();
 
         if ($question->rightanswer) {
-            return get_string('correctresponse', 'qtype_logic');
+            return $question->rightanswer;
         } else {
-            return get_string('incorrectresponse', 'qtype_logic');
+            return "";
         }
     }
 }
