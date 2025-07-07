@@ -23,7 +23,8 @@ class qtype_logic_renderer extends qtype_renderer {
         $question_text = $question->questiontext;
 
         $response = $qa->get_last_qt_data();
-        $input_name = $qa->get_qt_field_name('answer');
+        $answer_input_name = $qa->get_qt_field_name('answer');
+        $test_results_input_name = $qa->get_qt_field_name('test_results');
         $current_answer = isset($response['answer']) ? $response['answer'] : '';
         $current_test_results = isset($response['test-results']) ? $response['test-results'] : '';
 
@@ -35,7 +36,8 @@ class qtype_logic_renderer extends qtype_renderer {
             'question_name' => $question_name,
             'question_text' => $question_text,
             'init_state' => $init_state,
-            'answer_name' => $input_name,
+            'answer_name' => $answer_input_name,
+            'test_results_name' => $test_results_input_name,
             'answer_value' => $current_answer,
             'test_results_value' => $current_test_results
         ];

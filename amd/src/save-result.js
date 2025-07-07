@@ -23,7 +23,6 @@
 define(['jquery'], function($) {
     return {
         init: function() {
-            //const form = $('form#responseform');
             const nextNavButton = $('input[type="submit"]#mod_quiz-next-nav.btn');
 
             const testResultsInput = $('input#test-results');
@@ -43,14 +42,15 @@ define(['jquery'], function($) {
                     console.log(logicEditor);
                     console.log(userAnswer);
                     console.log(testCases);
-                    const testResults = await Logic.singleton.runTestSuite(testCases, { noUI: true });
+                    const testResults = await logicEditor.runTestSuite(testCases, { noUI: true });
+                    const testResultsString = JSON.stringify(testResults);
                     console.log(testResults)
 
                     const userAnswerString = JSON.stringify(userAnswer);
 
                     // Update the input value here
                     $('input#answer').attr('value', userAnswerString);
-                    $('input#test-results').attr('value', testResults);
+                    $('input#test-results').attr('value', testResultsString);
                 } catch(error) {
                     console.error(error);
                 }

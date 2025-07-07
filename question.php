@@ -14,7 +14,7 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/question/type/questionbase.php');
 
 /**
- * Represents a true-false question.
+ * Represents a logic circuit question.
  *
  */
 class qtype_logic_question extends question_graded_automatically {
@@ -35,7 +35,7 @@ class qtype_logic_question extends question_graded_automatically {
     }
 
     public function get_correct_response() {
-        return array('answer' => (int) $this->rightanswer);
+        return null;
     }
 
     public function summarise_response(array $response) {
@@ -81,10 +81,9 @@ class qtype_logic_question extends question_graded_automatically {
     public function is_complete_response(array $response) {
         error_log("Is complete response ?");
         error_log(print_r($response['answer']), true);
-        print_object($response);
-        print_object($response['answer']);
+        error_log(print_r($response['test_results']), true);
 
-        return array_key_exists('answer', $response);
+        return array_key_exists('answer', $response) && array_key_exists('test_results', $response);
     }
 
     public function get_validation_error(array $response) {
@@ -99,36 +98,58 @@ class qtype_logic_question extends question_graded_automatically {
         error_log(print_r($prevresponse, true));
         error_log(print_r($newresponse, true));
 
-        return question_utils::arrays_same_at_key_missing_is_blank(
-                $prevresponse, $newresponse, 'answer');
+        if(!isset($prevresponse) || empty($prevresponse)) {
+            return false;
+        }
+
+        $prevResponseParsed = json_decode($prevresponse['answer'], true);
+        $newResponseParsed = json_decode($newresponse['answer'], true);
+
+        $diff = array_diff($prevResponseParsed, $newResponseParsed);
+
+        if(empty($diff[0])) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function grade_response(array $response) {
         error_log("Grading response...");
         error_log(print_r($response, true));
 
-        if ($this->rightanswer == true && $response['answer'] == true) {
-            $fraction = 1;
-        } else if ($this->rightanswer == false && $response['answer'] == false) {
-            $fraction = 1;
-        } else {
-            $fraction = 0;
+        $totalTests = 0;
+        $successfullTests = 0;
+
+        $testResultsString = $response['test_results'];
+        $testResults = json_decode($testResultsString, true);
+
+        $testCaseResults = $testResults['testCaseResults'];
+
+        foreach ($testCaseResults as $testCaseResult) {
+            $totalTests += 1;
+
+            $testObject = $testCaseResult[1];
+            $testTag = $testObject['_tag'];
+
+            if ($testTag == 'pass') {
+                $successfullTests += 1;
+            }
         }
+
+        $fraction = $successfullTests / $totalTests;
         return array($fraction, question_state::graded_state_for_fraction($fraction));
     }
 
     public function check_file_access($qa, $options, $component, $filearea, $args, $forcedownload) {
-        if ($component == 'question' && $filearea == 'answerfeedback') {
-            $answerid = reset($args); // Itemid is answer id.
-            $response = $qa->get_last_qt_var('answer', '');
-            return $options->feedback && (
-                    ($answerid == $this->trueanswerid && $response) ||
-                    ($answerid == $this->falseanswerid && $response !== ''));
-
-        } else {
-            return parent::check_file_access($qa, $options, $component, $filearea,
-                    $args, $forcedownload);
-        }
+        return parent::check_file_access(
+            $qa,
+            $options,
+            $component,
+            $filearea,
+            $args,
+            $forcedownload
+        );
     }
 
     /**

@@ -22,7 +22,7 @@
 <p>{{{question_text}}}</p>
 
 <div style="width: 100%; height: 40rem; max-height: 40rem;">
-    <logic-editor singleton="" mode="full" id="logic-editor">
+    <logic-editor mode="full" id="logic-editor">
         <script type="application/json5">
             {{#answer_value}}
                 {{{answer_value}}}
@@ -62,16 +62,9 @@
     style="display: none;">
 <input
     type="text"
+    name="{{test_results_name}}"
     id="test-results"
     value="{{test_results_value}}"
     data-test-results="{{test_results_value}}"
     style="display: none;">
 
-<div class="data-container" question-id-param="{{question_id}}" question-attempt-id-param="{{question_attempt_id}}" >
-    <h1>DEBUG</h1>
-    <p>QUESTION_ID: {{question_id}}</p>
-    <p>QUESTION_ATTEMPT_ID: {{question_attempt_id}}</p>
-    <p>INIT STATE: {{{init_state}}}</p>
-    <p>INPUT NAME: {{answer_name}}</p>
-    <p>ANSWER: {{answer_value}}</p>
-</div>
