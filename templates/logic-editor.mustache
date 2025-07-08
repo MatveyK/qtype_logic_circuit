@@ -70,3 +70,22 @@
     data-test-results="{{test_results_value}}"
     style="display: none;">
 
+{{#is_debug}}
+    <div>
+        <h1>DEBUG</h1>
+            'question_name' => $question_name,
+            'question_text' => $question_text,
+            'init_state' => $init_state,
+            'answer_name' => $answer_input_name,
+            'test_results_name' => $test_results_input_name,
+            'answer_value' => $current_answer,
+            'test_results_value' => $current_test_results,
+        <p>QUESTION NAME: {{question_name}}</p>
+        <p>QUESTION TEXT: {{question_text}}</p>
+        <p>INIT STATE: {{{init_state}}}</p>
+        <p>ANSWER INPUT NAME: {{answer_name}}</p>
+        <p>TEST RESULTS INPUT NAME: {{test_results_name}}</p>
+        <p>ANSWER VALUE: {{answer_value}}</p>
+        <p>TEST RESULTS VALUE: {{test_results_value}}</p>
+    </div>
+{{/is_debug}}
