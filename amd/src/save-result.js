@@ -24,11 +24,19 @@ define(['jquery'], function($) {
     return {
         init: function() {
             const nextNavButton = $('input[type="submit"]#mod_quiz-next-nav.btn');
+            const resultNotUploadedIcon = $('i#result_not_uploaded');
+            const newResultUploadedIcon = $('i#new_result_uploaded');
 
             const testResultsInput = $('input#test-results');
             const testResults = testResultsInput.data('test-results');
+
+            console.log(testResults);
+
+            // Block quiy progression until the user submits a result
             if(testResults === undefined || testResults.length === 0) {
                 nextNavButton.prop('disabled', true);
+                resultNotUploadedIcon.css('display', 'block');
+                newResultUploadedIcon.css('display', 'none');
             }
 
             const runTestButton = $('button#circuit-run-test-button');
@@ -38,15 +46,15 @@ define(['jquery'], function($) {
                     const logicEditor = $('logic-editor#logic-editor')[0];
 
                     const userAnswer = logicEditor.save();
+                    const userAnswerString = JSON.stringify(userAnswer);
                     const testCases = userAnswer.tests[0];
+                    const testResults = await logicEditor.runTestSuite(testCases, { noUI: true });
+                    const testResultsString = JSON.stringify(testResults);
+
                     console.log(logicEditor);
                     console.log(userAnswer);
                     console.log(testCases);
-                    const testResults = await logicEditor.runTestSuite(testCases, { noUI: true });
-                    const testResultsString = JSON.stringify(testResults);
                     console.log(testResults)
-
-                    const userAnswerString = JSON.stringify(userAnswer);
 
                     // Update the input value here
                     $('input#answer').attr('value', userAnswerString);
@@ -56,6 +64,8 @@ define(['jquery'], function($) {
                 }
 
                 nextNavButton.prop('disabled', false);
+                resultNotUploadedIcon.css('display', 'none');
+                newResultUploadedIcon.css('display', 'block');
             });
 
             const resetButton = $('button#circuit-reset-button');

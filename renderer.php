@@ -25,8 +25,9 @@ class qtype_logic_renderer extends qtype_renderer {
         $response = $qa->get_last_qt_data();
         $answer_input_name = $qa->get_qt_field_name('answer');
         $test_results_input_name = $qa->get_qt_field_name('test_results');
-        $current_answer = isset($response['answer']) ? $response['answer'] : '';
-        $current_test_results = isset($response['test-results']) ? $response['test-results'] : '';
+        $answer_value = isset($response['answer']) ? $response['answer'] : '';
+        $test_results_value = isset($response['test_results']) ? $response['test_results'] : '';
+        $readonly = $options->readonly;
 
         if (debugging('', DEBUG_DEVELOPER)) {
             $is_debug = true;
@@ -40,34 +41,14 @@ class qtype_logic_renderer extends qtype_renderer {
             'question_name' => $question_name,
             'question_text' => $question_text,
             'init_state' => $init_state,
-            'answer_name' => $answer_input_name,
-            'test_results_name' => $test_results_input_name,
-            'answer_value' => $current_answer,
-            'test_results_value' => $current_test_results,
+            'answer_input_name' => $answer_input_name,
+            'test_results_input_name' => $test_results_input_name,
+            'answer_value' => $answer_value,
+            'test_results_value' => $test_results_value,
+            'readonly' => $readonly,
             'is_debug' => $is_debug
         ];
 
         return $OUTPUT->render_from_template('qtype_logic/logic-editor', $template_data);
-    }
-
-    # TODO improve the specific feedback in case of failure
-    /*
-    public function specific_feedback(question_attempt $qa) {
-        $resultAnalysis = $qa->get_response_summary();
-
-        if ($resultAnalysis) {
-            return $resultAnalysis;
-        }
-    }
-    */
-
-    public function correct_response(question_attempt $qa) {
-        $question = $qa->get_question();
-
-        if ($question->rightanswer) {
-            return $question->rightanswer;
-        } else {
-            return "";
-        }
     }
 }
