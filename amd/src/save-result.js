@@ -31,15 +31,19 @@ define(['jquery'], function($) {
             const newResultUploadedIcon = $('i#new_result_uploaded');
 
             const testResultsInput = $('input#test-results');
-            const testResults = testResultsInput.data('test-results');
+            const testResults = testResultsInput.attr('value');
 
             console.log(testResults);
 
-            // Block quiy progression until the user submits a result
+            // Block quiz progression until the user submits a result
             if(testResults === undefined || testResults.length === 0) {
                 nextNavButton.prop('disabled', true);
                 resultNotUploadedIcon.css('display', 'block');
                 newResultUploadedIcon.css('display', 'none');
+            } else {
+                nextNavButton.prop('disabled', false);
+                resultNotUploadedIcon.css('display', 'none');
+                newResultUploadedIcon.css('display', 'block');
             }
 
             const runTestButton = $('button#circuit-run-test-button');
