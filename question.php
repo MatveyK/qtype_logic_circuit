@@ -100,7 +100,8 @@ class qtype_logic_question extends question_graded_automatically {
             return false;
         }
 
-        return array_key_exists('answer', $response) && array_key_exists('test_results', $response);
+        return (array_key_exists('answer', $response) && isset($response['answer'])) &&
+            (array_key_exists('test_results', $response) && isset($response['test_results']));
     }
 
     public function get_validation_error(array $response) {
@@ -115,19 +116,21 @@ class qtype_logic_question extends question_graded_automatically {
         error_log(print_r($prevresponse, true));
         error_log(print_r($newresponse, true));
 
-        if(!isset($prevresponse) || empty($prevresponse)) {
-            return false;
-        }
-
-        $prevResponseParsed = json5_decode($prevresponse['answer'], true);
-        $newResponseParsed = json5_decode($newresponse['answer'], true);
-
-        $diff = array_diff($prevResponseParsed, $newResponseParsed);
-
-        if(empty($diff[0])) {
+        if(!$this->notEmptyResponse($prevresponse) && !$this->notEmptyResponse($newresponse)) {
             return true;
-        } else {
+        } else if(!$this->notEmptyResponse($prevresponse)) {
             return false;
+        } else {
+            $prevResponseParsed = json5_decode($prevresponse['answer'], true);
+            $newResponseParsed = json5_decode($newresponse['answer'], true);
+
+            $diff = array_diff($prevResponseParsed, $newResponseParsed);
+
+            if(empty($diff[0])) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
@@ -198,5 +201,10 @@ class qtype_logic_question extends question_graded_automatically {
             'fraction' => $fraction,
             'test_summary' => $testSummaryArray
         );
+    }
+
+    private function notEmptyResponse(array $response) {
+        return (isset($response['answer']) && !empty($response['answer'])) &&
+            (isset($response['test_results']) && !empty($response['test_results']));
     }
 }
