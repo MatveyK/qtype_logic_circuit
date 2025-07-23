@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace qtype_truefalse;
+namespace qtype_logic;
 
 use question_attempt_step;
 use question_classified_response;
@@ -28,96 +28,73 @@ require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
 
 
 /**
- * Unit tests for the true-false question definition class.
+ * Unit tests for the logic circuit question definition class.
  *
- * @package    qtype_truefalse
+ * @package    qtype_logic
  * @copyright  2008 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class question_test extends \advanced_testcase {
-    public function test_is_complete_response(): void {
-        $question = \test_question_maker::make_question('truefalse', 'true');
 
-        $this->assertFalse($question->is_complete_response(array()));
-        $this->assertTrue($question->is_complete_response(array('answer' => 0)));
-        $this->assertTrue($question->is_complete_response(array('answer' => 1)));
-    }
+	private string $jsonAnswerString;
+	private string $correctTestResults;
+	private string $semiCorrectTestResults;
+	private string $incorrectTestResults;
 
-    public function test_is_gradable_response(): void {
-        $question = \test_question_maker::make_question('truefalse', 'true');
+	protected function setUp(): void {
+		global $CFG;
+		$this->jsonAnswerString = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/2bit-decoder.json');
+		$this->correctTestResults = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/correct-test-results.json');
+		$this->semiCorrectTestResults = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/semi-correct-test-results.json');
+		$this->incorrectTestResults = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/incorrect-test-results.json');
+	}
 
-        $this->assertFalse($question->is_gradable_response(array()));
-        $this->assertTrue($question->is_gradable_response(array('answer' => 0)));
-        $this->assertTrue($question->is_gradable_response(array('answer' => 1)));
-    }
+	public function test_is_complete_response(): void {
+		$question = \test_question_maker::make_question('logic', 'test');
 
-    public function test_grading(): void {
-        $question = \test_question_maker::make_question('truefalse', 'true');
+		$this->assertFalse($question->is_complete_response(array()));
+		$this->assertFalse($question->is_complete_response(array('answer' => " ")));
+		$this->assertFalse($question->is_complete_response(array('answer' => "", 'test_results' => " ")));
+		$this->assertTrue($question->is_complete_response(array('answer' => $this->jsonAnswerString, 'test_results' => $this->jsonAnswerString)));
 
-        $this->assertEquals(array(0, question_state::$gradedwrong),
-                $question->grade_response(array('answer' => 0)));
-        $this->assertEquals(array(1, question_state::$gradedright),
-                $question->grade_response(array('answer' => 1)));
-    }
+		$incorrectJSON = substr($this->jsonAnswerString, 0, -5);
+		$this->assertFalse($question->is_complete_response(array('answer' => $incorrectJSON, 'test_results' => $incorrectJSON)));
+	}
 
-    public function test_get_correct_response(): void {
-        $question = \test_question_maker::make_question('truefalse', 'true');
+	public function test_grading(): void {
+		$question = \test_question_maker::make_question('logic', 'test');
 
-        // True.
-        $this->assertSame(array('answer' => 1),
-                $question->get_correct_response());
+		$this->assertEquals(
+			array(0, question_state::$gradedwrong),
+			$question->grade_response(array('answer' => $this->jsonAnswerString, 'test_results' => $this->incorrectTestResults))
+		);
+		$this->assertEquals(
+			array(1, question_state::$gradedright),
+			$question->grade_response(array('answer' => $this->jsonAnswerString, 'test_results' => $this->correctTestResults))
+		);
+		$this->assertEquals(
+			array(0.92, question_state::$gradedpartial),
+			$question->grade_response(array('answer' => $this->jsonAnswerString, 'test_results' => $this->semiCorrectTestResults))
+		);
+	}
 
-        // False.
-        $question->rightanswer = false;
-        $this->assertSame(array('answer' => 0),
-                $question->get_correct_response());
-    }
+	public function test_get_question_summary(): void {
+		$question = \test_question_maker::make_question('logic', 'test');
+		$qsummary = $question->get_question_summary();
+		$this->assertEquals($question->questiontext, $qsummary);
+	}
 
-    public function test_get_question_summary(): void {
-        $tf = \test_question_maker::make_question('truefalse', 'true');
-        $qsummary = $tf->get_question_summary();
-        $this->assertEquals('The answer is true.', $qsummary);
-    }
+	/*
+	public function test_summarise_response(): void {
+		$question = \test_question_maker::make_question('logic', 'test');
 
-    public function test_summarise_response(): void {
-        $tf = \test_question_maker::make_question('truefalse', 'true');
+		$this->assertEquals(
+			get_string('false', 'qtype_truefalse'),
+			$question->summarise_response(array('answer' => '0')));
 
-        $this->assertEquals(get_string('false', 'qtype_truefalse'),
-                $tf->summarise_response(array('answer' => '0')));
-
-        $this->assertEquals(get_string('true', 'qtype_truefalse'),
-                $tf->summarise_response(array('answer' => '1')));
-    }
-
-    public function test_classify_response(): void {
-        $tf = \test_question_maker::make_question('truefalse', 'true');
-        $tf->start_attempt(new question_attempt_step(), 1);
-
-        $this->assertEquals(array(
-                $tf->id => new question_classified_response(
-                        0, get_string('false', 'qtype_truefalse'), 0.0)),
-                $tf->classify_response(array('answer' => '0')));
-        $this->assertEquals(array(
-                $tf->id => new question_classified_response(
-                        1, get_string('true', 'qtype_truefalse'), 1.0)),
-                $tf->classify_response(array('answer' => '1')));
-        $this->assertEquals(array(
-                $tf->id => question_classified_response::no_response()),
-                $tf->classify_response(array()));
-    }
-
-    /**
-     * test_get_question_definition_for_external_rendering
-     */
-    public function test_get_question_definition_for_external_rendering(): void {
-        $this->resetAfterTest();
-
-        $question = \test_question_maker::make_question('truefalse', 'true');
-        $question->start_attempt(new question_attempt_step(), 1);
-        $qa = \test_question_maker::get_a_qa($question);
-        $displayoptions = new question_display_options();
-
-        $options = $question->get_question_definition_for_external_rendering($qa, $displayoptions);
-        $this->assertNull($options);
-    }
+		$this->assertEquals(
+			get_string('true', 'qtype_truefalse'),
+			$question->summarise_response(array('answer' => '1')));
+	}
+	*/
 }

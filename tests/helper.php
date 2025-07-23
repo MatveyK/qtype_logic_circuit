@@ -18,7 +18,7 @@
  * Test helpers for the truefalse question type.
  *
  * @package    qtype
- * @subpackage truefalse
+ * @subpackage logic
  * @copyright  2011 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,39 +28,32 @@ defined('MOODLE_INTERNAL') || die();
 
 
 /**
- * Test helper class for the truefalse question type.
+ * Test helper class for the logic question type.
  *
  * @copyright  2011 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_truefalse_test_helper extends question_test_helper {
+class qtype_logic_test_helper extends question_test_helper {
     public function get_test_questions() {
-        return array('true', 'false');
+        return array('test');
     }
 
     /**
      * Makes a truefalse question with correct answer true.
-     * @return qtype_truefalse_question
+     * @return qtype_logic_question
      */
-    public function make_truefalse_question_true() {
-        question_bank::load_question_definition_classes('truefalse');
-        $tf = new qtype_truefalse_question();
-        test_question_maker::initialise_a_question($tf);
-        $tf->name = 'True/false question';
-        $tf->questiontext = 'The answer is true.';
-        $tf->generalfeedback = 'You should have selected true.';
-        $tf->penalty = 1;
-        $tf->qtype = question_bank::get_qtype('truefalse');
+    public function make_logic_question_test() {
+        question_bank::load_question_definition_classes('logic');
+        $q = new qtype_logic_question();
+        test_question_maker::initialise_a_question($q);
+        $q->name = 'Logic question';
+        $q->questiontext = 'Answer this question';
+        $q->qtype = question_bank::get_qtype('logic');
 
-        $tf->rightanswer = true;
-        $tf->truefeedback = 'This is the right answer.';
-        $tf->falsefeedback = 'This is the wrong answer.';
-        $tf->truefeedbackformat = FORMAT_HTML;
-        $tf->falsefeedbackformat = FORMAT_HTML;
-        $tf->trueanswerid = 13;
-        $tf->falseanswerid = 14;
+        $q->truefeedback = 'Correct.';
+        $q->falsefeedback = 'Wrong.';
 
-        return $tf;
+        return $q;
     }
 
     public function get_truefalse_question_form_data_true() {

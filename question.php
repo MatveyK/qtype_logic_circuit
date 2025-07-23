@@ -27,7 +27,7 @@ class qtype_logic_question extends question_graded_automatically {
     public $falsefeedback;
 
     public function get_expected_data() {
-        error_log("Getting expected data...");
+        debugging("Getting expected data...", DEBUG_DEVELOPER);
         return array(
             'answer' => PARAM_RAW,
             'test_results' => PARAM_RAW
@@ -39,8 +39,8 @@ class qtype_logic_question extends question_graded_automatically {
     }
 
     public function summarise_response(array $response) {
-        error_log("Summarising responses...");
-        error_log(print_r($response, true));
+        debugging("Summarising responses...", DEBUG_DEVELOPER);
+        debugging(print_r($response, true), DEBUG_DEVELOPER);
 
         $result = "";
         $testResults = $response['test_results'];
@@ -54,49 +54,27 @@ class qtype_logic_question extends question_graded_automatically {
         return $result;
     }
 
-    # TODO remove this ?
-    /*
-    public function un_summarise_response(string $summary) {
-        if ($summary === get_string('true', 'qtype_truefalse')) {
-            return ['answer' => '1'];
-        } else if ($summary === get_string('false', 'qtype_truefalse')) {
-            return ['answer' => '0'];
-        } else {
-            return [];
-        }
-    }
-    */
-
     public function classify_response(array $response) {
-        error_log("Classifying response...");
-        error_log(print_r($response, true));
+        debugging("Classifying response...", DEBUG_DEVELOPER);
 
-        if (!array_key_exists('answer', $response)) {
-            return array($this->id => question_classified_response::no_response());
-        }
-        list($fraction) = $this->grade_response($response);
-        if ($response['answer']) {
-            return array(
-                $this->id => new question_classified_response(1, get_string('true', 'qtype_truefalse'), $fraction)
-            );
-        } else {
-            return array(
-                $this->id => new question_classified_response(0, get_string('false', 'qtype_truefalse'), $fraction)
-            );
-        }
+        return array();
     }
 
     public function is_complete_response(array $response) {
-        error_log("Is complete response ?");
-        error_log(print_r($response['answer']), true);
-        error_log(print_r($response['test_results']), true);
+        debugging("Is complete response ?");
 
-        # TODO validate the JSON5 structure
+        if(!isset($response['answer']) || !isset($response['test_results'])) {
+            return false;
+        }
+
+        debugging(print_r($response['answer'], true), DEBUG_DEVELOPER);
+        debugging(print_r($response['test_results'], true), DEBUG_DEVELOPER);
+
         try {
             json5_decode($response['answer']);
             json5_decode($response['test_results']);
-        } catch (SyntaxError $error) {
-            error_log($error->getMessage());
+        } catch (TypeError | SyntaxError $error) {
+            //error_log($error->getMessage());
             return false;
         }
 
@@ -135,8 +113,8 @@ class qtype_logic_question extends question_graded_automatically {
     }
 
     public function grade_response(array $response) {
-        error_log("Grading response...");
-        error_log(print_r($response, true));
+        debugging("Grading response...", DEBUG_DEVELOPER);
+        debugging(print_r($response, true), DEBUG_DEVELOPER);
 
         $testResults = $response['test_results'];
         $responseAnalysis = $this->analyse_response($testResults);
@@ -195,7 +173,7 @@ class qtype_logic_question extends question_graded_automatically {
             }
         }
 
-        $fraction = $successfullTests / $totalTests;
+        $fraction = round($successfullTests / $totalTests, 2);
 
         return array(
             'fraction' => $fraction,
