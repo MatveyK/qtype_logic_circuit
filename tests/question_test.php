@@ -16,9 +16,6 @@
 
 namespace qtype_logic;
 
-use question_attempt_step;
-use question_classified_response;
-use question_display_options;
 use question_state;
 
 defined('MOODLE_INTERNAL') || die();

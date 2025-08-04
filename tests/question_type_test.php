@@ -14,25 +14,24 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace qtype_truefalse;
+namespace qtype_logic;
 
-use qtype_truefalse;
-use qtype_truefalse_edit_form;
+use qtype_logic;
+use qtype_logic_edit_form;
 use question_bank;
-use question_possible_response;
 
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
-require_once($CFG->dirroot . '/question/type/truefalse/questiontype.php');
+require_once($CFG->dirroot . '/question/type/logic/questiontype.php');
 require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
 require_once($CFG->dirroot . '/question/type/edit_question_form.php');
-require_once($CFG->dirroot . '/question/type/truefalse/edit_truefalse_form.php');
+require_once($CFG->dirroot . '/question/type/logic/edit_logic_form.php');
 
 /**
- * Unit tests for the true-false question definition class.
+ * Unit tests for the logic circuit question definition class.
  *
- * @package    qtype_truefalse
+ * @package    qtype_logic
  * @copyright  2007 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -41,7 +40,7 @@ final class question_type_test extends \advanced_testcase {
 
     protected function setUp(): void {
         parent::setUp();
-        $this->qtype = new qtype_truefalse();
+        $this->qtype = new qtype_logic();
     }
 
     protected function tearDown(): void {
@@ -50,18 +49,16 @@ final class question_type_test extends \advanced_testcase {
     }
 
     public function test_name(): void {
-        $this->assertEquals($this->qtype->name(), 'truefalse');
+        $this->assertEquals($this->qtype->name(), 'logic');
     }
 
     public function test_can_analyse_responses(): void {
         $this->assertTrue($this->qtype->can_analyse_responses());
     }
 
-    public function test_get_random_guess_score(): void {
-        $this->assertEquals(0.5, $this->qtype->get_random_guess_score(null));
-    }
-
     public function test_load_question(): void {
+        global $CFG;
+
         $this->resetAfterTest();
 
         $syscontext = \context_system::instance();
@@ -69,12 +66,12 @@ final class question_type_test extends \advanced_testcase {
         $generator = $this->getDataGenerator()->get_plugin_generator('core_question');
         $category = $generator->create_question_category(['contextid' => $syscontext->id]);
 
-        $fromform = \test_question_maker::get_question_form_data('truefalse');
+        $fromform = \test_question_maker::get_question_form_data('logic');
         $fromform->category = $category->id . ',' . $syscontext->id;
 
         $question = new \stdClass();
         $question->category = $category->id;
-        $question->qtype = 'truefalse';
+        $question->qtype = 'logic';
         $question->createdby = 0;
 
         $this->qtype->save_question($question, $fromform);
@@ -93,9 +90,7 @@ final class question_type_test extends \advanced_testcase {
         $this->assertEquals($fromform->generalfeedback['text'], $questiondata->generalfeedback);
         $this->assertEquals($fromform->generalfeedback['format'], $questiondata->generalfeedbackformat);
         $this->assertEquals($fromform->defaultmark, $questiondata->defaultmark);
-        $this->assertEquals(1, $questiondata->penalty);
-        $this->assertEquals('truefalse', $questiondata->qtype);
-        $this->assertEquals(1, $questiondata->length);
+        $this->assertEquals('logic', $questiondata->qtype);
         $this->assertEquals(\core_question\local\bank\question_version_status::QUESTION_STATUS_READY, $questiondata->status);
         $this->assertEquals($question->createdby, $questiondata->createdby);
         $this->assertEquals($question->createdby, $questiondata->modifiedby);
@@ -103,53 +98,27 @@ final class question_type_test extends \advanced_testcase {
         $this->assertEquals($category->contextid, $questiondata->contextid);
 
         // Options.
-        $this->assertEquals($questiondata->id, $questiondata->options->question);
-        $this->assertEquals('True', $questiondata->options->answers[$questiondata->options->trueanswer]->answer);
-        $this->assertEquals('False', $questiondata->options->answers[$questiondata->options->falseanswer]->answer);
-        $this->assertEquals(1.0, $questiondata->options->answers[$questiondata->options->trueanswer]->fraction);
-        $this->assertEquals(0.0, $questiondata->options->answers[$questiondata->options->falseanswer]->fraction);
-        $this->assertEquals('This is the right answer.',
-                $questiondata->options->answers[$questiondata->options->trueanswer]->feedback);
-        $this->assertEquals('This is the wrong answer.',
-                $questiondata->options->answers[$questiondata->options->falseanswer]->feedback);
-        $this->assertEquals(FORMAT_HTML, $questiondata->options->answers[$questiondata->options->trueanswer]->feedbackformat);
-        $this->assertEquals(FORMAT_HTML, $questiondata->options->answers[$questiondata->options->falseanswer]->feedbackformat);
+		$jsonAnswerString = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/2bit-decoder.json');
+        $this->assertEquals($jsonAnswerString, $questiondata->options->initialstate);
 
         // Hints.
         $this->assertEquals([], $questiondata->hints);
     }
 
-    public function test_get_possible_responses(): void {
-        $q = new \stdClass();
-        $q->id = 1;
-        $q->options = new \stdClass();
-        $q->options->trueanswer = 1;
-        $q->options->falseanswer = 2;
-        $q->options->answers[1] = (object) array('fraction' => 1);
-        $q->options->answers[2] = (object) array('fraction' => 0);
-
-        $this->assertEquals(array(
-            $q->id => array(
-                0 => new question_possible_response(get_string('false', 'qtype_truefalse'), 0),
-                1 => new question_possible_response(get_string('true', 'qtype_truefalse'), 1),
-                null => question_possible_response::no_response()),
-        ), $this->qtype->get_possible_responses($q));
-    }
-
-    public function test_question_saving_true(): void {
+    public function test_save_question(): void {
         $this->resetAfterTest(true);
         $this->setAdminUser();
 
-        $questiondata = \test_question_maker::get_question_data('truefalse');
-        $formdata = \test_question_maker::get_question_form_data('truefalse');
+        $questiondata = \test_question_maker::get_question_data('logic');
+        $formdata = \test_question_maker::get_question_form_data('logic');
 
         $generator = $this->getDataGenerator()->get_plugin_generator('core_question');
         $cat = $generator->create_question_category(array());
 
         $formdata->category = "{$cat->id},{$cat->contextid}";
-        qtype_truefalse_edit_form::mock_submit((array)$formdata);
+        qtype_logic_edit_form::mock_submit((array)$formdata);
 
-        $form = \qtype_truefalse_test_helper::get_question_editing_form($cat, $questiondata);
+        $form = \qtype_logic_test_helper::get_question_editing_form($cat, $questiondata);
 
         $this->assertTrue($form->is_validated());
 
@@ -165,25 +134,6 @@ final class question_type_test extends \advanced_testcase {
             }
         }
 
-        foreach ($questiondata->options as $optionname => $value) {
-            if (!in_array($optionname, array('trueanswer', 'falseanswer', 'answers'))) {
-                $this->assertEquals($value, $actualquestiondata->options->$optionname);
-            }
-        }
-
-        $answerindexes = array();
-        foreach ($questiondata->options->answers as $ansindex => $answer) {
-            $actualanswer = array_shift($actualquestiondata->options->answers);
-            foreach ($answer as $ansproperty => $ansvalue) {
-                // This question does not use 'answerformat', will ignore it.
-                if (!in_array($ansproperty, array('id', 'question', 'answerformat'))) {
-                    $this->assertEquals($ansvalue, $actualanswer->$ansproperty);
-                }
-            }
-            $answerindexes[$answer->answer] = $ansindex;
-        }
-
-        $this->assertEquals($questiondata->options->trueanswer, $answerindexes['True']);
-        $this->assertEquals($questiondata->options->falseanswer, $answerindexes['False']);
+        $this->assertEquals($questiondata->options->initialstate, $actualquestiondata->options->initialstate);
     }
 }
