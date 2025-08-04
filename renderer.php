@@ -3,7 +3,7 @@
 /**
  * True-false question renderer class.
  *
- * @package    qtype_logic
+ * @package    qtype_logiccircuit
  */
 
 
@@ -13,7 +13,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Renders the logic-editor questions.
  */
-class qtype_logic_renderer extends qtype_renderer {
+class qtype_logiccircuit_renderer extends qtype_renderer {
     public function formulation_and_controls(question_attempt $qa, question_display_options $options) {
         global $PAGE, $OUTPUT;
 
@@ -33,8 +33,8 @@ class qtype_logic_renderer extends qtype_renderer {
             $is_debug = true;
         }
 
-        $PAGE->requires->js_call_amd('qtype_logic/logic-editor', 'init');
-        $PAGE->requires->js_call_amd('qtype_logic/save-result', 'init');
+        $PAGE->requires->js_call_amd('qtype_logiccircuit/logic-editor', 'init');
+        $PAGE->requires->js_call_amd('qtype_logiccircuit/save-result', 'init');
 
 
         $template_data = [
@@ -49,6 +49,6 @@ class qtype_logic_renderer extends qtype_renderer {
             'is_debug' => $is_debug
         ];
 
-        return $OUTPUT->render_from_template('qtype_logic/logic-editor', $template_data);
+        return $OUTPUT->render_from_template('qtype_logiccircuit/logic-editor', $template_data);
     }
 }

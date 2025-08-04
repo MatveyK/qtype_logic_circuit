@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace qtype_logic;
+namespace qtype_logiccircuit;
 
 use question_state;
 
@@ -27,7 +27,7 @@ require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
 /**
  * Unit tests for the logic circuit question definition class.
  *
- * @package    qtype_logic
+ * @package    qtype_logiccircuit
  * @copyright  2008 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -40,14 +40,14 @@ final class question_test extends \advanced_testcase {
 
 	protected function setUp(): void {
 		global $CFG;
-		$this->jsonAnswerString = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/2bit-decoder.json');
-		$this->correctTestResults = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/correct-test-results.json');
-		$this->semiCorrectTestResults = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/semi-correct-test-results.json');
-		$this->incorrectTestResults = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/incorrect-test-results.json');
+		$this->jsonAnswerString = file_get_contents($CFG->dirroot . '/question/type/logiccircuit/tests/fixtures/2bit-decoder.json');
+		$this->correctTestResults = file_get_contents($CFG->dirroot . '/question/type/logiccircuit/tests/fixtures/correct-test-results.json');
+		$this->semiCorrectTestResults = file_get_contents($CFG->dirroot . '/question/type/logiccircuit/tests/fixtures/semi-correct-test-results.json');
+		$this->incorrectTestResults = file_get_contents($CFG->dirroot . '/question/type/logiccircuit/tests/fixtures/incorrect-test-results.json');
 	}
 
 	public function test_is_complete_response(): void {
-		$question = \test_question_maker::make_question('logic', 'test');
+		$question = \test_question_maker::make_question('logiccircuit', 'test');
 
 		$this->assertFalse($question->is_complete_response(array()));
 		$this->assertFalse($question->is_complete_response(array('answer' => " ")));
@@ -59,7 +59,7 @@ final class question_test extends \advanced_testcase {
 	}
 
 	public function test_grading(): void {
-		$question = \test_question_maker::make_question('logic', 'test');
+		$question = \test_question_maker::make_question('logiccircuit', 'test');
 
 		$this->assertEquals(
 			array(0, question_state::$gradedwrong),
@@ -76,14 +76,14 @@ final class question_test extends \advanced_testcase {
 	}
 
 	public function test_get_question_summary(): void {
-		$question = \test_question_maker::make_question('logic', 'test');
+		$question = \test_question_maker::make_question('logiccircuit', 'test');
 		$qsummary = $question->get_question_summary();
 		$this->assertEquals($question->questiontext, $qsummary);
 	}
 
 	/*
 	public function test_summarise_response(): void {
-		$question = \test_question_maker::make_question('logic', 'test');
+		$question = \test_question_maker::make_question('logiccircuit', 'test');
 
 		$this->assertEquals(
 			get_string('false', 'qtype_truefalse'),

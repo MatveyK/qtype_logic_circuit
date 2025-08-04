@@ -14,16 +14,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Saves the logic editor state on form submission.
+ * Saves the logic circuit editor state on form submission.
  *
- * @module     qtype_logic/save-result
+ * @module     qtype_logiccircuit/save-result
  * @copyright  2025 YOUR NAME <your@email.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 define(['jquery'], function($) {
     return {
         init: function() {
-            // Remove this as soon as the autosave to session storage is deactivated in the logic editor
+            // Remove this as soon as the autosave to session storage is deactivated in the logic circuit editor
             sessionStorage.clear('logic/logic-editor');
 
             const nextNavButton = $('input[type="submit"]#mod_quiz-next-nav.btn');

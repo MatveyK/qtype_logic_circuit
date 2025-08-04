@@ -3,7 +3,7 @@
 /**
  * Serve question type files
  *
- * @package    qtype_logic
+ * @package    qtype_logiccircuit
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -21,8 +21,8 @@ defined('MOODLE_INTERNAL') || die();
  * @param array $options additional options affecting the file serving
  * @return bool
  */
-function qtype_logic_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options=array()) {
+function qtype_logiccircuit_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options=array()) {
     global $CFG;
     require_once($CFG->libdir . '/questionlib.php');
-    question_pluginfile($course, $context, 'qtype_logic', $filearea, $args, $forcedownload, $options);
+    question_pluginfile($course, $context, 'qtype_logiccircuit', $filearea, $args, $forcedownload, $options);
 }

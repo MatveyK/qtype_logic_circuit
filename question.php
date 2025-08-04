@@ -3,7 +3,7 @@
 /**
  * True-false question definition class.
  *
- * @package    qtype_logic
+ * @package    qtype_logiccircuit
  * @copyright  2009 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -13,13 +13,13 @@ use ColinODell\Json5\SyntaxError;
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot . '/question/type/questionbase.php');
-require_once($CFG->dirroot . '/question/type/logic/vendor/autoload.php');
+require_once($CFG->dirroot . '/question/type/logiccircuit/vendor/autoload.php');
 
 /**
  * Represents a logic circuit question.
  *
  */
-class qtype_logic_question extends question_graded_automatically {
+class qtype_logiccircuit_question extends question_graded_automatically {
     public $initialstate;
 
     public $rightanswer;
@@ -86,7 +86,7 @@ class qtype_logic_question extends question_graded_automatically {
         if ($this->is_gradable_response($response)) {
             return '';
         }
-        return get_string('answer_incomplete', 'qtype_logic');
+        return get_string('answer_incomplete', 'qtype_logiccircuit');
     }
 
     public function is_same_response(array $prevresponse, array $newresponse) {

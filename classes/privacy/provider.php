@@ -1,5 +1,5 @@
 <?php
-namespace qtype_logic\privacy;
+namespace qtype_logiccircuit\privacy;
 
 class provider implements \core_privacy\local\metadata\null_provider {
     use \core_privacy\local\legacy_polyfill;

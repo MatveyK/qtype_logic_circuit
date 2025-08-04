@@ -7,9 +7,9 @@ require_once($CFG->libdir . '/questionlib.php');
 /**
  * The true-false question type class.
  */
-class qtype_logic extends question_type {
+class qtype_logiccircuit extends question_type {
     public function extra_question_fields() {
-        return array('question_logic', 'initialstate');
+        return array('question_logiccircuit', 'initialstate');
     }
 
     public function save_question($question, $form) {

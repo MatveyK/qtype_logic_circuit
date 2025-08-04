@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Test helpers for the logic question type.
+ * Test helpers for the logiccircuit question type.
  *
  * @package    qtype
  * @subpackage logic
@@ -28,37 +28,37 @@ defined('MOODLE_INTERNAL') || die();
 
 
 /**
- * Test helper class for the logic question type.
+ * Test helper class for the logic circuit question type.
  *
  * @copyright  2011 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_logic_test_helper extends question_test_helper {
+class qtype_logiccircuit_test_helper extends question_test_helper {
     public function get_test_questions() {
         return array('test');
     }
 
     /**
-     * Makes a logic question.
-     * @return qtype_logic_question
+     * Makes a logic circuit question.
+     * @return qtype_logiccircuit_question
      */
-    public function make_logic_question_test() {
+    public function make_logiccircuit_question_test() {
 		global $CFG;
 
-        question_bank::load_question_definition_classes('logic');
-        $q = new qtype_logic_question();
+        question_bank::load_question_definition_classes('logiccircuit');
+        $q = new qtype_logiccircuit_question();
         test_question_maker::initialise_a_question($q);
-        $q->name = 'Logic question';
+        $q->name = 'Logic circuit question';
         $q->questiontext = 'Answer this question';
         $q->generalfeedback = 'General feedback.';
-        $q->qtype = question_bank::get_qtype('logic');
+        $q->qtype = question_bank::get_qtype('logiccircuit');
 
-        $q->options->initialstate = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/2bit-decoder.json');
+        $q->options->initialstate = file_get_contents($CFG->dirroot . '/question/type/logiccircuit/tests/fixtures/2bit-decoder.json');
 
         return $q;
     }
 
-    public function get_logic_question_form_data_test() {
+    public function get_logiccircuit_question_form_data_test() {
 		global $CFG;
 
         $form = new stdClass();
@@ -72,14 +72,14 @@ class qtype_logic_test_helper extends question_test_helper {
         $form->generalfeedback['format'] = '1';
         $form->generalfeedback['text'] = 'You had to construct a 2-bit decoder.';
 
-        $form->initialstate = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/2bit-decoder.json');
+        $form->initialstate = file_get_contents($CFG->dirroot . '/question/type/logiccircuit/tests/fixtures/2bit-decoder.json');
 
         $form->status = \core_question\local\bank\question_version_status::QUESTION_STATUS_READY;
 
         return $form;
     }
 
-    function get_logic_question_data_test() {
+    function get_logiccircuit_question_data_test() {
 		global $CFG;
 
         $q = new stdClass();
@@ -89,12 +89,12 @@ class qtype_logic_test_helper extends question_test_helper {
         $q->generalfeedback = 'General feedback.';
         $q->generalfeedbackformat = FORMAT_HTML;
         $q->defaultmark = 1;
-        $q->qtype = 'logic';
+        $q->qtype = 'logiccircuit';
         $q->status = \core_question\local\bank\question_version_status::QUESTION_STATUS_READY;
         $q->createdby = '2';
         $q->modifiedby = '2';
         $q->options = new stdClass();
-        $q->options->initialstate = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/2bit-decoder.json');
+        $q->options->initialstate = file_get_contents($CFG->dirroot . '/question/type/logiccircuit/tests/fixtures/2bit-decoder.json');
 
         return $q;
     }

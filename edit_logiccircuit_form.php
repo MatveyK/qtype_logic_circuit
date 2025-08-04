@@ -3,7 +3,7 @@
 /**
  * Defines the editing form for the logic circuit question type.
  *
- * @package    qtype/logic
+ * @package    qtype_logiccircuit
  */
 
 
@@ -15,7 +15,7 @@ require_once($CFG->dirroot.'/question/type/edit_question_form.php');
  * Logic circuit question editing form definition.
  *
  */
-class qtype_logic_edit_form extends question_edit_form {
+class qtype_logiccircuit_edit_form extends question_edit_form {
 
     /**
      * Add logic circuit specific form fields.
@@ -26,10 +26,10 @@ class qtype_logic_edit_form extends question_edit_form {
         $mform->addElement(
             'textarea',
             'initialstate',
-            get_string('initialstate', 'qtype_logic'),
+            get_string('initialstate', 'qtype_logiccircuit'),
             'wrap="virtual" rows="20" cols="50"'
         );
-        $mform->addHelpButton('initialstate', 'initialstate', 'qtype_logic');
+        $mform->addHelpButton('initialstate', 'initialstate', 'qtype_logiccircuit');
         $mform->setType('initialstate', PARAM_RAW);
     }
 
@@ -48,7 +48,7 @@ class qtype_logic_edit_form extends question_edit_form {
 
         $initState = $data['initialstate'];
         if (!empty($initState) && !json_validate($initState)) {
-            $errors['initialstate'] = get_string('not_valid_json', 'qtype_logic');
+            $errors['initialstate'] = get_string('not_valid_json', 'qtype_logiccircuit');
         }
 
         return $errors;
@@ -57,6 +57,6 @@ class qtype_logic_edit_form extends question_edit_form {
     */
 
     public function qtype() {
-        return 'logic';
+        return 'logiccircuit';
     }
 }

@@ -14,24 +14,24 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace qtype_logic;
+namespace qtype_logiccircuit;
 
-use qtype_logic;
-use qtype_logic_edit_form;
+use qtype_logiccircuit;
+use qtype_logiccircuit_edit_form;
 use question_bank;
 
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
-require_once($CFG->dirroot . '/question/type/logic/questiontype.php');
+require_once($CFG->dirroot . '/question/type/logiccircuit/questiontype.php');
 require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
 require_once($CFG->dirroot . '/question/type/edit_question_form.php');
-require_once($CFG->dirroot . '/question/type/logic/edit_logic_form.php');
+require_once($CFG->dirroot . '/question/type/logiccircuit/edit_logic_form.php');
 
 /**
  * Unit tests for the logic circuit question definition class.
  *
- * @package    qtype_logic
+ * @package    qtype_logiccircuit
  * @copyright  2007 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -40,7 +40,7 @@ final class question_type_test extends \advanced_testcase {
 
     protected function setUp(): void {
         parent::setUp();
-        $this->qtype = new qtype_logic();
+        $this->qtype = new qtype_logiccircuit();
     }
 
     protected function tearDown(): void {
@@ -49,7 +49,7 @@ final class question_type_test extends \advanced_testcase {
     }
 
     public function test_name(): void {
-        $this->assertEquals($this->qtype->name(), 'logic');
+        $this->assertEquals($this->qtype->name(), 'logiccircuit');
     }
 
     public function test_can_analyse_responses(): void {
@@ -66,12 +66,12 @@ final class question_type_test extends \advanced_testcase {
         $generator = $this->getDataGenerator()->get_plugin_generator('core_question');
         $category = $generator->create_question_category(['contextid' => $syscontext->id]);
 
-        $fromform = \test_question_maker::get_question_form_data('logic');
+        $fromform = \test_question_maker::get_question_form_data('logiccircuit');
         $fromform->category = $category->id . ',' . $syscontext->id;
 
         $question = new \stdClass();
         $question->category = $category->id;
-        $question->qtype = 'logic';
+        $question->qtype = 'logiccircuit';
         $question->createdby = 0;
 
         $this->qtype->save_question($question, $fromform);
@@ -90,7 +90,7 @@ final class question_type_test extends \advanced_testcase {
         $this->assertEquals($fromform->generalfeedback['text'], $questiondata->generalfeedback);
         $this->assertEquals($fromform->generalfeedback['format'], $questiondata->generalfeedbackformat);
         $this->assertEquals($fromform->defaultmark, $questiondata->defaultmark);
-        $this->assertEquals('logic', $questiondata->qtype);
+        $this->assertEquals('logiccircuit', $questiondata->qtype);
         $this->assertEquals(\core_question\local\bank\question_version_status::QUESTION_STATUS_READY, $questiondata->status);
         $this->assertEquals($question->createdby, $questiondata->createdby);
         $this->assertEquals($question->createdby, $questiondata->modifiedby);
@@ -98,7 +98,7 @@ final class question_type_test extends \advanced_testcase {
         $this->assertEquals($category->contextid, $questiondata->contextid);
 
         // Options.
-		$jsonAnswerString = file_get_contents($CFG->dirroot . '/question/type/logic/tests/fixtures/2bit-decoder.json');
+		$jsonAnswerString = file_get_contents($CFG->dirroot . '/question/type/logiccircuit/tests/fixtures/2bit-decoder.json');
         $this->assertEquals($jsonAnswerString, $questiondata->options->initialstate);
 
         // Hints.
@@ -109,16 +109,16 @@ final class question_type_test extends \advanced_testcase {
         $this->resetAfterTest(true);
         $this->setAdminUser();
 
-        $questiondata = \test_question_maker::get_question_data('logic');
-        $formdata = \test_question_maker::get_question_form_data('logic');
+        $questiondata = \test_question_maker::get_question_data('logiccircuit');
+        $formdata = \test_question_maker::get_question_form_data('logiccircuit');
 
         $generator = $this->getDataGenerator()->get_plugin_generator('core_question');
         $cat = $generator->create_question_category(array());
 
         $formdata->category = "{$cat->id},{$cat->contextid}";
-        qtype_logic_edit_form::mock_submit((array)$formdata);
+        qtype_logiccircuit_edit_form::mock_submit((array)$formdata);
 
-        $form = \qtype_logic_test_helper::get_question_editing_form($cat, $questiondata);
+        $form = \qtype_logiccircuit_test_helper::get_question_editing_form($cat, $questiondata);
 
         $this->assertTrue($form->is_validated());
 
