@@ -26,7 +26,7 @@ global $CFG;
 require_once($CFG->dirroot . '/question/type/logiccircuit/questiontype.php');
 require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
 require_once($CFG->dirroot . '/question/type/edit_question_form.php');
-require_once($CFG->dirroot . '/question/type/logiccircuit/edit_logic_form.php');
+require_once($CFG->dirroot . '/question/type/logiccircuit/edit_logiccircuit_form.php');
 
 /**
  * Unit tests for the logic circuit question definition class.

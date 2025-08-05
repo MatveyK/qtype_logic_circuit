@@ -53,7 +53,7 @@ class qtype_logiccircuit_test_helper extends question_test_helper {
         $q->generalfeedback = 'General feedback.';
         $q->qtype = question_bank::get_qtype('logiccircuit');
 
-        $q->options->initialstate = file_get_contents($CFG->dirroot . '/question/type/logiccircuit/tests/fixtures/2bit-decoder.json');
+        $q->initialstate = file_get_contents($CFG->dirroot . '/question/type/logiccircuit/tests/fixtures/2bit-decoder.json');
 
         return $q;
     }
