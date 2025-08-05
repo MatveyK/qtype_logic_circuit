@@ -10,6 +10,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot.'/question/type/edit_question_form.php');
+require_once($CFG->dirroot . '/question/type/logiccircuit/vendor/autoload.php');
+use ColinODell\Json5\SyntaxError;
 
 /**
  * Logic circuit question editing form definition.
@@ -33,28 +35,22 @@ class qtype_logiccircuit_edit_form extends question_edit_form {
         $mform->setType('initialstate', PARAM_RAW);
     }
 
-    public function data_preprocessing($question) {
-        $question = parent::data_preprocessing($question);
-
-        // Format the JSON5 value here
-
-        return $question;
-    }
-
-    // TODO validate the JSON5 inputs
-    /*
     public function validation($data, $files) {
         $errors = array();
-
         $initState = $data['initialstate'];
-        if (!empty($initState) && !json_validate($initState)) {
+
+        if (empty($initState)) {
+            $errors['initialstate'] = get_string('initial_state_empty', 'qtype_logiccircuit');
+        }
+
+        try {
+            json5_decode($initState);
+        } catch (TypeError | SyntaxError) {
             $errors['initialstate'] = get_string('not_valid_json', 'qtype_logiccircuit');
         }
 
         return $errors;
-
     }
-    */
 
     public function qtype() {
         return 'logiccircuit';

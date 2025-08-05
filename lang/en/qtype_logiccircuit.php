@@ -13,4 +13,5 @@ $string['endstate'] = 'Correct state';
 $string['endstate_help'] = 'Set the final correct state of the circuit logic editor in JSON5 form. The tests will be executed against this state.';
 $string['answer_incomplete'] = 'The answer is not complete.';
 $string['privacy:null_reason'] = 'The Logic Circuit question type does not effect or store any data itself.';
+$string['initial_state_empty'] = 'The initial state is empty';
 $string['not_valid_json'] = 'Not valid JSON5';

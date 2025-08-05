@@ -22,10 +22,6 @@ require_once($CFG->dirroot . '/question/type/logiccircuit/vendor/autoload.php');
 class qtype_logiccircuit_question extends question_graded_automatically {
     public $initialstate;
 
-    public $rightanswer;
-    public $truefeedback;
-    public $falsefeedback;
-
     public function get_expected_data() {
         debugging("Getting expected data...", DEBUG_DEVELOPER);
         return array(
@@ -54,6 +50,7 @@ class qtype_logiccircuit_question extends question_graded_automatically {
         return $result;
     }
 
+    // TODO do we need to classify the response ?
     public function classify_response(array $response) {
         debugging("Classifying response...", DEBUG_DEVELOPER);
 
