@@ -1,9 +1,11 @@
 <?php
 
 /**
- * True-false question renderer class.
+ * Logic circuit question renderer class.
  *
  * @package    qtype_logiccircuit
+ * @copyright  2025 Groupe Modulo
+ * @license    CC BY-NC-SA
  */
 
 

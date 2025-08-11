@@ -4,6 +4,8 @@
  * Defines the editing form for the logic circuit question type.
  *
  * @package    qtype_logiccircuit
+ * @copyright  2025 Groupe Modulo
+ * @license    CC BY-NC-SA
  */
 
 

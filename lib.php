@@ -4,6 +4,8 @@
  * Serve question type files
  *
  * @package    qtype_logiccircuit
+ * @copyright  2025 Groupe Modulo
+ * @license    CC BY-NC-SA
  */
 
 defined('MOODLE_INTERNAL') || die();
