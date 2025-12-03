@@ -35,7 +35,8 @@ class qtype_logiccircuit_renderer extends qtype_renderer {
             $is_debug = true;
         }
 
-        $PAGE->requires->js_call_amd('qtype_logiccircuit/logic-editor', 'init');
+        // $PAGE->requires->js_call_amd('qtype_logiccircuit/logic-editor', 'init');
+        $PAGE->requires->js(new moodle_url('https://logic.modulo-info.ch/simulator/lib/bundle.js'));
         $PAGE->requires->js_call_amd('qtype_logiccircuit/save-result', 'init');
 
 
