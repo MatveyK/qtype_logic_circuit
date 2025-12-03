@@ -27,13 +27,32 @@ class qtype_logiccircuit_edit_form extends question_edit_form {
      * @param object $mform the form being built.
      */
     protected function definition_inner($mform) {
+        global $PAGE;
+
+        $PAGE->requires->js(new moodle_url('https://logic.modulo-info.ch/simulator/lib/bundle.js'));
+
+        // TODO this is a quick hack to make the editor full width
+        $mform->addElement('html', '<style>div.form-control-static[data-name=initialstate_editor] { width: 100%;}</style>');
+
+        $mform->addElement(
+            'static',
+            'initialstate_editor',
+            get_string('initialstate', 'qtype_logiccircuit'),
+            '<div style="width: 100%; height: 600px"><logic-editor linkedto="[data-logicid=moodlefield]" mode="full" norestore></logic-editor></div>'
+        );
+
         $mform->addElement(
             'textarea',
             'initialstate',
-            get_string('initialstate', 'qtype_logiccircuit'),
-            'wrap="virtual" rows="20" cols="50"'
+            get_string('initialstatejson', 'qtype_logiccircuit'),
+            ['wrap' => 'virtual', 'rows' => 20, 'cols' => 50,
+             "style" => "font-family:monospace;font-size:80%;",
+             "readonly" => "readonly", 'data-logicid' => 'moodlefield']
         );
-        $mform->addHelpButton('initialstate', 'initialstate', 'qtype_logiccircuit');
+
+        $mform->addHelpButton('initialstate', 'initialstatejson', 'qtype_logiccircuit');
+        $mform->addHelpButton('initialstate_editor', 'initialstate', 'qtype_logiccircuit');
+
         $mform->setType('initialstate', PARAM_RAW);
     }
 
