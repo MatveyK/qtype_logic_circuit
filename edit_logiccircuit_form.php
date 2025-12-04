@@ -47,7 +47,7 @@ class qtype_logiccircuit_edit_form extends question_edit_form {
             get_string('initialstatejson', 'qtype_logiccircuit'),
             ['wrap' => 'virtual', 'rows' => 20, 'cols' => 50,
              "style" => "font-family:monospace;font-size:80%;",
-             "readonly" => "readonly", 'data-logicid' => 'moodlefield']
+             'data-logicid' => 'moodlefield']
         );
 
         $mform->addHelpButton('initialstate', 'initialstatejson', 'qtype_logiccircuit');
