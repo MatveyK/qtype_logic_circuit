@@ -149,8 +149,9 @@ class qtype_logiccircuit_question extends question_graded_automatically {
         $successfullTests = 0;
 
         $testResultsArray = json5_decode($testResults, true);
+        $firstOfResultsArray = $testResultsArray[0];
 
-        $testCaseResults = $testResultsArray['testCaseResults'];
+        $testCaseResults = $firstOfResultsArray['testCaseResults'];
 
         $testSummaryArray = array();
 
