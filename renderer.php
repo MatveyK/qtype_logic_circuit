@@ -8,6 +8,7 @@
  * @license    CC BY-NC-SA
  */
 
+use \core\url;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -21,6 +22,8 @@ class qtype_logiccircuit_renderer extends qtype_renderer {
 
         $question = $qa->get_question();
         $init_state = $question->initialstate;
+        $editor_mode = $question->editormode;
+        $components_to_show = $question->componentstoshow;
         $question_name = $question->name;
         $question_text = $question->questiontext;
 
@@ -35,8 +38,7 @@ class qtype_logiccircuit_renderer extends qtype_renderer {
             $is_debug = true;
         }
 
-        // $PAGE->requires->js_call_amd('qtype_logiccircuit/logic-editor', 'init');
-        $PAGE->requires->js(new moodle_url('https://logic.modulo-info.ch/simulator/lib/bundle.js'));
+        $PAGE->requires->js(new url('https://logic.modulo-info.ch/simulator/lib/bundle.js'));
         $PAGE->requires->js_call_amd('qtype_logiccircuit/save-result', 'init');
 
 
@@ -44,6 +46,8 @@ class qtype_logiccircuit_renderer extends qtype_renderer {
             'question_name' => $question_name,
             'question_text' => $question_text,
             'init_state' => $init_state,
+            'editor_mode' => $editor_mode,
+            'components_to_show' => $components_to_show,
             'answer_input_name' => $answer_input_name,
             'test_results_input_name' => $test_results_input_name,
             'answer_value' => $answer_value,

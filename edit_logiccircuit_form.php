@@ -14,6 +14,7 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot.'/question/type/edit_question_form.php');
 require_once($CFG->dirroot . '/question/type/logiccircuit/vendor/autoload.php');
 use ColinODell\Json5\SyntaxError;
+use \core\url;
 
 /**
  * Logic circuit question editing form definition.
@@ -29,7 +30,7 @@ class qtype_logiccircuit_edit_form extends question_edit_form {
     protected function definition_inner($mform) {
         global $PAGE;
 
-        $PAGE->requires->js(new moodle_url('https://logic.modulo-info.ch/simulator/lib/bundle.js'));
+        $PAGE->requires->js(new url('https://logic.modulo-info.ch/simulator/lib/bundle.js'));
 
         // TODO this is a quick hack to make the editor full width
         $mform->addElement('html', '<style>div.form-control-static[data-name=initialstate_editor] { width: 100%;}</style>');
@@ -54,6 +55,31 @@ class qtype_logiccircuit_edit_form extends question_edit_form {
         $mform->addHelpButton('initialstate_editor', 'initialstate', 'qtype_logiccircuit');
 
         $mform->setType('initialstate', PARAM_RAW);
+
+        $mode_dropdown_options = [
+            0 => get_string('option_complete', 'qtype_logiccircuit'),
+            1 => get_string('option_connect', 'qtype_logiccircuit')
+        ];
+
+        $mform->addElement(
+            'select',
+            'editormode',
+            get_string('mode_dropdown_label', 'qtype_logiccircuit'),
+            $mode_dropdown_options
+        );
+        $mform->setDefault('editormode', 0);
+        $mform->addRule('editormode', null, 'required', null, 'client');
+        $mform->addHelpButton('editormode', 'mode_dropdown', 'qtype_logiccircuit');
+        $mform->setType('editormode', PARAM_INT);
+
+        $mform->addElement(
+            'text',
+            'componentstoshow',
+            get_string('componentstoshow_label', 'qtype_logiccircuit')
+        );
+        $mform->disabledIf('componentstoshow', 'editormode', 'eq', 1);
+        $mform->addHelpButton('componentstoshow', 'componentstoshow_text_field', 'qtype_logiccircuit');
+        $mform->setType('componentstoshow', PARAM_TEXT);
     }
 
     public function validation($data, $files) {

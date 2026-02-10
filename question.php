@@ -21,6 +21,8 @@ require_once($CFG->dirroot . '/question/type/logiccircuit/vendor/autoload.php');
  */
 class qtype_logiccircuit_question extends question_graded_automatically {
     public $initialstate;
+    public $editormode;
+    public $componentstoshow;
 
     public function get_expected_data() {
         debugging("Getting expected data...", DEBUG_DEVELOPER);
@@ -153,30 +155,37 @@ class qtype_logiccircuit_question extends question_graded_automatically {
 
         $testCaseResults = $firstOfResultsArray['testCaseResults'];
 
-        $testSummaryArray = array();
+        if($testCaseResults) {
+            $testSummaryArray = array();
 
-        foreach ($testCaseResults as $testCaseResult) {
-            $totalTests += 1;
+            foreach ($testCaseResults as $testCaseResult) {
+                $totalTests += 1;
 
-            $testCaseDescription = $testCaseResult[0];
-            $testName = $testCaseDescription['name'];
+                $testCaseDescription = $testCaseResult[0];
+                $testName = $testCaseDescription['name'];
 
-            $testResult = $testCaseResult[1];
-            $testTag = $testResult['_tag'];
+                $testResult = $testCaseResult[1];
+                $testTag = $testResult['_tag'];
 
-            $testSummaryArray[$testName] = $testTag;
+                $testSummaryArray[$testName] = $testTag;
 
-            if ($testTag == 'pass') {
-                $successfullTests += 1;
+                if ($testTag == 'pass') {
+                    $successfullTests += 1;
+                }
             }
+
+            $fraction = round($successfullTests / $totalTests, 2);
+
+            return array(
+                'fraction' => $fraction,
+                'test_summary' => $testSummaryArray
+            );
+        } else {
+            return array(
+                'fraction' => 0,
+                'test_summary' => []
+            );
         }
-
-        $fraction = round($successfullTests / $totalTests, 2);
-
-        return array(
-            'fraction' => $fraction,
-            'test_summary' => $testSummaryArray
-        );
     }
 
     private function notEmptyResponse(array $response) {

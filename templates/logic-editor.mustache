@@ -32,17 +32,47 @@
 
     {{^readonly}}
         <div style="width: 100%; height: 40rem; max-height: 40rem;">
-            <logic-editor mode="design" id="logic-editor">
-                <script type="application/json5">
-                    {{#answer_value}}
-                        {{{answer_value}}}
-                    {{/answer_value}}
+            {{#editor_mode}}
+                <logic-editor norestore mode="connect" id="logic-editor">
+                    <script type="application/json5">
+                        {{#answer_value}}
+                            {{{answer_value}}}
+                        {{/answer_value}}
 
-                    {{^answer_value}}
-                        {{{init_state}}}
-                    {{/answer_value}}
-                </script>
-            </logic-editor>
+                        {{^answer_value}}
+                            {{{init_state}}}
+                        {{/answer_value}}
+                    </script>
+                </logic-editor>
+            {{/editor_mode}}
+            {{^editor_mode}}
+                {{#components_to_show}}
+                    <logic-editor norestore mode="design" showonly="{{components_to_show}}" id="logic-editor">
+                        <script type="application/json5">
+                            {{#answer_value}}
+                                {{{answer_value}}}
+                            {{/answer_value}}
+
+                            {{^answer_value}}
+                                {{{init_state}}}
+                            {{/answer_value}}
+                        </script>
+                    </logic-editor>
+                {{/components_to_show}}
+                {{^components_to_show}}
+                    <logic-editor norestore mode="design" id="logic-editor">
+                        <script type="application/json5">
+                            {{#answer_value}}
+                                {{{answer_value}}}
+                            {{/answer_value}}
+
+                            {{^answer_value}}
+                                {{{init_state}}}
+                            {{/answer_value}}
+                        </script>
+                    </logic-editor>
+                {{/components_to_show}}
+            {{/editor_mode}}
         </div>
 
         <div class="d-flex justify-content-between">
@@ -106,6 +136,8 @@
                 'test_results_value' => $current_test_results,
             <p>QUESTION NAME: {{question_name}}</p>
             <p>QUESTION TEXT: {{question_text}}</p>
+            <p>EDITOR_MODE: {{editor_mode}}</p>
+            <p>COMPONENTS_TO_SHOW: {{components_to_show}}</p>
             <p>INIT STATE: {{{init_state}}}</p>
             <p>ANSWER INPUT NAME: {{answer_input_name}}</p>
             <p>TEST RESULTS INPUT NAME: {{test_results_input_name}}</p>

@@ -1,7 +1,7 @@
 /**
  * Saves the logic circuit editor state on form submission.
  *
- * @package    qtype_logiccircuit/save-result
+ * @module    qtype_logiccircuit/save-result
  * @copyright  2025 Groupe Modulo
  * @license    CC BY-NC-SA
  */
@@ -62,8 +62,8 @@ define(['jquery'], function($) {
                     const testSuitesResults = event.detail.results;
                     const testSuitesResultsString = JSON.stringify(testSuitesResults);
 
-                    console.log(userAnswer);
-                    console.log(testSuitesResults);
+                    //console.log(userAnswer);
+                    //console.log(testSuitesResults);
 
                     // Update the input value here
                     $('input#answer').attr('value', userAnswerString);
